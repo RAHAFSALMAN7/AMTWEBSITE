@@ -74,8 +74,7 @@ And this aim to forward for a modern, intelligent and automated network.`;
     // === خبر رقم 3 مع فيديو على Cloudinary ===
    
 
-    // باقي الأخبار تعرض صورة
-    return (
+     return (
       <motion.img
         src={newsItem.image}
         alt={newsItem.title}
