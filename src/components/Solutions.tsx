@@ -2,132 +2,92 @@ import React, { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import CircularGallery from "./CircularGallery";
 import ElectricBorder from "./ElectricBorder";
+import { sanity } from "../sanityClient";
 
-/* ===== Optimized Screen Size Hook ===== */
-const useWindowSize = () => {
-  const [size, setSize] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    const updateSize = () => {
-      setSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    updateSize();
-    window.addEventListener("resize", updateSize, { passive: true });
-
-    return () => window.removeEventListener("resize", updateSize);
-  }, []);
-
-  return size;
+/* ===== THEME COLORS ===== */
+const COLORS = {
+  primary: "#c7c4c0ff",
+  primaryDark: "#c2c1c1ff",
+  primarySoft: "rgba(199,196,192,0.35)",
+  textMuted: "#aaa7a4ff",
 };
 
 const Solutions: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
+  const [data, setData] = useState<any>(null);
 
-  /* ===== SOLUTION MODULES ===== */
-  const solutionBoxes = [
-    {
-      title: "Data Network Solutions",
-      img: "/images/datanetwork.png",
-      alt: "Enterprise data network infrastructure solutions",
-    },
-    {
-      title: "Low Current Systems",
-      img: "/images/herosec2.png",
-      alt: "Low current and security system integrations",
-    },
-    {
-      title: "Audio Visual Systems",
-      img: "/images/audisystem.png",
-      alt: "Professional audio visual system solutions",
-    },
-  ];
+  useEffect(() => {
+    sanity
+      .fetch(`
+        *[_type == "solutionsPage" && enabled == true][0]{
+          badge,
+          title,
+          description,
+          solutions[]{
+            title,
+            alt,
+            image{
+              asset->{url}
+            }
+          },
+          coreTitle,
+          coreDescription,
+          coreItems[]{
+            label,
+            image{
+              asset->{url}
+            }
+          }
+        }
+      `)
+      .then(setData)
+      .catch(console.error);
+  }, []);
 
-  /* ===== CORE GALLERY ===== */
-  const gallery = {
-    main: {
-      img: "/images/big2.png",
-      label: "ICT Networking",
-    },
-    others: [
-      { img: "/images/num22.png", label: "Fire Alarm Solutions" },
-      { img: "/images/num33.png", label: "IPTV Solutions" },
-      { img: "/images/num55.png", label: "Access Control Systems" },
-      { img: "/images/num44.png", label: "OSP Infrastructure Solutions" },
-    ],
-  };
+  if (!data) return null;
 
-  const allItems = [
-    {
-      image: gallery.main.img,
-      text: gallery.main.label,
-    },
-    ...gallery.others.map((item) => ({
-      image: item.img,
+  const galleryItems =
+    data.coreItems?.map((item: any) => ({
+      image: item.image?.asset?.url,
       text: item.label,
-    })),
-  ];
-
-  const { width } = useWindowSize();
-  const scrollEase = width < 768 ? 0.006 : 0.02;
-  const galleryHeight = width < 768 ? 420 : width < 1024 ? 520 : 650;
-  const bend = width < 768 ? 1.4 : 3;
+    })) || [];
 
   return (
     <>
-      {/* ===== SOLUTIONS INTRO ===== */}
-      <section
-        className="bg-white px-4 sm:px-6 md:px-28 pt-24"
-        aria-labelledby="solutions-heading"
-      >
+      {/* ===== INTRO ===== */}
+      <section className="bg-white px-4 sm:px-6 md:px-28 pt-24">
         <header className="max-w-4xl mx-auto text-center">
           <motion.span
-            className="block text-xs tracking-[0.3em] text-[#851A1A]"
+            className="block text-xs tracking-[0.3em]"
+            style={{ color: COLORS.primary }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            SOLUTIONS CONTROL HUB
+            {data.badge}
           </motion.span>
 
           <h2
-            id="solutions-heading"
-            className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#851A1A]"
+            className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold"
+            style={{ color: COLORS.primary }}
           >
-            Engineering Complete
-            <br />
-            Digital Infrastructure Solutions
+            {data.title}
           </h2>
 
           <motion.p
-            className="mt-6 text-sm sm:text-base md:text-lg text-[#6d6a6a]"
+            className="mt-6 text-sm sm:text-base md:text-lg"
+            style={{ color: COLORS.textMuted }}
             initial={{ opacity: 0, y: 15 }}
-            animate={
-              shouldReduceMotion
-                ? { opacity: 1 }
-                : { opacity: 1, y: 0 }
-            }
+            animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            A unified ecosystem of secure, scalable, and mission-critical
-            technologies designed to power modern enterprise infrastructure
-            with precision and reliability.
+            {data.description}
           </motion.p>
         </header>
 
-        {/* ===== SOLUTION MODULES ===== */}
+        {/* ===== SOLUTION BOXES ===== */}
         <div className="relative mt-24 flex justify-center items-center">
-          <div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none"
-            aria-hidden="true"
-          >
-            <div className="w-[520px] h-[520px] bg-[#851A18]/10 blur-[120px] rounded-full" />
-          </div>
-
           <div className="relative flex flex-col md:flex-row items-center gap-10">
-            {solutionBoxes.map((box, idx) => {
+            {data.solutions?.map((box: any, idx: number) => {
               const isCenter = idx === 1;
 
               return (
@@ -135,50 +95,35 @@ const Solutions: React.FC = () => {
                   key={idx}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ delay: idx * 0.15, duration: 0.6 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.15 }}
                   whileHover={
-                    shouldReduceMotion
-                      ? {}
-                      : {
-                          scale: isCenter ? 1.06 : 1.04,
-                        }
+                    shouldReduceMotion ? {} : { scale: isCenter ? 1.05 : 1.03 }
                   }
-                  className={`
-                    relative
-                    ${isCenter ? "z-20" : "z-10"}
-                    ${idx === 0 ? "md:-rotate-6" : ""}
-                    ${idx === 2 ? "md:rotate-6" : ""}
-                  `}
                 >
                   <ElectricBorder
-                    color="#851A1A"
-                    speed={1.2}
-                    chaos={0.6}
-                    thickness={2}
+                    color={COLORS.primary}
+                    speed={0.9}
+                    chaos={0.3}
+                    thickness={1.4}
                     style={{ borderRadius: 24 }}
                   >
                     <div
-                      className={`
-                        relative overflow-hidden rounded-2xl
-                        bg-[#851A18]
-                        ${isCenter ? "w-80 h-[430px]" : "w-72 h-96"}
-                      `}
+                      className={`relative overflow-hidden rounded-2xl ${
+                        isCenter ? "w-80 h-[430px]" : "w-72 h-96"
+                      }`}
+                      style={{ backgroundColor: COLORS.primaryDark }}
                     >
                       <img
-                        src={box.img}
+                        src={box.image?.asset?.url}
                         alt={box.alt}
-                        loading="lazy"
                         className="w-full h-3/4 object-cover scale-105"
                       />
 
-                      <div
-                        className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/15 to-transparent"
-                        aria-hidden="true"
-                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/20 to-transparent" />
 
                       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 px-6">
-                        <h3 className="text-white text-lg font-bold text-center tracking-wide">
+                        <h3 className="text-white text-lg font-bold text-center">
                           {box.title}
                         </h3>
                       </div>
@@ -192,37 +137,26 @@ const Solutions: React.FC = () => {
       </section>
 
       {/* ===== CORE SYSTEMS ===== */}
-      <section
-        className="bg-white px-4 sm:px-6 md:px-28 py-32 relative overflow-hidden"
-        aria-labelledby="core-systems-heading"
-      >
+      <section className="bg-white px-4 sm:px-6 md:px-28 py-32">
         <header className="text-center mb-14">
           <h3
-            id="core-systems-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#851A1A]"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold"
+            style={{ color: COLORS.primary }}
           >
-            Core Infrastructure Services
+            {data.coreTitle}
           </h3>
-          <p className="mt-4 text-[#6d6a6a] text-sm sm:text-base">
-            Discover our essential enterprise systems built around a
-            unified digital core.
+          <p className="mt-4 text-sm sm:text-base" style={{ color: COLORS.textMuted }}>
+            {data.coreDescription}
           </p>
         </header>
 
-        <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          aria-hidden="true"
-        >
-          <div className="w-96 h-96 bg-[#851A18]/10 blur-[120px] rounded-full" />
-        </div>
-
-        <div className="relative" style={{ height: galleryHeight }}>
+        <div className="relative h-[600px]">
           <CircularGallery
-            items={allItems}
-            bend={bend}
-            textColor="#851A1A"
+            items={galleryItems}
+            bend={3}
+            textColor={COLORS.primary}
             borderRadius={0.08}
-            scrollEase={scrollEase}
+            scrollEase={0.02}
           />
         </div>
       </section>

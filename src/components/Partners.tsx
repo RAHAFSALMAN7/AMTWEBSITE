@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Quote, Star, Award } from "lucide-react";
+import { Star, Award } from "lucide-react";
 import { useLanguage } from "../Context/LanguageContext";
 import { useReducedMotion } from "framer-motion";
 
@@ -10,7 +10,7 @@ const Partners: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  /* ===== Intersection Observer (safe & once) ===== */
+  /* ===== Intersection Observer (once) ===== */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -28,30 +28,30 @@ const Partners: React.FC = () => {
 
   /* ===== PARTNERS ===== */
   const partners = [
-    { name: "HUAWEI", logo: "H", category: "Network & ICT Solutions" },
-    { name: "HP ARUBA", logo: "A", category: "Enterprise Data Networking" },
-    { name: "CISCO", logo: "C", category: "Routing, Switching & Security" },
-    { name: "JUNIPER", logo: "J", category: "Advanced Network Infrastructure" },
-    { name: "COMMSCOPE", logo: "CS", category: "Structured Cabling Systems" },
-    { name: "HP", logo: "HP", category: "ICT Solutions" },
-    { name: "ALCATEL", logo: "AL", category: "Unified Communications" },
-    { name: "Leviton", logo: "L", category: "Cabling Solutions" },
-    { name: "AVAYA", logo: "AV", category: "Audio Visual Systems" },
-    { name: "NEC", logo: "N", category: "Projection & Display Systems" },
-    { name: "MIRCOM", logo: "M", category: "Intercom Systems" },
-    { name: "EXTERITY", logo: "E", category: "IPTV Solutions" },
-    { name: "AXIS", logo: "AX", category: "Video Surveillance Systems" },
-    { name: "Carrier", logo: "CR", category: "Fire & Security Systems" },
-    { name: "EDWARDS", logo: "ED", category: "Fire Alarm Systems" },
-    { name: "BOUYER", logo: "B", category: "Public Address Systems" },
-    { name: "CHRISTIE", logo: "CH", category: "Video Walls & Projection" },
-    { name: "CLEAR ONE", logo: "CO", category: "Audio Conferencing" },
-    { name: "ATLAD IED", logo: "AI", category: "Communication Systems" },
-    { name: "SAPLING", logo: "S", category: "Master Clock Systems" },
-    { name: "APC", logo: "APC", category: "UPS & Power Systems" },
-    { name: "EXTRON", logo: "EX", category: "Professional AV Systems" },
-    { name: "BELDEN", logo: "B", category: "Signal Transmission Products" },
-    { name: "SUPERIOR ESSEX", logo: "SE", category: "Wiring & Cabling" },
+    { name: "HUAWEI", category: "Network & ICT Solutions" },
+    { name: "HP ARUBA", category: "Enterprise Data Networking" },
+    { name: "CISCO", category: "Routing, Switching & Security" },
+    { name: "JUNIPER", category: "Advanced Network Infrastructure" },
+    { name: "COMMSCOPE", category: "Structured Cabling Systems" },
+    { name: "HP", category: "ICT Solutions" },
+    { name: "ALCATEL", category: "Unified Communications" },
+    { name: "Leviton", category: "Cabling Solutions" },
+    { name: "AVAYA", category: "Audio Visual Systems" },
+    { name: "NEC", category: "Projection & Display Systems" },
+    { name: "MIRCOM", category: "Intercom Systems" },
+    { name: "EXTERITY", category: "IPTV Solutions" },
+    { name: "AXIS", category: "Video Surveillance Systems" },
+    { name: "Carrier", category: "Fire & Security Systems" },
+    { name: "EDWARDS", category: "Fire Alarm Systems" },
+    { name: "BOUYER", category: "Public Address Systems" },
+    { name: "CHRISTIE", category: "Video Walls & Projection" },
+    { name: "CLEAR ONE", category: "Audio Conferencing" },
+    { name: "ATLAD IED", category: "Communication Systems" },
+    { name: "SAPLING", category: "Master Clock Systems" },
+    { name: "APC", category: "UPS & Power Systems" },
+    { name: "EXTRON", category: "Professional AV Systems" },
+    { name: "BELDEN", category: "Signal Transmission Products" },
+    { name: "SUPERIOR ESSEX", category: "Wiring & Cabling" },
   ];
 
   /* ===== TESTIMONIALS ===== */
@@ -65,7 +65,6 @@ const Partners: React.FC = () => {
       position: { en: "IT Director", ar: "مدير تقنية المعلومات" },
       company: "King Faisal University",
       rating: 5,
-      avatar: "AA",
     },
     {
       quote: {
@@ -76,7 +75,6 @@ const Partners: React.FC = () => {
       position: { en: "Project Manager", ar: "مدير المشروع" },
       company: "YASREF Refinery",
       rating: 5,
-      avatar: "MF",
     },
   ];
 
@@ -94,6 +92,67 @@ const Partners: React.FC = () => {
       language === "ar" ? "آراء عملائنا" : "Client Testimonials",
   };
 
+  /* ===== SEO: Structured Data ===== */
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Advanced Micro Technologies",
+    url: "https://www.amt.com",
+    knowsAbout: partners.map((p) => p.category),
+    review: testimonials.map((t) => ({
+      "@type": "Review",
+      author: { "@type": "Person", name: t.author },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: t.rating,
+        bestRating: "5",
+      },
+      reviewBody: t.quote.en,
+    })),
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Who are AMT technology partners?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "AMT partners with global leaders such as Cisco, Huawei, HP Aruba, Juniper and CommScope.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What industries does AMT serve?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "AMT serves education, oil & gas, enterprise, government and industrial sectors.",
+        },
+      },
+    ],
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.amt.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Partners",
+        item: "https://www.amt.com/partners",
+      },
+    ],
+  };
+
   return (
     <section
       id="partners"
@@ -101,15 +160,28 @@ const Partners: React.FC = () => {
       className="py-24 bg-[#E5E5E5] relative overflow-hidden"
       aria-labelledby="partners-heading"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      {/* ===== SEO JSON-LD ===== */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
 
+      <div className="max-w-7xl mx-auto px-6">
         {/* ===== HEADER ===== */}
         <header
           className={`text-center mb-20 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full border border-[#EB2427] mb-6">
+          <div className="inline-flex items-center gap-3 bg-white/80 px-6 py-3 rounded-full border border-[#EB2427] mb-6">
             <Award className="w-5 h-5 text-[#EB2427]" />
             <span className="text-[#941B20] font-semibold text-lg">
               {texts.header}
@@ -128,56 +200,41 @@ const Partners: React.FC = () => {
           </p>
         </header>
 
-        {/* ===== PARTNERS GRID ===== */}
-        <section
-          className={`mb-24 transition-all duration-1000 delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+        {/* ===== PARTNERS LIST ===== */}
+        <ul
+          className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mb-24"
           role="list"
           aria-label="Technology partners"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-            {partners.map((partner, index) => (
-              <article
-                key={index}
-                role="listitem"
-                className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-4 text-center border border-gray-100"
-                aria-label={`${partner.name} technology partner`}
-              >
-                <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-[#EB2427] to-[#941B20] rounded-xl flex items-center justify-center text-white font-bold text-sm">
-                  {partner.logo}
-                </div>
-                <h3 className="text-xs font-semibold text-[#941B20]">
-                  {partner.name}
-                </h3>
-                <p className="sr-only">{partner.category}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+          {partners.map((partner, index) => (
+            <li
+              key={index}
+              className="bg-white rounded-2xl shadow-md p-4 text-center border border-gray-100"
+              aria-label={`${partner.name} – ${partner.category}`}
+            >
+              <strong className="block text-sm text-[#941B20]">
+                {partner.name}
+              </strong>
+            </li>
+          ))}
+        </ul>
 
         {/* ===== TESTIMONIALS ===== */}
-        <section
-          aria-labelledby="testimonials-heading"
-          className={`transition-all duration-1000 delay-600 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          <header className="text-center mb-12">
-            <h3
-              id="testimonials-heading"
-              className="text-3xl lg:text-4xl font-bold text-[#941B20]"
-            >
-              {texts.testimonialsTitle}
-            </h3>
-            <div className="w-32 h-1 bg-gradient-to-r from-[#EB2427] to-[#941B20] mx-auto mt-4 rounded-full" />
-          </header>
+        <section aria-labelledby="testimonials-heading">
+          <h3
+            id="testimonials-heading"
+            className="text-3xl lg:text-4xl font-bold text-[#941B20] text-center mb-12"
+          >
+            {texts.testimonialsTitle}
+          </h3>
 
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((t, index) => (
               <article
                 key={index}
-                className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100"
+                className="bg-white rounded-3xl p-8 shadow-lg"
+                itemScope
+                itemType="https://schema.org/Review"
               >
                 <div className="flex mb-4">
                   {[...Array(t.rating)].map((_, i) => (
@@ -189,25 +246,17 @@ const Partners: React.FC = () => {
                   ))}
                 </div>
 
-                <blockquote className="italic text-[#941B20]/80 mb-6">
+                <blockquote
+                  className="italic text-[#941B20]/80 mb-6"
+                  itemProp="reviewBody"
+                >
                   {t.quote[language]}
                 </blockquote>
 
-                <footer className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#EB2427] to-[#941B20] rounded-full flex items-center justify-center text-white font-bold mr-4">
-                    {t.avatar}
-                  </div>
-                  <div>
-                    <div className="font-bold text-[#941B20]">
-                      {t.author}
-                    </div>
-                    <div className="text-sm text-[#941B20]/70">
-                      {t.position[language]}
-                    </div>
-                    <div className="text-xs text-[#EB2427]">
-                      {t.company}
-                    </div>
-                  </div>
+                <footer>
+                  <strong itemProp="author">{t.author}</strong>
+                  <p className="text-sm">{t.position[language]}</p>
+                  <p className="text-xs text-[#EB2427]">{t.company}</p>
                 </footer>
               </article>
             ))}

@@ -22,7 +22,6 @@ const Footer = () => {
       ],
       contactUsTitle: "Contact Us",
       mapTitle: "Our Location",
-      parkingTitle: "Parking Location",
     },
   };
 
@@ -151,49 +150,25 @@ const Footer = () => {
           </nav>
         </address>
 
-        {/* ===== MAPS (SECURED) ===== */}
-        <div className="flex flex-col gap-8">
-          {/* Office Location */}
-          <div>
-            <h4 className="font-semibold text-lg mb-2">
-              {t.mapTitle}
-            </h4>
-            <iframe
-              title="Advanced Micro Technologies Office Location"
-              src="https://www.google.com/maps?q=Advanced%20Micro%20Technologies%20AMT%20arabia&output=embed"
-              width="100%"
-              height="300"
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-same-origin allow-presentation"
-              style={{
-                border: 0,
-                borderRadius: "12px",
-              }}
-            />
-          </div>
-
-          {/* Parking Location */}
-          <div>
-            <h4 className="font-semibold text-lg mb-2">
-              {t.parkingTitle}
-            </h4>
-            <iframe
-              title="AMT Parking Location"
-              src="https://www.google.com/maps?q=26.293222,50.182472&output=embed"
-              width="100%"
-              height="300"
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              sandbox="allow-scripts allow-same-origin allow-presentation"
-              style={{
-                border: 0,
-                borderRadius: "12px",
-              }}
-            />
-          </div>
+        {/* ===== LOCATION (MAIN OFFICE ONLY) ===== */}
+        <div>
+          <h4 className="font-semibold text-lg mb-2">
+            {t.mapTitle}
+          </h4>
+          <iframe
+            title="Advanced Micro Technologies Office Location"
+            src="https://www.google.com/maps?q=Advanced%20Micro%20Technologies%20AMT%20arabia&output=embed"
+            width="100%"
+            height="300"
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            sandbox="allow-scripts allow-same-origin allow-presentation"
+            style={{
+              border: 0,
+              borderRadius: "12px",
+            }}
+          />
         </div>
       </div>
 

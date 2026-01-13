@@ -53,20 +53,17 @@ const ClientsSection = () => {
   }, [clients.length]);
 
   return (
-    <section
-      className="flex flex-col items-center my-20 px-6"
-      style={{ backgroundColor: "#FFFFFF" }}
-    >
+    <section className="flex flex-col items-center my-20 px-6 bg-white">
       {/* Clients Section */}
       <h2 className="text-3xl md:text-4xl font-bold mb-12 text-[#851A1A]">
         Our Major Clients
       </h2>
+
       <div className="w-full max-w-5xl flex justify-center relative overflow-hidden">
         {/* Left Arrow */}
         <button
           onClick={prevClients}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-[#851A1A] p-2 hover:opacity-80 rounded-full shadow"
-          style={{ backgroundColor: "#FFFFFF" }}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow bg-white"
         >
           <ChevronLeft size={32} />
         </button>
@@ -83,8 +80,7 @@ const ClientsSection = () => {
             {clients.slice(currentIndex, currentIndex + 3).map((client) => (
               <div
                 key={client.id}
-                className="client-circle flex items-center justify-center shadow-md"
-                style={{ backgroundColor: "#FFFFFF" }}
+                className="client-circle flex items-center justify-center shadow-md bg-white"
               >
                 <img
                   src={client.logo}
@@ -99,36 +95,34 @@ const ClientsSection = () => {
         {/* Right Arrow */}
         <button
           onClick={nextClients}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-[#851A1A] p-2 hover:opacity-80 rounded-full shadow"
-          style={{ backgroundColor: "#FFFFFF" }}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 text-gray-700 p-2 hover:opacity-80 rounded-full shadow bg-white"
         >
           <ChevronRight size={32} />
         </button>
       </div>
 
+      {/* Pagination */}
       <div className="flex mt-6 gap-2">
         {Array.from({ length: totalPages }).map((_, idx) => (
           <span
             key={idx}
             className={`w-3 h-3 rounded-full ${
-              idx === currentPage ? "bg-[#851A1A]" : "bg-gray-400"
+              idx === currentPage ? "bg-gray-800" : "bg-gray-400"
             }`}
-          ></span>
+          />
         ))}
       </div>
 
       {/* Testimonials Section */}
-      <h2 className="text-3xl md:text-4xl font-bold mt-32 mb-12 border-b-2 border-[#851A1A] text-[#851A1A]">
+      <h2 className="text-3xl md:text-4xl font-bold mt-32 mb-12 text-[#851A1A]">
         Testimonials
       </h2>
-      <div
-        className="w-full py-16 flex justify-center relative"
-        style={{ backgroundColor: "#851A18" }}
-      >
+
+      <div className="w-full py-16 flex justify-center relative bg-gray-100">
         {/* Left Arrow */}
         <button
           onClick={prevTestimonial}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-[#851A1A] p-2 hover:opacity-80 rounded-full shadow"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-700 p-2 hover:opacity-80 rounded-full shadow bg-white"
         >
           <ChevronLeft size={32} />
         </button>
@@ -142,10 +136,7 @@ const ClientsSection = () => {
             transition={{ duration: 0.5 }}
             className="flex flex-col items-center gap-6 max-w-3xl text-center px-6"
           >
-            <div
-              className="testimonial-circle flex items-center justify-center shadow-md"
-              style={{ backgroundColor: "#FFFFFF" }}
-            >
+            <div className="testimonial-circle flex items-center justify-center shadow-md bg-white">
               <img
                 src={clients[testimonialIndex].logo}
                 alt={clients[testimonialIndex].name}
@@ -153,10 +144,7 @@ const ClientsSection = () => {
               />
             </div>
 
-            <div
-              className="rounded-xl p-6 shadow-md"
-              style={{ backgroundColor: "#FFFFFF" }}
-            >
+            <div className="rounded-xl p-6 shadow-md bg-white">
               <p className="text-lg md:text-xl italic text-[#851A1A]">
                 "{clients[testimonialIndex].testimonial}"
               </p>
@@ -173,7 +161,7 @@ const ClientsSection = () => {
         {/* Right Arrow */}
         <button
           onClick={nextTestimonial}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-[#851A1A] p-2 hover:opacity-80 rounded-full shadow"
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-700 p-2 hover:opacity-80 rounded-full shadow bg-white"
         >
           <ChevronRight size={32} />
         </button>

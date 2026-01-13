@@ -41,7 +41,6 @@ Switch Forward with Aruba is an exclusive event that focuses on the new Aruba CX
 And this aim to forward for a modern, intelligent and automated network.`;
 
   const renderMedia = () => {
-    // === خبر اليوم الوطني السعودي ===
     if (newsItem.id === 1) {
       return (
         <>
@@ -64,17 +63,13 @@ And this aim to forward for a modern, intelligent and automated network.`;
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Today, we celebrate the glory of our beloved homeland, the Kingdom of Saudi Arabia, and all the achievements
-            and progress we have accomplished together. Let us all stand with pride and honor on this great day,
-            and continue building a bright future full of success and optimism.
+            and progress we have accomplished together.
           </motion.p>
         </>
       );
     }
 
-    // === خبر رقم 3 مع فيديو على Cloudinary ===
-   
-
-     return (
+    return (
       <motion.img
         src={newsItem.image}
         alt={newsItem.title}
@@ -94,28 +89,33 @@ And this aim to forward for a modern, intelligent and automated network.`;
           key={index}
           src={img}
           alt={`Gallery ${index + 1}`}
-          className="w-full h-60 object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform"
+          className="w-full h-60 object-cover rounded-lg shadow-md cursor-pointer"
           onClick={() => setSelectedImage(img)}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
-          whileHover={{ scale: 1.08 }}
+          whileHover={{ scale: 1.05 }}
         />
       ))}
     </div>
   );
 
   return (
-    <motion.div
-      className="bg-white min-h-screen py-12 px-6"
+    <motion.section
+      className="relative min-h-screen py-16 px-6 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/images/amtbackground.png')" }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <div className="max-w-5xl mx-auto">
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-[#F5F5F5]/90 backdrop-blur-[2px]" />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-5xl mx-auto bg-white/80 backdrop-blur-md rounded-3xl shadow-xl p-8 md:p-12">
         <Link
           to="/"
-          className="text-[#851A18] underline mb-6 inline-block hover:text-[#a21f1c]"
+          className="text-[#6B2C32] underline mb-6 inline-block hover:opacity-80"
         >
           ← Back to Latest News
         </Link>
@@ -128,15 +128,17 @@ And this aim to forward for a modern, intelligent and automated network.`;
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {newsItem.id === 1 ? '🇸🇦 Celebrating Saudi National Day 95 🇸🇦' : newsItem.title}
+          {newsItem.id === 1
+            ? '🇸🇦 Celebrating Saudi National Day 95 🇸🇦'
+            : newsItem.title}
         </motion.h1>
 
-        {/* خبر الثاني */}
+        {/* News 2 */}
         {newsItem.id === 2 && (
           <div className="mb-12">
             <div className="flex flex-col md:flex-row items-center gap-6 mb-8">
               <motion.div
-                className="md:w-1/2 text-left whitespace-pre-line text-[#851A18]"
+                className="md:w-1/2 whitespace-pre-line text-[#6B2C32]"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
@@ -152,21 +154,24 @@ And this aim to forward for a modern, intelligent and automated network.`;
                 <img
                   src={newsItem.sideImage}
                   alt={newsItem.title}
-                  className="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer hover:scale-105 transition-transform"
+                  className="w-full h-64 object-cover rounded-lg shadow-md cursor-pointer"
                   onClick={() => setSelectedImage(newsItem.sideImage!)}
                 />
               </motion.div>
             </div>
-            <h2 className="text-2xl font-bold mb-6 text-[#292929]">Event Gallery</h2>
+
+            <h2 className="text-2xl font-bold mb-6 text-[#292929]">
+              Event Gallery
+            </h2>
             {renderGallery(news2Gallery)}
           </div>
         )}
 
-        {/* خبر الثالث */}
+        {/* News 3 */}
         {newsItem.id === 3 && (
           <>
             <motion.p
-              className="leading-relaxed whitespace-pre-line mb-8 text-center text-[#851A18]"
+              className="leading-relaxed whitespace-pre-line mb-8 text-center text-[#6B2C32]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -178,21 +183,20 @@ And this aim to forward for a modern, intelligent and automated network.`;
               src="/images/highlights.png"
               alt="Highlights"
               className="mx-auto w-full max-w-2xl rounded-lg shadow-lg cursor-pointer mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
               onClick={() => setSelectedImage('/images/highlights.png')}
             />
 
-            <h2 className="text-2xl font-bold mb-6 text-[#292929]">Event Gallery</h2>
+            <h2 className="text-2xl font-bold mb-6 text-[#292929]">
+              Event Gallery
+            </h2>
             {renderGallery(eventGallery)}
           </>
         )}
 
-        {/* باقي الأخبار */}
-        {newsItem.id !== 2 && newsItem.id !== 3 && newsItem.id !== 1 && (
+        {/* Other news */}
+        {newsItem.id !== 1 && newsItem.id !== 2 && newsItem.id !== 3 && (
           <motion.p
-            className="leading-relaxed whitespace-pre-line mb-8 text-[#851A18]"
+            className="leading-relaxed whitespace-pre-line mb-8 text-[#6B2C32]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -201,7 +205,7 @@ And this aim to forward for a modern, intelligent and automated network.`;
           </motion.p>
         )}
 
-        {/* Popup Lightbox */}
+        {/* Lightbox */}
         {selectedImage && (
           <div
             className="fixed inset-0 bg-black/70 flex items-center justify-center z-50"
@@ -215,7 +219,7 @@ And this aim to forward for a modern, intelligent and automated network.`;
           </div>
         )}
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

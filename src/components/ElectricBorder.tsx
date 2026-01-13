@@ -1,40 +1,42 @@
 import React, { CSSProperties, PropsWithChildren } from "react";
 
 interface ElectricBorderProps {
-  color?: string;      // لون التوهج
-  speed?: number;      // سرعة الحركة
-  chaos?: number;      // عشوائية الحركة
-  thickness?: number;  // سماكة الخط
+  color?: string;        // لون التوهج
+  speed?: number;        // سرعة الحركة
+  chaos?: number;        // عشوائية الحركة
+  thickness?: number;    // سماكة الخط
   style?: CSSProperties; // ستايل إضافي
 }
 
 const ElectricBorder: React.FC<PropsWithChildren<ElectricBorderProps>> = ({
   children,
-  color = "#7df9ff",
+  color = "#CFCFCF", // 🔹 سكني فاتح للتوهج
   speed = 1,
   chaos = 0.5,
   thickness = 2,
   style,
 }) => {
+  const radius = style?.borderRadius ?? 12;
+
   return (
     <div
       style={{
         position: "relative",
         display: "inline-block",
         padding: 16,
-        borderRadius: style?.borderRadius ?? 12,
+        borderRadius: radius,
         ...style,
       }}
     >
-      {/* العنصر الأساسي */}
+      {/* المحتوى */}
       <div>{children}</div>
 
-      {/* الحدود المتحركة */}
+      {/* الإطار المتوهج */}
       <div
         style={{
           position: "absolute",
           inset: 0,
-          borderRadius: style?.borderRadius ?? 12,
+          borderRadius: radius,
           padding: thickness,
           pointerEvents: "none",
         }}
@@ -44,23 +46,29 @@ const ElectricBorder: React.FC<PropsWithChildren<ElectricBorderProps>> = ({
             width: "100%",
             height: "100%",
             border: `${thickness}px solid ${color}`,
-            borderRadius: style?.borderRadius ?? 12,
-            boxShadow: `0 0 20px ${color}, 0 0 40px ${color}`,
+            borderRadius: radius,
+            boxShadow: `
+              0 0 12px ${color},
+              0 0 24px rgba(0,0,0,0.15)
+            `,
             animation: `electric-border ${5 / speed}s infinite alternate`,
           }}
         />
       </div>
 
-      {/* keyframes */}
+      {/* Animation */}
       <style>{`
         @keyframes electric-border {
           0% {
-            box-shadow: 0 0 10px ${color}, 0 0 20px ${color};
+            box-shadow:
+              0 0 8px ${color},
+              0 0 16px rgba(0,0,0,0.15);
             transform: scale(1);
           }
           100% {
-            box-shadow: 0 0 ${20 + chaos * 20}px ${color},
-                        0 0 ${40 + chaos * 40}px ${color};
+            box-shadow:
+              0 0 ${14 + chaos * 14}px ${color},
+              0 0 ${28 + chaos * 28}px rgba(0,0,0,0.2);
             transform: scale(1.01);
           }
         }

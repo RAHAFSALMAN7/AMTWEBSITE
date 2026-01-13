@@ -1,83 +1,101 @@
 import React, { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-
-const words = ["Trust", "Security", "Performance"];
+import { sanity } from "../sanityClient";
 
 const Hero = () => {
+  const [hero, setHero] = useState<any>(null);
   const [index, setIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
 
+  // 🔹 جلب البيانات من Sanity (مع asset url)
   useEffect(() => {
+    sanity
+      .fetch(`
+        *[_type == "homeHero"][0]{
+          badge,
+          titlePrefix,
+          rotatingWords,
+          titleSuffix,
+          description,
+          ctaText,
+          ctaLink,
+          videoFile{
+            asset->{
+              url
+            }
+          }
+        }
+      `)
+      .then((data) => {
+        console.log("HERO DATA:", data);
+        setHero(data);
+      })
+      .catch((err) => {
+        console.error("SANITY ERROR:", err);
+      });
+  }, []);
+
+  // 🔹 تدوير الكلمات
+  useEffect(() => {
+    if (!hero?.rotatingWords?.length) return;
+
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % words.length);
+      setIndex((prev) => (prev + 1) % hero.rotatingWords.length);
     }, 2500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [hero]);
+
+  // 🔹 حماية (لو ما وصل بيانات)
+  if (!hero) {
+    return (
+      <div style={{ color: "red", padding: 40 }}>
+        HERO NOT LOADED FROM SANITY
+      </div>
+    );
+  }
 
   return (
     <header role="banner">
       <section
         aria-labelledby="hero-heading"
-        aria-label="Hero section for secure and high performance networks"
-        className="relative min-h-screen overflow-hidden
-        bg-gradient-to-br from-[#3A0C0B] via-[#1A0707] to-[#0A0505]
-        px-6 md:px-20 flex items-center justify-center"
+        className="relative min-h-[100svh] overflow-hidden px-6 md:px-20 flex items-center justify-center"
       >
-        {/* ===== SIGNAL LINES ===== */}
-        <div
-          className="absolute inset-0 opacity-[0.08]"
-          aria-hidden="true"
-        >
-          {[...Array(6)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent"
-              style={{ top: `${20 + i * 10}%` }}
-              animate={
-                shouldReduceMotion
-                  ? false
-                  : { x: ["-100%", "100%"] }
-              }
-              transition={{
-                duration: 12 + i * 2,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
-          ))}
-        </div>
-
-        {/* ===== LIGHT BEAM ===== */}
-        <motion.div
-          className="absolute inset-0"
-          aria-hidden="true"
-        >
-          <motion.div
-            className="absolute left-1/2 top-[-20%] w-[2px] h-[140%]
-            bg-gradient-to-b from-transparent via-[#ffb3b3]/70 to-transparent blur-sm"
-            animate={
-              shouldReduceMotion
-                ? false
-                : { x: [-200, 200, -200] }
-            }
-            transition={{
-              duration: 14,
-              repeat: Infinity,
-              ease: "linear",
-            }}
+        {/* ===== VIDEO BACKGROUND ===== */}
+        {!shouldReduceMotion && hero.videoFile?.asset?.url && (
+          <video
+            src={hero.videoFile.asset.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            aria-hidden="true"
           />
-        </motion.div>
+        )}
+
+        {/* ===== FALLBACK ===== */}
+        {shouldReduceMotion && (
+          <div className="absolute inset-0 bg-black" aria-hidden="true" />
+        )}
+
+        {/* ===== OVERLAY ===== */}
+        <div
+          className="absolute inset-0 bg-gradient-to-br
+          from-black/60 via-black/55 to-black/70"
+          aria-hidden="true"
+        />
 
         {/* ===== CONTENT ===== */}
         <div className="relative z-10 max-w-4xl text-center">
-          {/* INTRO */}
+          {/* BADGE */}
           <motion.span
-            className="inline-block mb-4 text-xs tracking-widest text-[#ffb3b3]"
+            className="inline-block mb-4 text-xs tracking-widest text-white/70"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            ADVANCED MICRO TECHNOLOGIES
+            {hero.badge}
           </motion.span>
 
           {/* TITLE */}
@@ -89,50 +107,43 @@ const Hero = () => {
             animate={{ clipPath: "inset(0 0% 0 0)" }}
             transition={{ duration: 1 }}
           >
-            Engineering{" "}
+            {hero.titlePrefix}{" "}
             <motion.span
               key={index}
-              className="inline-block text-[#ffb3b3]"
+              className="inline-block text-[#B11217]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              {words[index]}
-            </motion.span>{" "}
-            <span className="sr-only">
-              Secure and High Performance Network Infrastructure
-            </span>
+              {hero.rotatingWords[index]}
+            </motion.span>
             <br />
-            Into Every Network
+            {hero.titleSuffix}
           </motion.h1>
 
           {/* DESCRIPTION */}
           <motion.p
-            className="mt-6 mx-auto max-w-xl text-white/85
+            className="mt-6 mx-auto max-w-xl text-white/80
             text-sm sm:text-base leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
           >
-            We design secure, scalable, and high-performance
-            network infrastructure for mission-critical
-            enterprise systems built to operate under pressure.
+            {hero.description}
           </motion.p>
 
-          {/* ===== ACTION BUTTON ===== */}
+          {/* CTA */}
           <motion.div
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-5"
+            className="mt-8 flex justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
             <a
-              href="/solutions/network-security"
-              title="Secure Network Solutions"
-              aria-label="Explore our secure network solutions"
+              href={hero.ctaLink}
               className="text-white/70 hover:text-white underline underline-offset-4"
             >
-              Explore Secure Solutions
+              {hero.ctaText}
             </a>
           </motion.div>
         </div>
