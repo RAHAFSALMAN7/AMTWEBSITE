@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { sanity } from "../sanityClient";
 
 const Hero = () => {
   const [hero, setHero] = useState<any>(null);
   const [index, setIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
+  const navigate = useNavigate(); // ✅ مهم جدًا
 
-  // 🔹 جلب البيانات من Sanity (مع asset url)
+  // 🔹 جلب البيانات من Sanity
   useEffect(() => {
     sanity
       .fetch(`
@@ -46,7 +48,7 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, [hero]);
 
-  // 🔹 حماية (لو ما وصل بيانات)
+  // 🔹 حماية لو ما في بيانات
   if (!hero) {
     return (
       <div style={{ color: "red", padding: 40 }}>
@@ -132,19 +134,34 @@ const Hero = () => {
             {hero.description}
           </motion.p>
 
-          {/* CTA */}
+          {/* CTA BUTTON ✅ FIXED */}
           <motion.div
-            className="mt-8 flex justify-center"
+            className="mt-10 flex justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
           >
-            <a
-              href={hero.ctaLink}
-              className="text-white/70 hover:text-white underline underline-offset-4"
+            <button
+              onClick={() => {
+                if (!hero.ctaLink) return;
+
+                // Scroll داخلي
+                if (hero.ctaLink.startsWith("#")) {
+                  const id = hero.ctaLink.replace("#", "");
+                  document
+                    .getElementById(id)
+                    ?.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  // ✅ التنقل الصحيح مع React Router
+                  navigate(hero.ctaLink);
+                }
+              }}
+              className="px-8 py-4 rounded-full
+              bg-[#B11217] text-white font-semibold
+              hover:bg-[#8e0f13] transition"
             >
               {hero.ctaText}
-            </a>
+            </button>
           </motion.div>
         </div>
       </section>
