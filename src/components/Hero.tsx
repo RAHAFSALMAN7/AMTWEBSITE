@@ -8,6 +8,7 @@ const Hero = () => {
   const [index, setIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
   const navigate = useNavigate(); // ✅ مهم جدًا
+// force redeploy
 
   // 🔹 جلب البيانات من Sanity
   useEffect(() => {
@@ -152,8 +153,7 @@ const Hero = () => {
                     .getElementById(id)
                     ?.scrollIntoView({ behavior: "smooth" });
                 } else {
-                  // ✅ التنقل الصحيح مع React Router
-                  navigate(hero.ctaLink);
+                   navigate(hero.ctaLink);
                 }
               }}
               className="px-8 py-4 rounded-full
