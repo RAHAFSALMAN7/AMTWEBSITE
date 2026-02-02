@@ -44,15 +44,32 @@ const Contact: React.FC = () => {
     });
   };
 
+  const sectionStyle = {
+    backgroundImage: "url('/bac.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  };
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[#F4F4F5] via-[#EEEEEE] to-[#E6E6E6]">
+    <section
+      className="relative overflow-hidden"
+      style={sectionStyle}
+    >
+      {/* ===== OVERLAY (سكّني شفاف) ===== */}
+      <div
+        className="absolute inset-0 backdrop-blur-[2px]"
+        style={{ backgroundColor: "rgba(199,196,192,0.85)" }}
+      />
+
+      {/* ===== CONTENT ===== */}
       <div className="relative z-10 py-28 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* ===== FORM ===== */}
           <ElectricBorder color="#CFCFCF" speed={1.5} chaos={0.6} thickness={2}>
             <div className="bg-white rounded-xl shadow-xl p-10">
-              <h3 className="text-2xl font-semibold mb-6">
+              <h3 className="text-2xl font-semibold mb-6 text-[#1F2937]">
                 {data.formTitle}
               </h3>
 
@@ -93,7 +110,7 @@ const Contact: React.FC = () => {
                   className="w-full p-4 border rounded h-36"
                 />
 
-                <button className="bg-[#B3261E] text-white px-8 py-3 rounded font-semibold">
+                <button className="bg-[#B3261E] hover:bg-[#8f1f19] text-white px-8 py-3 rounded font-semibold transition">
                   Send Message
                 </button>
               </form>
@@ -101,7 +118,7 @@ const Contact: React.FC = () => {
           </ElectricBorder>
 
           {/* ===== TEXT CONTENT ===== */}
-          <div>
+          <div className="text-white">
             {/* COMPANY NAME */}
             <motion.h2
               className="text-4xl font-extrabold mb-2"
@@ -114,7 +131,7 @@ const Contact: React.FC = () => {
             {/* GROUP LINE */}
             {data.groupLine && (
               <motion.p
-                className="text-xs tracking-widest text-gray-600 mb-4"
+                className="text-xs tracking-widest text-white/80 mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
@@ -134,7 +151,7 @@ const Contact: React.FC = () => {
 
             {/* DESCRIPTION */}
             {data.description && (
-              <p className="text-gray-600 max-w-lg">
+              <p className="text-white/90 max-w-lg">
                 {data.description}
               </p>
             )}
@@ -146,7 +163,7 @@ const Contact: React.FC = () => {
       {data.mapEmbedUrl && (
         <iframe
           src={data.mapEmbedUrl}
-          className="w-full h-[500px] border-0"
+          className="w-full h-[500px] border-0 relative z-10"
           loading="lazy"
         />
       )}
@@ -154,7 +171,7 @@ const Contact: React.FC = () => {
       {/* ===== SUCCESS MESSAGE ===== */}
       {showSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
-          <div className="bg-green-500 text-white px-8 py-6 rounded-lg">
+          <div className="bg-green-600 text-white px-8 py-6 rounded-lg shadow-xl">
             ✅ Message sent successfully
           </div>
         </div>

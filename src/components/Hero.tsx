@@ -43,11 +43,7 @@ const Hero = () => {
   }, [hero]);
 
   if (!hero) {
-    return (
-      <div style={{ color: "red", padding: 40 }}>
-        HERO NOT LOADED
-      </div>
-    );
+    return <div style={{ color: "red", padding: 40 }}>HERO NOT LOADED</div>;
   }
 
   return (
@@ -67,8 +63,12 @@ const Hero = () => {
           />
         )}
 
-        {/* ===== OVERLAY ===== */}
-        <div className="absolute inset-0 bg-black/60" aria-hidden="true" />
+        {/* ===== SKIN OVERLAY ===== */}
+        <div
+          className="absolute inset-0 backdrop-blur-[2px]"
+          style={{ backgroundColor: "rgba(76,77,78,0.75)" }}
+          aria-hidden="true"
+        />
 
         {/* ===== CONTENT ===== */}
         <div className="relative z-10 max-w-5xl text-center text-white">
@@ -93,7 +93,7 @@ const Hero = () => {
             {hero.companyName}
           </motion.h1>
 
-          {/* SLOGAN + EXTRA TITLE (Animated) */}
+          {/* SLOGAN */}
           {(hero.titlePrefix || hero.titleSuffix) && (
             <motion.h2
               className="mt-4 text-lg sm:text-xl lg:text-2xl text-white/90"
@@ -114,8 +114,7 @@ const Hero = () => {
           {/* DESCRIPTION */}
           {hero.description && (
             <motion.p
-              className="mt-6 max-w-2xl mx-auto text-white/80
-              text-sm sm:text-base leading-relaxed"
+              className="mt-6 max-w-2xl mx-auto text-white/80 text-sm sm:text-base leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
@@ -144,9 +143,7 @@ const Hero = () => {
                     navigate(hero.ctaLink);
                   }
                 }}
-                className="px-8 py-4 rounded-full
-                bg-[#B11217] hover:bg-[#8e0f13]
-                font-semibold transition"
+                className="px-8 py-4 rounded-full bg-[#B11217] hover:bg-[#8e0f13] font-semibold transition"
               >
                 {hero.ctaText}
               </button>
