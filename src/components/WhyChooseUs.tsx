@@ -158,8 +158,8 @@ const WhyChooseUs: React.FC = () => {
                       shouldReduceMotion
                         ? {}
                         : {
-                            transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
-                          }
+                          transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
+                        }
                     }
                     transition={{
                       type: "spring",
@@ -184,10 +184,9 @@ const WhyChooseUs: React.FC = () => {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: isRightSide ? -10 : 10 }}
                           className={`absolute top-1/2 -translate-y-1/2 w-64 bg-[#292929] text-white text-sm p-3 rounded-lg shadow-xl
-                            ${
-                              isRightSide
-                                ? "right-full mr-3"
-                                : "left-full ml-3"
+                            ${isRightSide
+                              ? "right-full mr-3"
+                              : "left-full ml-3"
                             }`}
                         >
                           {item.description}

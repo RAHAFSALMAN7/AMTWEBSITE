@@ -2,58 +2,60 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { sanity, urlFor } from '../sanityClient';
 
 interface NewsItem {
-  id: number;
   title: string;
   description: string;
-  fullText: string;
-  image: string;
-  video?: string;
-  sideImage?: string;
+  image: any;
+  slug: string;
 }
 
-const newsData: NewsItem[] = [
-  {
-    id: 1,
-    image: '/images/اليوم السعودي.png',
-    title: '𝐇𝐚𝐩𝐩𝐲 𝟗5𝐬𝐭 𝐒𝐚𝐮𝐝𝐢 𝐍𝐚𝐭𝐢𝐨𝐧𝐚𝐥 𝐃𝐚𝐲',
-    description: 'Congratulations to the Kingdom’s leadership and people on this special day.',
-    fullText:
-      'Congratulations to the Kingdom’s leadership and people on this special day. Here you can expand with more details, photos, and reflections about the Saudi National Day celebration.',
-  },
-  {
-    id: 2,
-    image: '/images/amt2020.png',
-    sideImage: '/images/amt2121.png',
-    title: 'New Project Launch',
-    description:
-      'We have launched a new innovative project that aims to improve our clients’ workflow.',
-    fullText:
-      'Full details about the new project launch: goals, roadmap, team members, and more...',
-  },
-  {
-    id: 3,
-    image: '/images/News.png',
-    title: 'Award Recognition',
-    description: 'Our team received a prestigious award for excellence in technology solutions.',
-    fullText:
-      'Here are all the details about the award recognition, how we won it, and what it means for our company.',
-  },
-];
-
 const LatestNews: React.FC = () => {
+  const [newsData, setNewsData] = useState<NewsItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    sanity
+      .fetch(`
+        *[_type == "news"] | order(_createdAt desc){
+          title,
+          description,
+          mainImage,
+          "slug": slug.current
+        }
+      `)
+      .then((data: any[]) => {
+        setNewsData(
+          data.map((item) => ({
+            title: item.title,
+            description: item.description,
+            image: item.mainImage,
+            slug: item.slug,
+          }))
+        );
+      });
+  }, []);
+
   const prevNews = () =>
-    setCurrentIndex((prev) => (prev === 0 ? newsData.length - 1 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev === 0 ? newsData.length - 1 : prev - 1
+    );
+
   const nextNews = () =>
-    setCurrentIndex((prev) => (prev === newsData.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) =>
+      prev === newsData.length - 1 ? 0 : prev + 1
+    );
 
   useEffect(() => {
+    if (!newsData.length) return;
     const interval = setInterval(nextNews, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [newsData]);
+
+  if (!newsData.length) {
+    return <p className="text-center py-20">Loading...</p>;
+  }
 
   return (
     <section
@@ -81,7 +83,7 @@ const LatestNews: React.FC = () => {
 
           <AnimatePresence mode="wait">
             <motion.div
-              key={newsData[currentIndex].id}
+              key={newsData[currentIndex].slug}
               initial={{ opacity: 0, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
@@ -89,13 +91,16 @@ const LatestNews: React.FC = () => {
               className="flex flex-col md:flex-row bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl w-full"
             >
               <Link
-                to={`/news/${newsData[currentIndex].id}`}
+                to={`/news/${newsData[currentIndex].slug}`}
                 className="flex flex-col md:flex-row w-full"
               >
                 {/* Image */}
                 <div className="relative w-full md:w-1/2 group">
                   <img
-                    src={newsData[currentIndex].image}
+                    src={urlFor(newsData[currentIndex].image)
+                      .width(900)
+                      .height(600)
+                      .url()}
                     alt={newsData[currentIndex].title}
                     className="w-full h-64 md:h-full object-cover"
                   />
@@ -149,5 +154,3 @@ const LatestNews: React.FC = () => {
 };
 
 export default LatestNews;
-export type { NewsItem };
-export { newsData };

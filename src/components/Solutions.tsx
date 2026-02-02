@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import CircularGallery from "./CircularGallery";
 import ElectricBorder from "./ElectricBorder";
@@ -57,14 +57,16 @@ const Solutions: React.FC = () => {
       {/* ===== INTRO ===== */}
       <section className="bg-white px-4 sm:px-6 md:px-28 pt-24">
         <header className="max-w-4xl mx-auto text-center">
-          <motion.span
-            className="block text-xs tracking-[0.3em]"
-            style={{ color: COLORS.primary }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            {data.badge}
-          </motion.span>
+          {data.badge && (
+            <motion.span
+              className="block text-xs tracking-[0.3em]"
+              style={{ color: COLORS.primary }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              {data.badge}
+            </motion.span>
+          )}
 
           <h2
             className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold"
@@ -84,55 +86,45 @@ const Solutions: React.FC = () => {
           </motion.p>
         </header>
 
-        {/* ===== SOLUTION BOXES ===== */}
-        <div className="relative mt-24 flex justify-center items-center">
-          <div className="relative flex flex-col md:flex-row items-center gap-10">
-            {data.solutions?.map((box: any, idx: number) => {
-              const isCenter = idx === 1;
-
-              return (
-                <motion.article
-                  key={idx}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.15 }}
-                  whileHover={
-                    shouldReduceMotion ? {} : { scale: isCenter ? 1.05 : 1.03 }
-                  }
+        {/* ===== SOLUTION BOXES (4 IN A ROW) ===== */}
+        <div className="mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+          {data.solutions?.map((box: any, idx: number) => (
+            <motion.article
+              key={idx}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              whileHover={shouldReduceMotion ? {} : { scale: 1.03 }}
+            >
+              <ElectricBorder
+                color={COLORS.primary}
+                speed={0.8}
+                chaos={0.25}
+                thickness={1.2}
+                style={{ borderRadius: 20 }}
+              >
+                <div
+                  className="relative overflow-hidden rounded-xl w-64 h-80"
+                  style={{ backgroundColor: COLORS.primaryDark }}
                 >
-                  <ElectricBorder
-                    color={COLORS.primary}
-                    speed={0.9}
-                    chaos={0.3}
-                    thickness={1.4}
-                    style={{ borderRadius: 24 }}
-                  >
-                    <div
-                      className={`relative overflow-hidden rounded-2xl ${
-                        isCenter ? "w-80 h-[430px]" : "w-72 h-96"
-                      }`}
-                      style={{ backgroundColor: COLORS.primaryDark }}
-                    >
-                      <img
-                        src={box.image?.asset?.url}
-                        alt={box.alt}
-                        className="w-full h-3/4 object-cover scale-105"
-                      />
+                  <img
+                    src={box.image?.asset?.url}
+                    alt={box.alt}
+                    className="w-full h-3/4 object-cover"
+                  />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/20 to-transparent" />
 
-                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 px-6">
-                        <h3 className="text-white text-lg font-bold text-center">
-                          {box.title}
-                        </h3>
-                      </div>
-                    </div>
-                  </ElectricBorder>
-                </motion.article>
-              );
-            })}
-          </div>
+                  <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 px-4">
+                    <h3 className="text-white text-base font-bold text-center">
+                      {box.title}
+                    </h3>
+                  </div>
+                </div>
+              </ElectricBorder>
+            </motion.article>
+          ))}
         </div>
       </section>
 
@@ -145,7 +137,10 @@ const Solutions: React.FC = () => {
           >
             {data.coreTitle}
           </h3>
-          <p className="mt-4 text-sm sm:text-base" style={{ color: COLORS.textMuted }}>
+          <p
+            className="mt-4 text-sm sm:text-base"
+            style={{ color: COLORS.textMuted }}
+          >
             {data.coreDescription}
           </p>
         </header>

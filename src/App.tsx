@@ -2,19 +2,19 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
+import PartnersSection from './components/PartnersSection';
 import Hero from './components/Hero';
 import About from './components/About';
 import Solutions from './components/Solutions';
 import SolutionDetails from './components/SolutionDetails';
 import WhyChooseUs from './components/WhyChooseUs';
 import Projects from './components/Projects';
-import Partners from './components/Partners';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ClientsSection from './components/ClientsSection';
 import LatestNews from './components/LatestNews';
 import NewsDetails from './pages/NewsDetails';
-import ScrollToTop from './components/ScrollToTop';
+ import WhatsAppFloating from './components/WhatsAppFloating';
 
 // ICT
 import DataNetwork from './ict/DataNetwork';
@@ -43,8 +43,7 @@ import OSP_Solutions from './OSP_Solutions/OSP_Solutions';
 const App: React.FC = () => {
   return (
     <Router>
-      <ScrollToTop />
-      <div className="min-h-screen bg-white text-dark-blue overflow-x-hidden font-body">
+       <div className="min-h-screen bg-white text-dark-blue overflow-x-hidden font-body">
         <Header />
 
         <Routes>
@@ -55,8 +54,11 @@ const App: React.FC = () => {
                 <Hero />
                 <Solutions />
                 <WhyChooseUs />
+                <PartnersSection />
                 <ClientsSection />
                 <LatestNews />
+                <WhatsAppFloating />
+
               </>
             }
           />
@@ -65,10 +67,10 @@ const App: React.FC = () => {
           <Route path="/services" element={<Solutions />} />
           <Route path="/solution-details" element={<SolutionDetails />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/partners" element={<Partners />} />
           <Route path="/contact" element={<Contact />} />
 
-          <Route path="/news/:id" element={<NewsDetails />} />
+          {/* ✅ التعديل هنا */}
+          <Route path="/news/:slug" element={<NewsDetails />} />
 
           <Route path="/ict/data-network" element={<DataNetwork />} />
           <Route path="/ict/unified-communications" element={<UnifiedCommunications />} />
