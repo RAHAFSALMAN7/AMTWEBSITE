@@ -54,20 +54,30 @@ const LatestNews: React.FC = () => {
   }, [newsData]);
 
   if (!newsData.length) {
-    return <p className="text-center py-20">Loading...</p>;
+    return <p className="text-center py-20 text-white">Loading...</p>;
   }
+
+  const sectionStyle = {
+    backgroundImage: "url('/bac.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  };
 
   return (
     <section
-      className="relative py-24 px-6 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/amtbackground.png')" }}
+      className="relative py-24 px-6"
+      style={sectionStyle}
     >
-      {/* Background overlay */}
-      <div className="absolute inset-0 bg-[#F5F5F5]/90 backdrop-blur-[2px]" />
+      {/* ===== OVERLAY ===== */}
+      <div
+        className="absolute inset-0 backdrop-blur-[2px]"
+        style={{ backgroundColor: "rgba(76,77,78,0.85)" }}
+      />
 
       {/* Content */}
       <div className="relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-[#6B2C32]">
+        <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-white">
           Latest News
         </h2>
 
@@ -75,10 +85,10 @@ const LatestNews: React.FC = () => {
           {/* Left Arrow */}
           <button
             onClick={prevNews}
-            className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/70 hover:bg-white shadow
+            className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 hover:bg-white shadow
                        left-0 sm:-left-4 md:-left-12 lg:-left-16"
           >
-            <ChevronLeft size={28} className="text-[#6B2C32]" />
+            <ChevronLeft size={28} className="text-black" />
           </button>
 
           <AnimatePresence mode="wait">
@@ -104,19 +114,19 @@ const LatestNews: React.FC = () => {
                     alt={newsData[currentIndex].title}
                     className="w-full h-64 md:h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-[#E5E5E5]/30 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition">
+                  <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition">
                     <div className="flex items-center justify-center h-full">
-                      <Share2 size={36} className="text-[#6B2C32]" />
+                      <Share2 size={36} className="text-white" />
                     </div>
                   </div>
                 </div>
 
                 {/* Text */}
-                <div className="p-8 flex flex-col justify-center md:w-1/2 text-[#2E2E2E]">
-                  <h3 className="text-lg md:text-xl font-bold mb-3 uppercase text-[#6B2C32]">
+                <div className="p-8 flex flex-col justify-center md:w-1/2 text-white">
+                  <h3 className="text-lg md:text-xl font-bold mb-3 uppercase text-white">
                     {newsData[currentIndex].title}
                   </h3>
-                  <p className="leading-relaxed text-[#4B5563]">
+                  <p className="leading-relaxed text-white/80">
                     {newsData[currentIndex].description}
                   </p>
                 </div>
@@ -127,10 +137,10 @@ const LatestNews: React.FC = () => {
           {/* Right Arrow */}
           <button
             onClick={nextNews}
-            className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/70 hover:bg-white shadow
+            className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 hover:bg-white shadow
                        right-0 sm:-right-4 md:-right-12 lg:-right-16"
           >
-            <ChevronRight size={28} className="text-[#6B2C32]" />
+            <ChevronRight size={28} className="text-black" />
           </button>
         </div>
 
@@ -142,8 +152,8 @@ const LatestNews: React.FC = () => {
               onClick={() => setCurrentIndex(index)}
               className={`w-3 h-3 rounded-full cursor-pointer transition ${
                 index === currentIndex
-                  ? 'bg-[#6B2C32]'
-                  : 'bg-gray-400'
+                  ? 'bg-white'
+                  : 'bg-white/40'
               }`}
             />
           ))}

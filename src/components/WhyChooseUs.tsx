@@ -6,23 +6,20 @@ import {
 } from "framer-motion";
 import { sanity } from "../sanityClient";
 
-/* ===== HELPER: YOUTUBE URL → EMBED (AUTOPLAY SAFE) ===== */
+/* ===== HELPER: YOUTUBE URL → EMBED ===== */
 const getYouTubeEmbedUrl = (url?: string) => {
   if (!url) return undefined;
 
   try {
     const parsed = new URL(url);
-
     let videoId: string | null = null;
 
     if (parsed.hostname.includes("youtube.com")) {
       videoId = parsed.searchParams.get("v");
     }
-
     if (parsed.hostname.includes("youtu.be")) {
       videoId = parsed.pathname.slice(1);
     }
-
     if (!videoId) return undefined;
 
     return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1&rel=0`;
@@ -33,13 +30,11 @@ const getYouTubeEmbedUrl = (url?: string) => {
 
 const WhyChooseUs: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
-
   const [data, setData] = useState<any>(null);
   const [expanded, setExpanded] = useState(true);
   const [hovered, setHovered] = useState<number | null>(null);
   const [currentVideo, setCurrentVideo] = useState(0);
 
-  /* ===== FETCH DATA FROM SANITY ===== */
   useEffect(() => {
     sanity
       .fetch(`
@@ -56,13 +51,14 @@ const WhyChooseUs: React.FC = () => {
         }
       `)
       .then(setData)
-      .catch((err) => {
-        console.error("SANITY ERROR:", err);
-      });
+      .catch(console.error);
   }, []);
 
-  if (!data) return null;
-  if (!data.videos?.length) return null;
+  if (!data || !data.videos?.length) return null;
+
+  const youtubeSrc = getYouTubeEmbedUrl(
+    data.videos[currentVideo]?.youtubeUrl
+  );
 
   const nextVideo = () =>
     setCurrentVideo((p: number) =>
@@ -74,22 +70,28 @@ const WhyChooseUs: React.FC = () => {
       p === 0 ? data.videos.length - 1 : p - 1
     );
 
-  const youtubeSrc = getYouTubeEmbedUrl(
-    data.videos[currentVideo]?.youtubeUrl
-  );
+  const sectionStyle = {
+    backgroundImage: "url('/bac.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  };
 
   return (
     <section
-      className="relative w-full py-28 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/images/amtbackground.png')" }}
+      className="relative w-full py-28"
+      style={sectionStyle}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-[#F5F5F5]/90 backdrop-blur-[2px]" />
+      {/* ===== OVERLAY (نفس اللون ونفس الشفافية) ===== */}
+      <div
+        className="absolute inset-0"
+        style={{ backgroundColor: "rgba(76,77,78,0.85)" }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         {/* ===== HEADER ===== */}
         <header className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-[#851A18]">
+          <h2 className="text-4xl font-bold text-white">
             {data.title}
           </h2>
         </header>
@@ -97,7 +99,7 @@ const WhyChooseUs: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           {/* ===== LEFT: VIDEO ===== */}
           <section>
-            <h3 className="text-2xl font-bold text-[#292929] mb-6">
+            <h3 className="text-2xl font-bold text-white mb-6">
               {data.videoTitle}
             </h3>
 
@@ -118,7 +120,6 @@ const WhyChooseUs: React.FC = () => {
                 )}
               </AnimatePresence>
 
-              {/* CONTROLS */}
               <button
                 onClick={prevVideo}
                 className="absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 hover:bg-white text-black w-10 h-10 rounded-full shadow"
@@ -158,8 +159,8 @@ const WhyChooseUs: React.FC = () => {
                       shouldReduceMotion
                         ? {}
                         : {
-                          transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
-                        }
+                            transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
+                          }
                     }
                     transition={{
                       type: "spring",
@@ -184,9 +185,10 @@ const WhyChooseUs: React.FC = () => {
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: isRightSide ? -10 : 10 }}
                           className={`absolute top-1/2 -translate-y-1/2 w-64 bg-[#292929] text-white text-sm p-3 rounded-lg shadow-xl
-                            ${isRightSide
-                              ? "right-full mr-3"
-                              : "left-full ml-3"
+                            ${
+                              isRightSide
+                                ? "right-full mr-3"
+                                : "left-full ml-3"
                             }`}
                         >
                           {item.description}
