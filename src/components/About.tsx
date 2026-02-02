@@ -133,7 +133,6 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        {/* ===== VISION ===== */}
         <section className="py-32">
           <div className="container mx-auto px-6 text-center fade-in">
             <span className="inline-block px-6 py-3 bg-white/20 rounded-full text-sm uppercase mb-6">
@@ -186,7 +185,6 @@ export default function AboutUsPage() {
           </div>
         </section>
 
-        {/* ===== TEAM ===== */}
         <section className="py-32">
           <div className="container mx-auto px-6">
             <div className="text-center mb-24 fade-in">
