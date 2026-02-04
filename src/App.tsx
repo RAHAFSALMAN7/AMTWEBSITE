@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 import ClientsSection from './components/ClientsSection';
 import LatestNews from './components/LatestNews';
 import NewsDetails from './pages/NewsDetails';
- import WhatsAppFloating from './components/WhatsAppFloating';
+import WhatsAppFloating from './components/WhatsAppFloating';
 
 // ICT
 import DataNetwork from './ict/DataNetwork';
@@ -43,7 +43,7 @@ import OSP_Solutions from './OSP_Solutions/OSP_Solutions';
 const App: React.FC = () => {
   return (
     <Router>
-       <div className="min-h-screen bg-white text-dark-blue overflow-x-hidden font-body">
+      <div className="min-h-screen bg-white text-dark-blue overflow-x-hidden font-body">
         <Header />
 
         <Routes>
@@ -57,8 +57,6 @@ const App: React.FC = () => {
                 <PartnersSection />
                 <ClientsSection />
                 <LatestNews />
-                <WhatsAppFloating />
-
               </>
             }
           />
@@ -69,7 +67,6 @@ const App: React.FC = () => {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
 
-          {/* ✅ التعديل هنا */}
           <Route path="/news/:slug" element={<NewsDetails />} />
 
           <Route path="/ict/data-network" element={<DataNetwork />} />
@@ -92,6 +89,9 @@ const App: React.FC = () => {
 
           <Route path="/osp-solutions" element={<OSP_Solutions />} />
         </Routes>
+
+        {/* ✅ زر واتساب ثابت بكل الصفحات */}
+        <WhatsAppFloating />
 
         <Footer />
       </div>
