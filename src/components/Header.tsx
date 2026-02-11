@@ -8,7 +8,12 @@ import Logo from "../assets/LOGOAMT.png";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === "en" ? "ar" : "en";
+    i18n.changeLanguage(newLang);
+  };
 
   const navItems = [
     { label: t("nav.home"), path: "/" },
@@ -69,6 +74,15 @@ const Header = () => {
                 </Link>
               );
             })}
+
+            {/* Language Toggle Button */}
+            <button
+              onClick={toggleLanguage}
+              className="px-3 py-1 border border-[#851A18] rounded text-[#851A18] font-medium hover:bg-[#851A18] hover:text-white transition"
+              aria-label="Toggle Language"
+            >
+              {i18n.language === "en" ? "AR" : "EN"}
+            </button>
           </nav>
 
           {/* Mobile Button */}
@@ -106,6 +120,18 @@ const Header = () => {
             {item.label}
           </Link>
         ))}
+
+        {/* Mobile Language Toggle */}
+        <button
+          onClick={() => {
+            toggleLanguage();
+            setIsOpen(false);
+          }}
+          className="block w-full text-left py-4 px-6 text-[#851A18] font-medium hover:bg-[#851A18] hover:text-white transition"
+          aria-label="Toggle Language"
+        >
+          {i18n.language === "en" ? "AR" : "EN"}
+        </button>
       </div>
     </header>
   );
