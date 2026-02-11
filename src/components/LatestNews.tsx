@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Share2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { sanity, urlFor } from '../sanityClient';
 
 interface NewsItem {
@@ -14,6 +15,7 @@ interface NewsItem {
 const LatestNews: React.FC = () => {
   const [newsData, setNewsData] = useState<NewsItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     sanity
@@ -54,7 +56,7 @@ const LatestNews: React.FC = () => {
   }, [newsData]);
 
   if (!newsData.length) {
-    return <p className="text-center py-20 text-white">Loading...</p>;
+    return <p className="text-center py-20 text-white">{t("common.loading")}</p>;
   }
 
   const sectionStyle = {
@@ -78,7 +80,7 @@ const LatestNews: React.FC = () => {
       {/* Content */}
       <div className="relative z-10">
         <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-white">
-          Latest News
+          {t("news.latestNews")}
         </h2>
 
         <div className="max-w-6xl mx-auto relative flex items-center">

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { sanity, urlFor } from '../sanityClient';
 
 interface NewsDetailsData {
@@ -13,6 +14,7 @@ interface NewsDetailsData {
 const NewsDetails: React.FC = () => {
   const { slug } = useParams();
   const [news, setNews] = useState<NewsDetailsData | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     sanity
@@ -32,13 +34,13 @@ const NewsDetails: React.FC = () => {
   }, [slug]);
 
   if (!news) {
-    return <p className="text-center py-20">Loading...</p>;
+    return <p className="text-center py-20">{t("common.loading")}</p>;
   }
 
   return (
     <section className="max-w-4xl mx-auto py-20 px-6">
       <Link to="/" className="underline mb-6 inline-block">
-        ← Back to News
+        {t("common.backToNews")}
       </Link>
 
       <h1 className="text-3xl font-bold mb-6">{news.title}</h1>

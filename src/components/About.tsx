@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { sanity, urlFor } from "../sanityClient";
 
 export default function AboutUsPage() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [data, setData] = useState<any>(null);
+  const { t } = useTranslation();
 
   /* ===== INTERSECTION OBSERVER ===== */
   useEffect(() => {
@@ -136,7 +138,7 @@ export default function AboutUsPage() {
         <section className="py-32">
           <div className="container mx-auto px-6 text-center fade-in">
             <span className="inline-block px-6 py-3 bg-white/20 rounded-full text-sm uppercase mb-6">
-              Our Vision
+              {t("about.ourVision")}
             </span>
 
             <h2 className="text-3xl md:text-5xl font-bold max-w-4xl mx-auto leading-tight">
@@ -151,10 +153,10 @@ export default function AboutUsPage() {
 
             <div className="text-center mb-20 fade-in">
               <span className="inline-block px-6 py-3 bg-white/20 rounded-full text-sm uppercase mb-6">
-                Our Values
+                {t("about.ourValues")}
               </span>
               <h2 className="text-3xl md:text-5xl font-bold">
-                What Drives AMT
+                {t("about.whatDrivesAmt")}
               </h2>
             </div>
 
@@ -189,7 +191,7 @@ export default function AboutUsPage() {
           <div className="container mx-auto px-6">
             <div className="text-center mb-24 fade-in">
               <span className="inline-block px-6 py-3 bg-white/20 rounded-full text-sm uppercase mb-6">
-                Our Team
+                {t("about.ourTeam")}
               </span>
 
               <h2 className="text-3xl md:text-5xl font-bold">
@@ -217,8 +219,7 @@ export default function AboutUsPage() {
                   </h3>
 
                   <p className="text-sm leading-relaxed">
-                    A collective of specialists focused on delivering reliable,
-                    scalable, and future-ready solutions.
+                    {t("about.teamDescription")}
                   </p>
                 </div>
               ))}

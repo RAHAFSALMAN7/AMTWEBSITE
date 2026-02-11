@@ -1,25 +1,27 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const InteractiveScreens: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
+  const { t } = useTranslation();
 
   const sections = [
     {
-      title: "Our Solutions",
-      text: "AMT is a premier Audio Visual system integrator specializing in the design, supply, installation, and support of multimedia presentation technologies and interactive communication solutions across the Kingdom of Saudi Arabia.",
+      title: t("av.interactive.sections.solutions.title"),
+      text: t("av.interactive.sections.solutions.text"),
     },
     {
-      title: "Interactive Screens Solutions",
-      text: "Our interactive screen solutions enable seamless collaboration, presentations, and digital engagement. They deliver high-resolution displays, intuitive touch interfaces, and smooth integration with enterprise AV systems.",
+      title: t("av.interactive.sections.interactive.title"),
+      text: t("av.interactive.sections.interactive.text"),
     },
     {
-      title: "Advanced Features",
-      text: "We provide interactive screens with advanced capabilities including multi-touch support, wireless connectivity, centralized management, and compatibility with leading conferencing and educational platforms.",
+      title: t("av.interactive.sections.advanced.title"),
+      text: t("av.interactive.sections.advanced.text"),
     },
     {
-      title: "Integration & Support",
-      text: "AMT ensures smooth integration of interactive screens within existing infrastructures. We offer full lifecycle support, maintenance, and professional training to maximize productivity in meeting rooms, classrooms, and collaborative spaces.",
+      title: t("av.interactive.sections.integration.title"),
+      text: t("av.interactive.sections.integration.text"),
     },
   ];
 
@@ -43,7 +45,7 @@ const InteractiveScreens: React.FC = () => {
           animate="visible"
           variants={fadeUp}
         >
-          Interactive Screens Solutions
+          {t("av.interactive.title")}
         </motion.h1>
 
         <motion.p
@@ -52,9 +54,7 @@ const InteractiveScreens: React.FC = () => {
           animate="visible"
           variants={fadeUp}
         >
-          Professional interactive display solutions designed to enhance
-          collaboration, learning, and digital engagement across enterprise
-          environments.
+          {t("av.interactive.subtitle")}
         </motion.p>
       </section>
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Linkedin, Twitter, Github } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
 
 const iconMap: any = {
@@ -10,6 +11,7 @@ const iconMap: any = {
 
 const Footer = () => {
   const [data, setData] = useState<any>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     sanity
@@ -46,17 +48,17 @@ const Footer = () => {
         {/* CONTACT */}
         <div>
           <h4 className="font-semibold text-lg mb-3 text-white">
-            Contact Us
+            {t("common.contactUs")}
           </h4>
 
           <p>
-            Tel:{" "}
+            {t("common.tel")}{" "}
             <a href={`tel:${data.phone}`} className="text-white">
               {data.phone}
             </a>
           </p>
           <p>
-            Email:{" "}
+            {t("common.email")}{" "}
             <a href={`mailto:${data.email}`} className="text-white">
               {data.email}
             </a>
@@ -64,7 +66,7 @@ const Footer = () => {
 
           <div className="mt-6">
             <h4 className="font-semibold mb-2 text-white">
-              Office Hours
+              {t("common.officeHours")}
             </h4>
             {data.officeHours.map((h: string, i: number) => (
               <p key={i} className="text-white/80">

@@ -2,17 +2,19 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Logo from "../assets/LOGOAMT.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navItems = [
-    { label: "Home", path: "/" },
-    { label: "About Us", path: "/about" },
-    { label: "Solutions", path: "/solution-details" },
-    { label: "Contact Us", path: "/contact" },
+    { label: t("nav.home"), path: "/" },
+    { label: t("nav.aboutUs"), path: "/about" },
+    { label: t("nav.solutions"), path: "/solution-details" },
+    { label: t("nav.contactUs"), path: "/contact" },
   ];
 
   return (

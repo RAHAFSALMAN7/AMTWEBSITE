@@ -1,41 +1,43 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const AuditoriumsTheaters: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
+  const { t } = useTranslation();
 
   const sections = [
     {
-      title: "Meeting Rooms AV Solutions",
-      text: "Professional meeting room AV solutions that enable seamless collaboration with high-quality audio and video integration.",
+      title: t("av.auditoriums.sections.meetingRooms.title"),
+      text: t("av.auditoriums.sections.meetingRooms.text"),
     },
     {
-      title: "Auditoriums and Theaters",
-      text: "Design and implementation of advanced visual and acoustic systems for auditoriums and theaters.",
+      title: t("av.auditoriums.sections.auditoriums.title"),
+      text: t("av.auditoriums.sections.auditoriums.text"),
     },
     {
-      title: "Digital Signage Solutions",
-      text: "Dynamic digital signage solutions that attract attention and deliver impactful messaging.",
+      title: t("av.auditoriums.sections.digitalSignage.title"),
+      text: t("av.auditoriums.sections.digitalSignage.text"),
     },
     {
-      title: "Advanced Conference Room AV",
-      text: "Highly advanced conference room AV systems built for hybrid meetings and enterprise collaboration.",
+      title: t("av.auditoriums.sections.advanced.title"),
+      text: t("av.auditoriums.sections.advanced.text"),
     },
     {
-      title: "Video Wall Solutions",
-      text: "High-quality video wall solutions using LED, LCD, and projection technologies.",
+      title: t("av.auditoriums.sections.videoWall.title"),
+      text: t("av.auditoriums.sections.videoWall.text"),
     },
     {
-      title: "Interactive Screens Solutions",
-      text: "Interactive display solutions that deliver an intuitive pen-on-paper experience.",
+      title: t("av.auditoriums.sections.interactive.title"),
+      text: t("av.auditoriums.sections.interactive.text"),
     },
     {
-      title: "IPTV Solutions",
-      text: "Reliable IPTV solutions delivering premium content across multiple platforms.",
+      title: t("av.auditoriums.sections.iptv.title"),
+      text: t("av.auditoriums.sections.iptv.text"),
     },
     {
-      title: "Background Music & Unified Communications",
-      text: "Integrated background music and unified communication systems for modern facilities.",
+      title: t("av.auditoriums.sections.bgMusic.title"),
+      text: t("av.auditoriums.sections.bgMusic.text"),
     },
   ];
 
@@ -59,7 +61,7 @@ const AuditoriumsTheaters: React.FC = () => {
           animate="visible"
           variants={fadeUp}
         >
-          Auditoriums &amp; Theaters
+          {t("av.auditoriums.title")}
         </motion.h1>
 
         <motion.p
@@ -68,8 +70,7 @@ const AuditoriumsTheaters: React.FC = () => {
           animate="visible"
           variants={fadeUp}
         >
-          Premium audio visual solutions designed for auditoriums, theaters,
-          conference rooms, and enterprise environments.
+          {t("av.auditoriums.subtitle")}
         </motion.p>
       </section>
 

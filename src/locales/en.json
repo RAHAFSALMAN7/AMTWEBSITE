@@ -1,0 +1,299 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "heroNotLoaded": "HERO NOT LOADED",
+    "backToNews": "← Back to News",
+    "contact": "Contact",
+    "contactUs": "Contact Us",
+    "sendMessage": "Send Message",
+    "messageSent": "✅ Message sent successfully",
+    "tel": "Tel:",
+    "email": "Email:",
+    "officeHours": "Office Hours",
+    "ourTrustedPartners": "Our Trusted Partners",
+    "ourSolutions": "Our Solutions",
+    "advancedFeatures": "Advanced Features",
+    "integrationSupport": "Integration & Support"
+  },
+  "nav": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "solutions": "Solutions",
+    "contactUs": "Contact Us"
+  },
+  "about": {
+    "ourVision": "Our Vision",
+    "ourValues": "Our Values",
+    "whatDrivesAmt": "What Drives AMT",
+    "ourTeam": "Our Team",
+    "teamDescription": "A collective of specialists focused on delivering reliable, scalable, and future-ready solutions."
+  },
+  "whyChooseUs": {
+    "whyAmt": "Why AMT?"
+  },
+  "contact": {
+    "companyName": "Company Name",
+    "email": "Email",
+    "subject": "Subject",
+    "budget": "Budget",
+    "message": "Message"
+  },
+  "projects": {
+    "signatureProjects": "SIGNATURE PROJECTS",
+    "transformativeTitle": "Transformative",
+    "successStories": "Success Stories",
+    "transformativeSubtitle": "Discover how we've helped industry leaders achieve breakthrough results through innovative technology solutions and strategic partnerships.",
+    "technologiesUsed": "Technologies Used",
+    "keyResults": "Key Results",
+    "viewCaseStudy": "View Full Case Study"
+  },
+  "news": {
+    "latestNews": "Latest News"
+  },
+  "ict": {
+    "dataNetwork": {
+      "loading": "Loading..."
+    },
+    "security": {
+      "title": "Security Solutions",
+      "description": "Security is a fundamental building block within any IT or telecommunications network. Based on Internet Protocol (IP), AMT ensures corporate and personal security safeguards are in place to protect confidentiality and availability.",
+      "features": {
+        "nac": {
+          "title": "Network Access Control",
+          "desc": "Network access control (NAC), also called network admission control, is a method that AMT uses to bolster the security of a proprietary network by restricting the availability of network resources to endpoint devices that comply with a defined security policy. This NAC tool is built to enforce adaptive policies for wireless, wired, or VPN accessed devices based on in-depth contextual analysis."
+        },
+        "auth": {
+          "title": "Authentication & Authorization",
+          "desc": "AMT uses behavior analytics, advanced device identification and malware detection capabilities to identify security risks before hackers log into sensitive Web applications. By doing so, enterprises can rest assured that their sensitive corporate information is accessed only by those who are authorized to use it."
+        },
+        "encryption": {
+          "title": "Communication Encryption",
+          "desc": "AMT offers the complete solution for trusted mobile communications, With secure, encrypted voice and conference calls, secure messaging, and encrypted file transfers, all protected by strong, authenticated, end-to-end encryption."
+        },
+        "hardening": {
+          "title": "Operating System Hardening",
+          "desc": "Hardening of the OS is the act of configuring an OS securely, updating it, creating rules and policies to help govern the system in a secure manner, and removing unnecessary applications and services. This service is offered by AMT to minimize a computer OS's exposure to threats and to mitigate possible risk."
+        },
+        "firewall": {
+          "title": "Firewall Security Zone Design",
+          "desc": "AMT configuration model offers intuitive policies for multiple-interface routers, increased granularity of firewall policy application, and a default deny-all policy that prohibits traffic between firewall security zones until an explicit policy is applied to allow desirable traffic."
+        },
+        "monitoring": {
+          "title": "Network Monitoring and Management",
+          "desc": "AMT offers a set of hardware and/or software tools that allow an IT professional to supervise the individual components of a network within a larger network management framework."
+        }
+      },
+      "cta": {
+        "title": "Secure Your Network Today",
+        "button": "Contact Us"
+      }
+    }
+  },
+  "lowCurrent": {
+    "fireAlarm": {
+      "title": "FIRE ALARM SYSTEMS",
+      "description": "AMT provides accurate and automatic fire and smoke detection, alerting to the build-up of smoke and heat, which is mandatory in almost all office and public buildings.",
+      "keyFunctions": "Key Functions",
+      "function1": "Quickly and effectively warn occupants of fire or smoke.",
+      "function2": "Warn emergency services of an incident.",
+      "function3": "Deploy prevention measures like sprinklers or fire doors.",
+      "secondDescription": "AMT is the best choice for installing fire alarm systems of any size, even for the most complex installations.",
+      "safetyTips": "AMT SAFETY TIPS",
+      "tip1Title": "Keep Your Workplace Clean:",
+      "tip1Desc": "Corridors, stairs, and fire exits must remain clear.",
+      "tip2Title": "Have Fire Safety Equipment:",
+      "tip2Desc": "Smoke alarms, exit signs, extinguishers, and sprinklers are essential.",
+      "tip3Title": "Risk Assessment:",
+      "tip3Desc": "Identify hazards, assess risks, and implement control measures.",
+      "tip4Title": "Train Employees:",
+      "tip4Desc": "Staff must know procedures in case of fire.",
+      "tip5Title": "Electrical Safety:",
+      "tip5Desc": "Fix faulty electricals, avoid overloading sockets, and inspect regularly.",
+      "tip6Title": "Replace Smoke Alarms:",
+      "tip6Desc": "Every 10 years; consider installing sprinklers for full protection."
+    },
+    "cctv": {
+      "title": "CCTV SOLUTIONS",
+      "description": "AMT is offering innovative solutions that are highly valued by users, flexible and competitive, and allow for the integration and centralization of all types of infrastructure security, by using smart video networks based on CCTV fused with 3D.",
+      "deployment": "Deployment of CCTV solutions",
+      "deploymentPoints": {
+        "point1": "Stay aware with video analytics that can quickly alert you to anomalies and potential threats.",
+        "point2": "Find required video clips of interest in seconds.",
+        "point3": "Classify people, vehicles and audio events.",
+        "point4": "Proactive event flags and instant alerts."
+      },
+      "cloudTitle": "Cloud Native Video Security Solutions",
+      "cloudDesc": "Reduce operating expenditures while scaling your security for your site's future without any physical servers. Simple to install and easy to deploy, cloud IP security cameras give you instant access to AI analytics and powerful search across any number of cameras. Integrate third-party technologies and leverage existing hardware, with instant updates that help your entire ecosystem get even better over time. With your IP security camera system on the cloud, you can eliminate the need to maintain a physical server room and reduce capital and operating expenditures.",
+      "vmsTitle": "Video Management Software (VMS)",
+      "vmsDesc": "With physical and cyber security threats on the rise, it's more important than ever to level up your business security systems. AMT offers collaboration video management software (VMS) that connects your cameras, sensors, analytics, and sites in one easy-to-manage interface. You can customize a more future-proof, resilient, and data-safe security environment that lets you see and do more. Design the best security system for your current and future needs with the choice of 14,000+ cameras and sensors and 1,000+ applications. Ensure the IT and security teams can perform at their best through centralized operations, full situational awareness, and easier collaboration. Keep your business running reliably with continual updates and the highest levels of cybersecurity, data safety, and compliance."
+    },
+    "accessControl": {
+      "title": "ACCESS CONTROL SYSTEMS",
+      "description": "Access control ensures secure and efficient management of entry points. AMT offers authorization identification, authentication, access approval, and accountability of entities through login credentials including passwords, personal identification numbers (PINs), biometric scans, and physical or electronic keys.",
+      "onguard": {
+        "title": "OnGuard Integrated Platform",
+        "desc": "An open security platform with a level of integration that allows you to select hardware and software components that best fit your needs. OnGuard software allows customers to better protect and manage their people, property, and assets."
+      },
+      "openIntegration": {
+        "title": "Open Integration",
+        "desc": "Security management systems designed around open standards, allowing for integration with virtually any system and components. With publicly documented APIs, OnGuard allows any manufacturer to develop an OnGuard software interface, marketable to more than 20,000 OnGuard system users worldwide."
+      },
+      "videoManagement": {
+        "title": "Video Management & Access Control",
+        "desc": "Robust stand-alone and integrated offerings designed to meet the rigors and sophistication of enterprise video management. AMT Solutions include simple stand-alone options along with robust enterprise solutions that feature advanced surveillance technologies, including alarm integration, investigative analytics, event-driven recordings, and total system management. Innovative access control hardware and software that deliver maximum protection and flexibility for installations of any size. AMT delivers innovative, flexible, and cost-effective access control for applications of almost any size."
+      },
+      "partnersDesc": "AMT is an official Lenel partner in Khobar, Saudi Arabia, committed to developing innovative security technology and progressive solutions that deliver leading integrated access control. As the definitive open architecture partner, AMT provides flexible and reliable options to support your current and future security needs.",
+      "partnersContact": "Please contact your AMT representative for additional information on a variety of possible Access Control Systems solutions."
+    },
+    "masterClock": {
+      "title": "MASTER CLOCK SYSTEMS",
+      "description": "Master clock systems are used in a wide variety of applications and industries including aerospace and defense, broadcast, radio, telecom, network systems, financial services, emergency operations and call centers, and healthcare — essentially anywhere reliability of data and signals are paramount.",
+      "networkTitle": "Network & Signal Distribution",
+      "networkDesc": "Network master clocks distribute their timing references over local or wide area networks. Highly accurate master clock solutions utilize copper or fiber connections for precise analog and digital signals such as IRIG, HaveQuick, and STANAG timecodes.",
+      "precisionTitle": "Precision & Reliability",
+      "precisionDesc": "Master clocks deliver precise signalling and legally traceable time to all time-keeping functions in any network. Digital broadcast systems rely on master clocks to ensure reliability of wireless transmissions by aligning frequency and time. Commercial enterprises benefit from synchronized network operations for records accuracy, troubleshooting, security, and enabling time-sensitive applications at extremely high levels of accuracy.",
+      "partnersDesc": "We deal with our partner Sapling Inc, a pioneer in synchronized timekeeping systems for more than two decades, to provide clocks used in schools, hospitals, and industries throughout Khobar and all the Kingdom. We offer a complete line of analog and digital clock products for systems such as Wired, IP-PoE, Wi-Fi, TalkBack, and the most popular innovation, the synchronized Wireless clock system, based on our patented frequency-hopping technology."
+    }
+  },
+  "av": {
+    "meetingRooms": {
+      "title": "Meeting & Conference Rooms AV Solutions",
+      "subtitle": "Professional audio visual and unified communication solutions designed to enhance collaboration, productivity, and meeting experiences across enterprise environments.",
+      "sections": {
+        "solutions": {
+          "title": "Our Solutions",
+          "text": "AMT is a premier Audio Visual system integrator specializing in the design, supply, installation, and support of multimedia presentation technologies, video and audio conferencing systems, and customized communication solutions across the Kingdom of Saudi Arabia."
+        },
+        "meetingRooms": {
+          "title": "Meeting Rooms AV Solutions",
+          "text": "Our professional meeting room AV solutions enable seamless collaboration with clients, customers, and colleagues through integrated audio and video conferencing systems that deliver clear sound, high-quality visuals, and reliable management platforms."
+        },
+        "advanced": {
+          "title": "Advanced Conference Room AV",
+          "text": "We design and deploy highly advanced conference room AV systems using future-ready technologies. Our solutions are user-friendly, scalable, integrate seamlessly with existing IT infrastructures, and are fully supported throughout their lifecycle."
+        },
+        "unified": {
+          "title": "Unified Communications",
+          "text": "AMT delivers room-based HD video and collaboration solutions for point-to-point and multi-party meetings. We integrate audio, video, content capture, streaming, and telephony systems into unified platforms such as Microsoft Teams and cloud-based communication environments."
+        }
+      }
+    },
+    "auditoriums": {
+      "title": "Auditoriums & Theaters",
+      "subtitle": "Premium audio visual solutions designed for auditoriums, theaters, conference rooms, and enterprise environments.",
+      "sections": {
+        "meetingRooms": {
+          "title": "Meeting Rooms AV Solutions",
+          "text": "Professional meeting room AV solutions that enable seamless collaboration with high-quality audio and video integration."
+        },
+        "auditoriums": {
+          "title": "Auditoriums and Theaters",
+          "text": "Design and implementation of advanced visual and acoustic systems for auditoriums and theaters."
+        },
+        "digitalSignage": {
+          "title": "Digital Signage Solutions",
+          "text": "Dynamic digital signage solutions that attract attention and deliver impactful messaging."
+        },
+        "advanced": {
+          "title": "Advanced Conference Room AV",
+          "text": "Highly advanced conference room AV systems built for hybrid meetings and enterprise collaboration."
+        },
+        "videoWall": {
+          "title": "Video Wall Solutions",
+          "text": "High-quality video wall solutions using LED, LCD, and projection technologies."
+        },
+        "interactive": {
+          "title": "Interactive Screens Solutions",
+          "text": "Interactive display solutions that deliver an intuitive pen-on-paper experience."
+        },
+        "iptv": {
+          "title": "IPTV Solutions",
+          "text": "Reliable IPTV solutions delivering premium content across multiple platforms."
+        },
+        "bgMusic": {
+          "title": "Background Music & Unified Communications",
+          "text": "Integrated background music and unified communication systems for modern facilities."
+        }
+      }
+    },
+    "iptv": {
+      "title": "IPTV & Digital Signage Solutions",
+      "subtitle": "Professional IPTV and digital signage solutions designed to enhance communication, engagement, and content delivery across enterprise environments.",
+      "sections": {
+        "iptvSignage": {
+          "title": "IPTV & Digital Signage Solutions",
+          "text": "AMT delivers advanced IPTV and digital signage solutions designed to capture attention, enhance communication, and influence customer engagement through dynamic, high-quality visual content."
+        },
+        "easyManagement": {
+          "title": "Easy-Management Digital Signage",
+          "text": "Our digital signage platforms feature intuitive drag-and-drop layout editors, dynamic scheduling, event-based triggers, playlist creation, and advanced reporting tools for full visibility and control."
+        },
+        "meetingRoom": {
+          "title": "Meeting Room Signage",
+          "text": "AMT integrates digital signage with leading meeting room booking systems, enabling real-time room availability, seamless calendar synchronization, and efficient meeting management."
+        },
+        "ipTelevision": {
+          "title": "IP Television (IPTV) Solutions",
+          "text": "Our IPTV headend platform captures, encodes, and distributes content from multiple sources across IP networks, delivering consistent streams to digital signage displays, desktops, mobile applications, and standalone TV systems."
+        }
+      }
+    },
+    "videoWall": {
+      "title": "Video Wall Mounting Solutions",
+      "subtitle": "Modular mounting systems designed to align precision, flexibility, and long-term reliability.",
+      "blocks": {
+        "precision": {
+          "title": "Precision Installation",
+          "text": "Video wall mounting requires precise alignment to create a seamless visual surface. AMT solutions are engineered to perform accurately even in non-ideal structural environments."
+        },
+        "multiAxis": {
+          "title": "Multi-Axis Adjustment",
+          "text": "Our mounting systems allow fine adjustment across X, Y, and Z axes, ensuring every display aligns perfectly while maintaining long-term stability."
+        },
+        "maintenance": {
+          "title": "Maintenance Accessibility",
+          "text": "Displays remain accessible after installation, allowing maintenance or replacement without disturbing alignment or system integrity."
+        },
+        "architectural": {
+          "title": "Architectural Flexibility",
+          "text": "Wall-mounted, ceiling-mounted, floor-supported, freestanding, or curved installations are supported to match architectural requirements."
+        },
+        "scalable": {
+          "title": "Scalable Solutions",
+          "text": "From compact video walls to large-scale installations, AMT mounting solutions adapt to project size and future expansion needs."
+        }
+      }
+    },
+    "interactive": {
+      "title": "Interactive Screens Solutions",
+      "subtitle": "Professional interactive display solutions designed to enhance collaboration, learning, and digital engagement across enterprise environments.",
+      "sections": {
+        "solutions": {
+          "title": "Our Solutions",
+          "text": "AMT is a premier Audio Visual system integrator specializing in the design, supply, installation, and support of multimedia presentation technologies and interactive communication solutions across the Kingdom of Saudi Arabia."
+        },
+        "interactive": {
+          "title": "Interactive Screens Solutions",
+          "text": "Our interactive screen solutions enable seamless collaboration, presentations, and digital engagement. They deliver high-resolution displays, intuitive touch interfaces, and smooth integration with enterprise AV systems."
+        },
+        "advanced": {
+          "title": "Advanced Features",
+          "text": "We provide interactive screens with advanced capabilities including multi-touch support, wireless connectivity, centralized management, and compatibility with leading conferencing and educational platforms."
+        },
+        "integration": {
+          "title": "Integration & Support",
+          "text": "AMT ensures smooth integration of interactive screens within existing infrastructures. We offer full lifecycle support, maintenance, and professional training to maximize productivity in meeting rooms, classrooms, and collaborative spaces."
+        }
+      }
+    }
+  },
+  "osp": {
+    "title": "Outside Plant",
+    "titleLine2": "Network Solutions",
+    "block1": "AMT delivers outside plant (OSP) network solutions designed to support the growing demand for broadband access across complex infrastructure environments throughout the Kingdom of Saudi Arabia.",
+    "block2": "By combining technically advanced products with cost-effective network architecture, AMT enables reliable, scalable, and future-ready OSP deployments.",
+    "block3": "Every cable, splice, and termination is installed using disciplined engineering practices to ensure compliance, performance, and long-term reliability.",
+    "block4": "AMT delivers full turnkey OSP services including fiber and copper deployment, splicing, testing, documentation, and coordinated project execution.",
+    "cta": "Discuss your OSP network requirements with AMT."
+  }
+}

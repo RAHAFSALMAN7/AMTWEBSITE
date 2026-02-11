@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
 
 const Hero = () => {
@@ -8,6 +9,7 @@ const Hero = () => {
   const [index, setIndex] = useState(0);
   const shouldReduceMotion = useReducedMotion();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   /* ===== Fetch Hero Data ===== */
   useEffect(() => {
@@ -43,7 +45,7 @@ const Hero = () => {
   }, [hero]);
 
   if (!hero) {
-    return <div style={{ color: "red", padding: 40 }}>HERO NOT LOADED</div>;
+    return <div style={{ color: "red", padding: 40 }}>{t("common.heroNotLoaded")}</div>;
   }
 
   return (

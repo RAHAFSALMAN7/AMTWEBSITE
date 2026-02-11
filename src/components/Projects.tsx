@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ExternalLink, Calendar, Users, Star, ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { useLanguage } from '../Context/LanguageContext'; // لازم يكون عندك LanguageContext
+import { useTranslation } from 'react-i18next';
 
 type Project = {
   id: number;
@@ -18,7 +18,8 @@ type Project = {
 };
 
 const Projects = () => {
-  const { language } = useLanguage();
+  const { t, i18n } = useTranslation();
+  const language = i18n.language;
   const [isVisible, setIsVisible] = useState(false);
   const [activeProject, setActiveProject] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -137,18 +138,14 @@ const Projects = () => {
           <div className="inline-flex items-center space-x-2 bg-white/20 px-6 py-3 rounded-full border border-[#EB2427] mb-6">
             <Star className="w-4 h-4 text-[#EB2427]" />
             <span className="text-[#EB2427] font-semibold text-lg tracking-wide">
-              {language === 'en' ? 'SIGNATURE PROJECTS' : 'مشاريع مميزة'}
+              {t("projects.signatureProjects")}
             </span>
           </div>
           <h2 className="font-display font-black text-5xl lg:text-7xl text-[#941B20] mb-6 leading-tight">
-            {language === 'en'
-              ? <>Transformative <span className="text-[#EB2427]">Success Stories</span></>
-              : <>قصص <span className="text-[#EB2427]">نجاح تحويلية</span></>}
+            {t("projects.transformativeTitle")} <span className="text-[#EB2427]">{t("projects.successStories")}</span>
           </h2>
           <p className="text-lg text-[#941B20]/80 max-w-3xl mx-auto leading-relaxed">
-            {language === 'en'
-              ? "Discover how we've helped industry leaders achieve breakthrough results through innovative technology solutions and strategic partnerships."
-              : 'اكتشف كيف ساعدنا قادة الصناعة على تحقيق نتائج مذهلة من خلال حلول تقنية مبتكرة وشراكات استراتيجية.'}
+            {t("projects.transformativeSubtitle")}
           </p>
         </div>
 
@@ -186,7 +183,7 @@ const Projects = () => {
               <div className="space-y-6">
                 <p className="text-lg leading-relaxed">{projects[activeProject].fullDescription}</p>
                 <div>
-                  <h4 className="font-bold mb-4 text-lg">{language === 'en' ? 'Technologies Used' : 'التقنيات المستخدمة'}</h4>
+                  <h4 className="font-bold mb-4 text-lg">{t("projects.technologiesUsed")}</h4>
                   <div className="flex flex-wrap gap-3">
                     {projects[activeProject].technologies.map((tech, idx) => (
                       <span key={idx} className="bg-[#EB2427]/20 text-[#EB2427] px-4 py-2 rounded-full text-sm font-medium border border-[#EB2427]/30">{tech}</span>
@@ -200,7 +197,7 @@ const Projects = () => {
 
                 {/* Key Results */}
                 <div>
-                  <h4 className="font-bold mb-6 text-lg">{language === 'en' ? 'Key Results' : 'النتائج الرئيسية'}</h4>
+                  <h4 className="font-bold mb-6 text-lg">{t("projects.keyResults")}</h4>
                   <div className="flex flex-wrap gap-4 justify-center">
                     {projects[activeProject].results.map((result, idx) => (
                       <div key={idx} className="text-center p-2 bg-white/5 rounded-xl border border-[#941B20] hover:bg-[#EB2427]/10 transition-colors duration-300 w-36">
@@ -212,7 +209,7 @@ const Projects = () => {
                   </div>
 
                   <button onClick={() => setShowModal(true)} className="w-full mt-6 bg-[#EB2427] text-white py-3 px-6 rounded-2xl font-semibold hover:bg-[#941B20] transition-all duration-300 transform hover:scale-105 flex items-center justify-center group">
-                    {language === 'en' ? 'View Full Case Study' : 'عرض دراسة الحالة كاملة'}
+                    {t("projects.viewCaseStudy")}
                     <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>
@@ -243,7 +240,7 @@ const Projects = () => {
             <h2 className="text-3xl font-bold mb-4">{projects[activeProject].title}</h2>
             <p className="mb-4 text-[#4E4E50]/90">{projects[activeProject].fullDescription}</p>
             <div className="mb-4">
-              <h4 className="font-semibold mb-2">{language === 'en' ? 'Technologies Used:' : 'التقنيات المستخدمة:'}</h4>
+              <h4 className="font-semibold mb-2">{t("projects.technologiesUsed")}:</h4>
               <div className="flex flex-wrap gap-2">
                 {projects[activeProject].technologies.map((tech, idx) => (
                   <span key={idx} className="bg-[#EB2427]/20 text-[#EB2427] px-3 py-1 rounded-full text-sm border border-[#EB2427]/30">{tech}</span>
@@ -251,7 +248,7 @@ const Projects = () => {
               </div>
             </div>
             <div className="mb-4">
-              <h4 className="font-semibold mb-2">{language === 'en' ? 'Key Results:' : 'النتائج الرئيسية:'}</h4>
+              <h4 className="font-semibold mb-2">{t("projects.keyResults")}:</h4>
               <ul className="list-disc list-inside text-[#4E4E50]/90">
                 {projects[activeProject].results.map((res, idx) => (
                   <li key={idx}><strong>{res.metric}:</strong> {res.value} — {res.description}</li>

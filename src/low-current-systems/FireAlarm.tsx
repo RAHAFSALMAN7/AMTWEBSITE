@@ -1,7 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const FireAlarm: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <section className="bg-[#851A18] py-20 px-6 md:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto">
@@ -28,7 +31,7 @@ const FireAlarm: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          FIRE ALARM SYSTEMS
+          {t("lowCurrent.fireAlarm.title")}
         </motion.h2>
 
         {/* Description */}
@@ -38,9 +41,7 @@ const FireAlarm: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          AMT provides accurate and automatic fire and smoke detection, alerting
-          to the build-up of smoke and heat, which is mandatory in almost all
-          office and public buildings.
+          {t("lowCurrent.fireAlarm.description")}
         </motion.p>
 
         {/* Key Functions */}
@@ -51,17 +52,17 @@ const FireAlarm: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <h3 className="text-2xl font-semibold mb-6 text-center text-[#851A18]">
-            Key Functions
+            {t("lowCurrent.fireAlarm.keyFunctions")}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-800 text-lg">
             <div className="p-4 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              Quickly and effectively warn occupants of fire or smoke.
+              {t("lowCurrent.fireAlarm.function1")}
             </div>
             <div className="p-4 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              Warn emergency services of an incident.
+              {t("lowCurrent.fireAlarm.function2")}
             </div>
             <div className="p-4 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              Deploy prevention measures like sprinklers or fire doors.
+              {t("lowCurrent.fireAlarm.function3")}
             </div>
           </div>
         </motion.div>
@@ -73,8 +74,7 @@ const FireAlarm: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          AMT is the best choice for installing fire alarm systems of any size,
-          even for the most complex installations.
+          {t("lowCurrent.fireAlarm.secondDescription")}
         </motion.p>
 
         {/* Safety Tips */}
@@ -85,32 +85,26 @@ const FireAlarm: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.9 }}
         >
           <h3 className="text-3xl font-bold mb-8 text-center text-[#851A18]">
-            AMT SAFETY TIPS
+            {t("lowCurrent.fireAlarm.safetyTips")}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800 text-lg">
             <div className="p-6 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              <strong>Keep Your Workplace Clean:</strong> Corridors, stairs, and
-              fire exits must remain clear.
+              <strong>{t("lowCurrent.fireAlarm.tip1Title")}</strong> {t("lowCurrent.fireAlarm.tip1Desc")}
             </div>
             <div className="p-6 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              <strong>Have Fire Safety Equipment:</strong> Smoke alarms, exit
-              signs, extinguishers, and sprinklers are essential.
+              <strong>{t("lowCurrent.fireAlarm.tip2Title")}</strong> {t("lowCurrent.fireAlarm.tip2Desc")}
             </div>
             <div className="p-6 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              <strong>Risk Assessment:</strong> Identify hazards, assess risks,
-              and implement control measures.
+              <strong>{t("lowCurrent.fireAlarm.tip3Title")}</strong> {t("lowCurrent.fireAlarm.tip3Desc")}
             </div>
             <div className="p-6 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              <strong>Train Employees:</strong> Staff must know procedures in
-              case of fire.
+              <strong>{t("lowCurrent.fireAlarm.tip4Title")}</strong> {t("lowCurrent.fireAlarm.tip4Desc")}
             </div>
             <div className="p-6 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              <strong>Electrical Safety:</strong> Fix faulty electricals, avoid
-              overloading sockets, and inspect regularly.
+              <strong>{t("lowCurrent.fireAlarm.tip5Title")}</strong> {t("lowCurrent.fireAlarm.tip5Desc")}
             </div>
             <div className="p-6 bg-white rounded-lg shadow hover:scale-105 transition-transform">
-              <strong>Replace Smoke Alarms:</strong> Every 10 years; consider
-              installing sprinklers for full protection.
+              <strong>{t("lowCurrent.fireAlarm.tip6Title")}</strong> {t("lowCurrent.fireAlarm.tip6Desc")}
             </div>
           </div>
         </motion.div>

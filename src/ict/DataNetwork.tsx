@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { sanity, urlFor } from "../sanityClient";
 
 interface Section {
@@ -18,6 +19,7 @@ interface DataNetworkData {
 
 const DataNetwork: React.FC = () => {
   const [data, setData] = useState<DataNetworkData | null>(null);
+  const { t } = useTranslation();
 
   /* ===== FETCH FROM SANITY ===== */
   useEffect(() => {
@@ -42,7 +44,7 @@ const DataNetwork: React.FC = () => {
   if (!data) {
     return (
       <div className="py-32 text-center text-gray-500">
-        Loading...
+        {t("common.loading")}
       </div>
     );
   }

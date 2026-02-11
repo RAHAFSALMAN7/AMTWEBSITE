@@ -1,26 +1,28 @@
 // MeetingConferenceRoomsAV.tsx
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const MeetingConferenceRoomsAV: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
+  const { t } = useTranslation();
 
   const sections = [
     {
-      title: "Our Solutions",
-      text: "AMT is a premier Audio Visual system integrator specializing in the design, supply, installation, and support of multimedia presentation technologies, video and audio conferencing systems, and customized communication solutions across the Kingdom of Saudi Arabia.",
+      title: t("av.meetingRooms.sections.solutions.title"),
+      text: t("av.meetingRooms.sections.solutions.text"),
     },
     {
-      title: "Meeting Rooms AV Solutions",
-      text: "Our professional meeting room AV solutions enable seamless collaboration with clients, customers, and colleagues through integrated audio and video conferencing systems that deliver clear sound, high-quality visuals, and reliable management platforms.",
+      title: t("av.meetingRooms.sections.meetingRooms.title"),
+      text: t("av.meetingRooms.sections.meetingRooms.text"),
     },
     {
-      title: "Advanced Conference Room AV",
-      text: "We design and deploy highly advanced conference room AV systems using future-ready technologies. Our solutions are user-friendly, scalable, integrate seamlessly with existing IT infrastructures, and are fully supported throughout their lifecycle.",
+      title: t("av.meetingRooms.sections.advanced.title"),
+      text: t("av.meetingRooms.sections.advanced.text"),
     },
     {
-      title: "Unified Communications",
-      text: "AMT delivers room-based HD video and collaboration solutions for point-to-point and multi-party meetings. We integrate audio, video, content capture, streaming, and telephony systems into unified platforms such as Microsoft Teams and cloud-based communication environments.",
+      title: t("av.meetingRooms.sections.unified.title"),
+      text: t("av.meetingRooms.sections.unified.text"),
     },
   ];
 
@@ -44,7 +46,7 @@ const MeetingConferenceRoomsAV: React.FC = () => {
           animate="visible"
           variants={fadeUp}
         >
-          Meeting &amp; Conference Rooms AV Solutions
+          {t("av.meetingRooms.title")}
         </motion.h1>
 
         <motion.p
@@ -53,9 +55,7 @@ const MeetingConferenceRoomsAV: React.FC = () => {
           animate="visible"
           variants={fadeUp}
         >
-          Professional audio visual and unified communication solutions designed
-          to enhance collaboration, productivity, and meeting experiences across
-          enterprise environments.
+          {t("av.meetingRooms.subtitle")}
         </motion.p>
       </section>
 

@@ -4,6 +4,7 @@ import {
   AnimatePresence,
   useReducedMotion,
 } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
 
 /* ===== HELPER: YOUTUBE URL → EMBED ===== */
@@ -34,6 +35,7 @@ const WhyChooseUs: React.FC = () => {
   const [expanded, setExpanded] = useState(true);
   const [hovered, setHovered] = useState<number | null>(null);
   const [currentVideo, setCurrentVideo] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     sanity
@@ -144,7 +146,7 @@ const WhyChooseUs: React.FC = () => {
                 whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
                 className="w-40 h-40 rounded-full bg-[#851A18] text-white text-xl font-bold shadow-xl z-20"
               >
-                Why AMT?
+                {t("whyChooseUs.whyAmt")}
               </motion.button>
 
               {data.values.map((item: any, index: number) => {

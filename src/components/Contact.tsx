@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ElectricBorder from "./ElectricBorder";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
 
 const Contact: React.FC = () => {
   const [data, setData] = useState<any>(null);
   const [showSuccess, setShowSuccess] = useState(false);
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     company: "",
@@ -76,42 +78,42 @@ const Contact: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <input
                   name="company"
-                  placeholder="Company Name"
+                  placeholder={t("contact.companyName")}
                   value={formData.company}
                   onChange={handleChange}
                   className="w-full p-4 border rounded"
                 />
                 <input
                   name="email"
-                  placeholder="Email"
+                  placeholder={t("contact.email")}
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full p-4 border rounded"
                 />
                 <input
                   name="subject"
-                  placeholder="Subject"
+                  placeholder={t("contact.subject")}
                   value={formData.subject}
                   onChange={handleChange}
                   className="w-full p-4 border rounded"
                 />
                 <input
                   name="budget"
-                  placeholder="Budget"
+                  placeholder={t("contact.budget")}
                   value={formData.budget}
                   onChange={handleChange}
                   className="w-full p-4 border rounded"
                 />
                 <textarea
                   name="message"
-                  placeholder="Message"
+                  placeholder={t("contact.message")}
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full p-4 border rounded h-36"
                 />
 
                 <button className="bg-[#B3261E] hover:bg-[#8f1f19] text-white px-8 py-3 rounded font-semibold transition">
-                  Send Message
+                  {t("common.sendMessage")}
                 </button>
               </form>
             </div>
@@ -172,7 +174,7 @@ const Contact: React.FC = () => {
       {showSuccess && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50">
           <div className="bg-green-600 text-white px-8 py-6 rounded-lg shadow-xl">
-            ✅ Message sent successfully
+            {t("common.messageSent")}
           </div>
         </div>
       )}

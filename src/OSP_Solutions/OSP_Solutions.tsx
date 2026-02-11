@@ -2,10 +2,12 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const OSP_Solutions: React.FC = () => {
   const reduceMotion = useReducedMotion();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <main className="bg-[#FDFDFB] text-[#2B2B2B] overflow-hidden">
@@ -18,9 +20,9 @@ const OSP_Solutions: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-normal text-[#851A18] max-w-xl"
         >
-          Outside Plant
+          {t("osp.title")}
           <br />
-          Network Solutions
+          {t("osp.titleLine2")}
         </motion.h1>
       </section>
 
@@ -35,9 +37,7 @@ const OSP_Solutions: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-lg text-base md:text-lg leading-relaxed text-[#3E3E3E]"
         >
-          AMT delivers outside plant (OSP) network solutions designed to support
-          the growing demand for broadband access across complex infrastructure
-          environments throughout the Kingdom of Saudi Arabia.
+          {t("osp.block1")}
         </motion.p>
 
         {/* block 2 */}
@@ -48,9 +48,7 @@ const OSP_Solutions: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-xl mt-40 ml-auto text-base md:text-lg leading-relaxed text-[#3E3E3E]"
         >
-          By combining technically advanced products with cost-effective network
-          architecture, AMT enables reliable, scalable, and future-ready OSP
-          deployments.
+          {t("osp.block2")}
         </motion.p>
 
         {/* block 3 */}
@@ -61,9 +59,7 @@ const OSP_Solutions: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-md mt-40 text-base md:text-lg leading-relaxed text-[#3E3E3E]"
         >
-          Every cable, splice, and termination is installed using disciplined
-          engineering practices to ensure compliance, performance, and long-term
-          reliability.
+          {t("osp.block3")}
         </motion.p>
 
         {/* block 4 */}
@@ -74,9 +70,7 @@ const OSP_Solutions: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="max-w-xl mt-40 ml-auto text-base md:text-lg leading-relaxed text-[#3E3E3E]"
         >
-          AMT delivers full turnkey OSP services including fiber and copper
-          deployment, splicing, testing, documentation, and coordinated project
-          execution.
+          {t("osp.block4")}
         </motion.p>
 
       </section>
@@ -85,7 +79,7 @@ const OSP_Solutions: React.FC = () => {
       <section className="px-6 md:px-32 pb-32">
         <div className="max-w-6xl mx-auto flex items-center justify-between border-t border-[#E3E3DF] pt-12">
           <p className="text-base md:text-lg text-[#4A4A4A]">
-            Discuss your OSP network requirements with AMT.
+            {t("osp.cta")}
           </p>
 
           <button
@@ -93,7 +87,7 @@ const OSP_Solutions: React.FC = () => {
             className="text-[#851A18] text-base md:text-lg underline underline-offset-8"
             aria-label="Contact AMT for OSP solutions"
           >
-            Contact
+            {t("common.contact")}
           </button>
         </div>
       </section>

@@ -1,26 +1,28 @@
 // IPTVDigitalSignage.tsx
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const IPTVDigitalSignage: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
+  const { t } = useTranslation();
 
   const sections = [
     {
-      title: "IPTV & Digital Signage Solutions",
-      text: "AMT delivers advanced IPTV and digital signage solutions designed to capture attention, enhance communication, and influence customer engagement through dynamic, high-quality visual content.",
+      title: t("av.iptv.sections.iptvSignage.title"),
+      text: t("av.iptv.sections.iptvSignage.text"),
     },
     {
-      title: "Easy-Management Digital Signage",
-      text: "Our digital signage platforms feature intuitive drag-and-drop layout editors, dynamic scheduling, event-based triggers, playlist creation, and advanced reporting tools for full visibility and control.",
+      title: t("av.iptv.sections.easyManagement.title"),
+      text: t("av.iptv.sections.easyManagement.text"),
     },
     {
-      title: "Meeting Room Signage",
-      text: "AMT integrates digital signage with leading meeting room booking systems, enabling real-time room availability, seamless calendar synchronization, and efficient meeting management.",
+      title: t("av.iptv.sections.meetingRoom.title"),
+      text: t("av.iptv.sections.meetingRoom.text"),
     },
     {
-      title: "IP Television (IPTV) Solutions",
-      text: "Our IPTV headend platform captures, encodes, and distributes content from multiple sources across IP networks, delivering consistent streams to digital signage displays, desktops, mobile applications, and standalone TV systems.",
+      title: t("av.iptv.sections.ipTelevision.title"),
+      text: t("av.iptv.sections.ipTelevision.text"),
     },
   ];
 
@@ -44,7 +46,7 @@ const IPTVDigitalSignage: React.FC = () => {
           animate="visible"
           variants={fadeUp}
         >
-          IPTV &amp; Digital Signage Solutions
+          {t("av.iptv.title")}
         </motion.h1>
 
         <motion.p
@@ -53,9 +55,7 @@ const IPTVDigitalSignage: React.FC = () => {
           animate="visible"
           variants={fadeUp}
         >
-          Professional IPTV and digital signage solutions designed to enhance
-          communication, engagement, and content delivery across enterprise
-          environments.
+          {t("av.iptv.subtitle")}
         </motion.p>
       </section>
 

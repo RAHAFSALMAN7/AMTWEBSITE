@@ -1,31 +1,33 @@
 // VideoWallMounting.tsx
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const VideoWallMounting: React.FC = () => {
   const reduceMotion = useReducedMotion();
+  const { t } = useTranslation();
 
   const blocks = [
     {
-      title: "Precision Installation",
-      text: "Video wall mounting requires precise alignment to create a seamless visual surface. AMT solutions are engineered to perform accurately even in non-ideal structural environments."
+      title: t("av.videoWall.blocks.precision.title"),
+      text: t("av.videoWall.blocks.precision.text"),
     },
     {
-      title: "Multi-Axis Adjustment",
-      text: "Our mounting systems allow fine adjustment across X, Y, and Z axes, ensuring every display aligns perfectly while maintaining long-term stability."
+      title: t("av.videoWall.blocks.multiAxis.title"),
+      text: t("av.videoWall.blocks.multiAxis.text"),
     },
     {
-      title: "Maintenance Accessibility",
-      text: "Displays remain accessible after installation, allowing maintenance or replacement without disturbing alignment or system integrity."
+      title: t("av.videoWall.blocks.maintenance.title"),
+      text: t("av.videoWall.blocks.maintenance.text"),
     },
     {
-      title: "Architectural Flexibility",
-      text: "Wall-mounted, ceiling-mounted, floor-supported, freestanding, or curved installations are supported to match architectural requirements."
+      title: t("av.videoWall.blocks.architectural.title"),
+      text: t("av.videoWall.blocks.architectural.text"),
     },
     {
-      title: "Scalable Solutions",
-      text: "From compact video walls to large-scale installations, AMT mounting solutions adapt to project size and future expansion needs."
-    }
+      title: t("av.videoWall.blocks.scalable.title"),
+      text: t("av.videoWall.blocks.scalable.text"),
+    },
   ];
 
   return (
@@ -39,7 +41,7 @@ const VideoWallMounting: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="text-4xl md:text-5xl font-normal text-[#851A18]"
         >
-          Video Wall Mounting Solutions
+          {t("av.videoWall.title")}
         </motion.h1>
 
         <motion.p
@@ -48,8 +50,7 @@ const VideoWallMounting: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mt-6 max-w-2xl text-base md:text-lg text-[#555] leading-relaxed"
         >
-          Modular mounting systems designed to align precision, flexibility,
-          and long-term reliability.
+          {t("av.videoWall.subtitle")}
         </motion.p>
       </section>
 
