@@ -6,6 +6,7 @@ import {
 } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
+import { localize } from "../utils/localize";
 
 /* ===== HELPER: YOUTUBE URL → EMBED ===== */
 const getYouTubeEmbedUrl = (url?: string) => {
@@ -18,9 +19,11 @@ const getYouTubeEmbedUrl = (url?: string) => {
     if (parsed.hostname.includes("youtube.com")) {
       videoId = parsed.searchParams.get("v");
     }
+
     if (parsed.hostname.includes("youtu.be")) {
       videoId = parsed.pathname.slice(1);
     }
+
     if (!videoId) return undefined;
 
     return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&playsinline=1&rel=0`;
@@ -31,11 +34,13 @@ const getYouTubeEmbedUrl = (url?: string) => {
 
 const WhyChooseUs: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
+  const { i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
+
   const [data, setData] = useState<any>(null);
   const [expanded, setExpanded] = useState(true);
   const [hovered, setHovered] = useState<number | null>(null);
   const [currentVideo, setCurrentVideo] = useState(0);
-  const { t } = useTranslation();
 
   useEffect(() => {
     sanity
@@ -57,6 +62,9 @@ const WhyChooseUs: React.FC = () => {
   }, []);
 
   if (!data || !data.videos?.length) return null;
+
+  const title = localize(data.title, lang);
+  const videoTitle = localize(data.videoTitle, lang);
 
   const youtubeSrc = getYouTubeEmbedUrl(
     data.videos[currentVideo]?.youtubeUrl
@@ -81,10 +89,11 @@ const WhyChooseUs: React.FC = () => {
 
   return (
     <section
+      dir={lang === "ar" ? "rtl" : "ltr"}
       className="relative w-full py-28"
       style={sectionStyle}
     >
-      {/* ===== OVERLAY (نفس اللون ونفس الشفافية) ===== */}
+      {/* ===== OVERLAY ===== */}
       <div
         className="absolute inset-0"
         style={{ backgroundColor: "rgba(76,77,78,0.85)" }}
@@ -94,15 +103,15 @@ const WhyChooseUs: React.FC = () => {
         {/* ===== HEADER ===== */}
         <header className="text-center mb-20">
           <h2 className="text-4xl font-bold text-white">
-            {data.title}
+            {title}
           </h2>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          {/* ===== LEFT: VIDEO ===== */}
+          {/* ===== VIDEO ===== */}
           <section>
             <h3 className="text-2xl font-bold text-white mb-6">
-              {data.videoTitle}
+              {videoTitle}
             </h3>
 
             <div className="relative rounded-2xl shadow-xl overflow-hidden bg-black">
@@ -138,7 +147,7 @@ const WhyChooseUs: React.FC = () => {
             </div>
           </section>
 
-          {/* ===== RIGHT: ORBIT ===== */}
+          {/* ===== ORBIT VALUES ===== */}
           <section className="flex justify-center">
             <div className="relative w-[420px] h-[420px] flex items-center justify-center">
               <motion.button
@@ -146,13 +155,16 @@ const WhyChooseUs: React.FC = () => {
                 whileTap={shouldReduceMotion ? {} : { scale: 0.95 }}
                 className="w-40 h-40 rounded-full bg-[#851A18] text-white text-xl font-bold shadow-xl z-20"
               >
-                {t("whyChooseUs.whyAmt")}
+                {title}
               </motion.button>
 
               {data.values.map((item: any, index: number) => {
                 const angle = (360 / data.values.length) * index;
                 const radius = expanded ? 170 : 0;
                 const isRightSide = angle > 90 && angle < 270;
+
+                const valueTitle = localize(item.title, lang);
+                const valueDescription = localize(item.description, lang);
 
                 return (
                   <motion.article
@@ -161,8 +173,8 @@ const WhyChooseUs: React.FC = () => {
                       shouldReduceMotion
                         ? {}
                         : {
-                            transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
-                          }
+                          transform: `rotate(${angle}deg) translate(${radius}px) rotate(-${angle}deg)`,
+                        }
                     }
                     transition={{
                       type: "spring",
@@ -174,26 +186,32 @@ const WhyChooseUs: React.FC = () => {
                     onMouseLeave={() => setHovered(null)}
                   >
                     <motion.div
-                      whileHover={shouldReduceMotion ? {} : { scale: 1.08 }}
+                      whileHover={
+                        shouldReduceMotion ? {} : { scale: 1.08 }
+                      }
                       className="w-28 h-28 rounded-2xl bg-white shadow-lg text-sm font-semibold text-[#292929] flex items-center justify-center text-center cursor-pointer"
                     >
-                      {item.title}
+                      {valueTitle}
                     </motion.div>
 
                     <AnimatePresence>
                       {hovered === index && expanded && (
                         <motion.div
-                          initial={{ opacity: 0, x: isRightSide ? -10 : 10 }}
+                          initial={{
+                            opacity: 0,
+                            x: isRightSide ? -10 : 10,
+                          }}
                           animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: isRightSide ? -10 : 10 }}
-                          className={`absolute top-1/2 -translate-y-1/2 w-64 bg-[#292929] text-white text-sm p-3 rounded-lg shadow-xl
-                            ${
-                              isRightSide
-                                ? "right-full mr-3"
-                                : "left-full ml-3"
+                          exit={{
+                            opacity: 0,
+                            x: isRightSide ? -10 : 10,
+                          }}
+                          className={`absolute top-1/2 -translate-y-1/2 w-64 bg-[#292929] text-white text-sm p-3 rounded-lg shadow-xl ${isRightSide
+                              ? "right-full mr-3"
+                              : "left-full ml-3"
                             }`}
                         >
-                          {item.description}
+                          {valueDescription}
                         </motion.div>
                       )}
                     </AnimatePresence>

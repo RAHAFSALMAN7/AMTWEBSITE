@@ -20,11 +20,17 @@ const BlurText: React.FC<BlurTextProps> = ({
 }) => {
   const [splitText, setSplitText] = useState<string[]>([]);
 
+  /* ===== Detect Arabic (RTL) ===== */
+  const isArabic = /[\u0600-\u06FF]/.test(text);
+
   useEffect(() => {
+    if (!text) return;
+
     if (animateBy === "words") {
       setSplitText(text.split(" "));
     } else {
-      setSplitText(text.split(""));
+      // ✅ Array.from أفضل من split("") لدعم العربي
+      setSplitText(Array.from(text));
     }
   }, [text, animateBy]);
 
@@ -44,7 +50,10 @@ const BlurText: React.FC<BlurTextProps> = ({
   };
 
   return (
-    <div className={`inline-block ${className}`}>
+    <div
+      dir={isArabic ? "rtl" : "ltr"}
+      className={`inline-block ${className}`}
+    >
       {splitText.map((item, idx) => (
         <motion.span
           key={idx}

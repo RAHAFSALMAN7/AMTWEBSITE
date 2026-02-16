@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { sanity } from "../sanityClient";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { localize } from "../utils/localize";
 
 const PartnersSection: React.FC = () => {
   const [data, setData] = useState<any>(null);
+  const { i18n } = useTranslation();
+
+  const lang = i18n.language === "ar" ? "ar" : "en";
 
   useEffect(() => {
     sanity
@@ -31,12 +36,14 @@ const PartnersSection: React.FC = () => {
     backgroundRepeat: "no-repeat",
   };
 
+  const title = localize(data.title, lang);
+
   return (
     <section
       className="relative py-32 px-6"
       style={sectionStyle}
     >
-      {/* ===== OVERLAY (نفس اللون ونفس الشفافية) ===== */}
+      {/* Overlay */}
       <div
         className="absolute inset-0"
         style={{ backgroundColor: "rgba(76,77,78,0.85)" }}
@@ -45,27 +52,31 @@ const PartnersSection: React.FC = () => {
       <div className="relative z-10">
         {/* TITLE */}
         <h2 className="text-3xl md:text-4xl font-bold text-center text-[#851A1A] mb-16">
-          {data.title}
+          {title}
         </h2>
 
         {/* PARTNERS GRID */}
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-10 items-center">
-          {data.partners.map((partner: any, idx: number) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.03 }}
-              className="flex items-center justify-center transition"
-            >
-              <img
-                src={partner.logo?.asset?.url}
-                alt={partner.name}
-                className="max-h-20 object-contain"
-              />
-            </motion.div>
-          ))}
+          {data.partners.map((partner: any, idx: number) => {
+            const partnerName = localize(partner.name, lang);
+
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.03 }}
+                className="flex items-center justify-center transition"
+              >
+                <img
+                  src={partner.logo?.asset?.url}
+                  alt={partnerName}
+                  className="max-h-20 object-contain"
+                />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

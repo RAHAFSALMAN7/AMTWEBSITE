@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Share2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { sanity, urlFor } from '../sanityClient';
+import { localize } from '../utils/localize';
+import { AppLocale, DEFAULT_LOCALE, isSupportedLocale, withLocale } from '../utils/localeRouting';
 
 interface NewsItem {
-  title: string;
-  description: string;
+  title: any;
+  description: any;
   image: any;
   slug: string;
 }
@@ -16,28 +18,30 @@ const LatestNews: React.FC = () => {
   const [newsData, setNewsData] = useState<NewsItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { t } = useTranslation();
+  const { locale } = useParams();
+  const activeLocale: AppLocale = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
 
   useEffect(() => {
     sanity
       .fetch(`
         *[_type == "news"] | order(_createdAt desc){
-          title,
-          description,
+          "title": title[$locale],
+          "description": description[$locale],
           mainImage,
           "slug": slug.current
         }
-      `)
+      `, { locale: activeLocale })
       .then((data: any[]) => {
-        setNewsData(
-          data.map((item) => ({
-            title: item.title,
-            description: item.description,
-            image: item.mainImage,
-            slug: item.slug,
-          }))
-        );
+        const mapped = data.map((item) => ({
+          title: item.title,
+          description: item.description,
+          image: item.mainImage,
+          slug: item.slug,
+        }));
+
+        setNewsData(mapped);
       });
-  }, []);
+  }, [activeLocale]);
 
   const prevNews = () =>
     setCurrentIndex((prev) =>
@@ -56,7 +60,11 @@ const LatestNews: React.FC = () => {
   }, [newsData]);
 
   if (!newsData.length) {
-    return <p className="text-center py-20 text-white">{t("common.loading")}</p>;
+    return (
+      <p className="text-center py-20 text-white">
+        {t("common.loading")}
+      </p>
+    );
   }
 
   const sectionStyle = {
@@ -67,17 +75,13 @@ const LatestNews: React.FC = () => {
   };
 
   return (
-    <section
-      className="relative py-24 px-6"
-      style={sectionStyle}
-    >
-      {/* ===== OVERLAY ===== */}
+    <section className="relative py-24 px-6" style={sectionStyle}>
+      {/* Overlay */}
       <div
         className="absolute inset-0 backdrop-blur-[2px]"
         style={{ backgroundColor: "rgba(76,77,78,0.85)" }}
       />
 
-      {/* Content */}
       <div className="relative z-10">
         <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center text-white">
           {t("news.latestNews")}
@@ -87,8 +91,7 @@ const LatestNews: React.FC = () => {
           {/* Left Arrow */}
           <button
             onClick={prevNews}
-            className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 hover:bg-white shadow
-                       left-0 sm:-left-4 md:-left-12 lg:-left-16"
+            className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 hover:bg-white shadow left-0 sm:-left-4 md:-left-12 lg:-left-16"
           >
             <ChevronLeft size={28} className="text-black" />
           </button>
@@ -103,7 +106,7 @@ const LatestNews: React.FC = () => {
               className="flex flex-col md:flex-row bg-white/90 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl w-full"
             >
               <Link
-                to={`/news/${newsData[currentIndex].slug}`}
+                to={withLocale(`/news/${newsData[currentIndex].slug}`, activeLocale)}
                 className="flex flex-col md:flex-row w-full"
               >
                 {/* Image */}
@@ -113,7 +116,7 @@ const LatestNews: React.FC = () => {
                       .width(900)
                       .height(600)
                       .url()}
-                    alt={newsData[currentIndex].title}
+                    alt={localize(newsData[currentIndex].title, activeLocale)}
                     className="w-full h-64 md:h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition">
@@ -126,10 +129,10 @@ const LatestNews: React.FC = () => {
                 {/* Text */}
                 <div className="p-8 flex flex-col justify-center md:w-1/2 text-white">
                   <h3 className="text-lg md:text-xl font-bold mb-3 uppercase text-white">
-                    {newsData[currentIndex].title}
+                    {localize(newsData[currentIndex].title, activeLocale)}
                   </h3>
                   <p className="leading-relaxed text-white/80">
-                    {newsData[currentIndex].description}
+                    {localize(newsData[currentIndex].description, activeLocale)}
                   </p>
                 </div>
               </Link>
@@ -139,8 +142,7 @@ const LatestNews: React.FC = () => {
           {/* Right Arrow */}
           <button
             onClick={nextNews}
-            className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 hover:bg-white shadow
-                       right-0 sm:-right-4 md:-right-12 lg:-right-16"
+            className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 hover:bg-white shadow right-0 sm:-right-4 md:-right-12 lg:-right-16"
           >
             <ChevronRight size={28} className="text-black" />
           </button>
@@ -152,11 +154,10 @@ const LatestNews: React.FC = () => {
             <span
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-3 h-3 rounded-full cursor-pointer transition ${
-                index === currentIndex
+              className={`w-3 h-3 rounded-full cursor-pointer transition ${index === currentIndex
                   ? 'bg-white'
                   : 'bg-white/40'
-              }`}
+                }`}
             />
           ))}
         </div>

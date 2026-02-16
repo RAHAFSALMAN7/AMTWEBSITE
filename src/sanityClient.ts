@@ -1,5 +1,5 @@
 import { createClient } from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 
 export const sanity = createClient({
     projectId: "lgtz8nod",
@@ -8,7 +8,7 @@ export const sanity = createClient({
     useCdn: true,
 });
 
-const builder = imageUrlBuilder(sanity);
+const builder = createImageUrlBuilder(sanity);
 
 // لتحويل صورة Sanity إلى URL
 export const urlFor = (source: any) => {

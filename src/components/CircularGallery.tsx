@@ -29,6 +29,11 @@ function getFontSize(font: string): number {
   return match ? parseInt(match[1], 10) : 30;
 }
 
+/* ✅ Detect Arabic (RTL) */
+function isArabicText(text: string): boolean {
+  return /[\u0600-\u06FF]/.test(text);
+}
+
 function createTextTexture(
   gl: GL,
   text: string,
@@ -39,21 +44,34 @@ function createTextTexture(
   const context = canvas.getContext('2d');
   if (!context) throw new Error('Could not get 2d context');
 
+  const rtl = isArabicText(text);
+
   context.font = font;
   const metrics = context.measureText(text);
   const textWidth = Math.ceil(metrics.width);
   const fontSize = getFontSize(font);
   const textHeight = Math.ceil(fontSize * 1.2);
 
-  canvas.width = textWidth + 20;
-  canvas.height = textHeight + 20;
+  canvas.width = textWidth + 40; // padding
+  canvas.height = textHeight + 30;
 
   context.font = font;
   context.fillStyle = color;
   context.textBaseline = 'middle';
-  context.textAlign = 'center';
+
+  // ✅ RTL/LTR handling
+  // direction works in modern browsers; fallback is alignment + x positioning
+  (context as any).direction = rtl ? 'rtl' : 'ltr';
+
   context.clearRect(0, 0, canvas.width, canvas.height);
-  context.fillText(text, canvas.width / 2, canvas.height / 2);
+
+  if (rtl) {
+    context.textAlign = 'right';
+    context.fillText(text, canvas.width - 20, canvas.height / 2);
+  } else {
+    context.textAlign = 'left';
+    context.fillText(text, 20, canvas.height / 2);
+  }
 
   const texture = new Texture(gl, { generateMipmaps: false });
   texture.image = canvas;
@@ -117,10 +135,13 @@ class Title {
       uniforms: { tMap: { value: texture } },
       transparent: true
     });
+
     this.mesh = new Mesh(this.gl, { geometry, program });
+
     const aspect = width / height;
     const textHeightScaled = this.plane.scale.y * 0.15;
     const textWidthScaled = textHeightScaled * aspect;
+
     this.mesh.scale.set(textWidthScaled, textHeightScaled, 1);
     this.mesh.position.y = -this.plane.scale.y * 0.5 - textHeightScaled * 0.5 - 0.05;
     this.mesh.setParent(this.plane);
@@ -222,6 +243,7 @@ class Media {
     const texture = new Texture(this.gl, {
       generateMipmaps: true
     });
+
     this.program = new Program(this.gl, {
       depthTest: false,
       depthWrite: false,
@@ -248,12 +270,12 @@ class Media {
         uniform sampler2D tMap;
         uniform float uBorderRadius;
         varying vec2 vUv;
-        
+
         float roundedBoxSDF(vec2 p, vec2 b, float r) {
           vec2 d = abs(p) - b;
           return length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0) - r;
         }
-        
+
         void main() {
           vec2 ratio = vec2(
             min((uPlaneSizes.x / uPlaneSizes.y) / (uImageSizes.x / uImageSizes.y), 1.0),
@@ -264,13 +286,12 @@ class Media {
             vUv.y * ratio.y + (1.0 - ratio.y) * 0.5
           );
           vec4 color = texture2D(tMap, uv);
-          
+
           float d = roundedBoxSDF(vUv - 0.5, vec2(0.5 - uBorderRadius), uBorderRadius);
-          
-          // Smooth antialiasing for edges
+
           float edgeSmooth = 0.002;
           float alpha = 1.0 - smoothstep(-edgeSmooth, edgeSmooth, d);
-          
+
           gl_FragColor = vec4(color.rgb, alpha);
         }
       `,
@@ -284,6 +305,7 @@ class Media {
       },
       transparent: true
     });
+
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.src = this.image;
@@ -477,57 +499,23 @@ class App {
     font: string
   ) {
     const defaultItems = [
-      {
-        image: `https://picsum.photos/seed/1/800/600?grayscale`,
-        text: 'Bridge'
-      },
-      {
-        image: `https://picsum.photos/seed/2/800/600?grayscale`,
-        text: 'Desk Setup'
-      },
-      {
-        image: `https://picsum.photos/seed/3/800/600?grayscale`,
-        text: 'Waterfall'
-      },
-      {
-        image: `https://picsum.photos/seed/4/800/600?grayscale`,
-        text: 'Strawberries'
-      },
-      {
-        image: `https://picsum.photos/seed/5/800/600?grayscale`,
-        text: 'Deep Diving'
-      },
-      {
-        image: `https://picsum.photos/seed/16/800/600?grayscale`,
-        text: 'Train Track'
-      },
-      {
-        image: `https://picsum.photos/seed/17/800/600?grayscale`,
-        text: 'Santorini'
-      },
-      {
-        image: `https://picsum.photos/seed/8/800/600?grayscale`,
-        text: 'Blurry Lights'
-      },
-      {
-        image: `https://picsum.photos/seed/9/800/600?grayscale`,
-        text: 'New York'
-      },
-      {
-        image: `https://picsum.photos/seed/10/800/600?grayscale`,
-        text: 'Good Boy'
-      },
-      {
-        image: `https://picsum.photos/seed/21/800/600?grayscale`,
-        text: 'Coastline'
-      },
-      {
-        image: `https://picsum.photos/seed/12/800/600?grayscale`,
-        text: 'Palm Trees'
-      }
+      { image: `https://picsum.photos/seed/1/800/600?grayscale`, text: 'Bridge' },
+      { image: `https://picsum.photos/seed/2/800/600?grayscale`, text: 'Desk Setup' },
+      { image: `https://picsum.photos/seed/3/800/600?grayscale`, text: 'Waterfall' },
+      { image: `https://picsum.photos/seed/4/800/600?grayscale`, text: 'Strawberries' },
+      { image: `https://picsum.photos/seed/5/800/600?grayscale`, text: 'Deep Diving' },
+      { image: `https://picsum.photos/seed/16/800/600?grayscale`, text: 'Train Track' },
+      { image: `https://picsum.photos/seed/17/800/600?grayscale`, text: 'Santorini' },
+      { image: `https://picsum.photos/seed/8/800/600?grayscale`, text: 'Blurry Lights' },
+      { image: `https://picsum.photos/seed/9/800/600?grayscale`, text: 'New York' },
+      { image: `https://picsum.photos/seed/10/800/600?grayscale`, text: 'Good Boy' },
+      { image: `https://picsum.photos/seed/21/800/600?grayscale`, text: 'Coastline' },
+      { image: `https://picsum.photos/seed/12/800/600?grayscale`, text: 'Palm Trees' }
     ];
+
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
+
     this.medias = this.mediasImages.map((data, index) => {
       return new Media({
         geometry: this.planeGeometry,
@@ -616,6 +604,7 @@ class App {
     this.boundOnTouchDown = this.onTouchDown.bind(this);
     this.boundOnTouchMove = this.onTouchMove.bind(this);
     this.boundOnTouchUp = this.onTouchUp.bind(this);
+
     window.addEventListener('resize', this.boundOnResize);
     window.addEventListener('mousewheel', this.boundOnWheel);
     window.addEventListener('wheel', this.boundOnWheel);
@@ -638,12 +627,14 @@ class App {
     window.removeEventListener('touchstart', this.boundOnTouchDown);
     window.removeEventListener('touchmove', this.boundOnTouchMove);
     window.removeEventListener('touchend', this.boundOnTouchUp);
+
     if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
       this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas as HTMLCanvasElement);
     }
   }
 }
- interface CircularGalleryProps {
+
+interface CircularGalleryProps {
   items?: { image: string; text: string }[];
   bend?: number;
   textColor?: string;
@@ -663,11 +654,12 @@ export default function CircularGallery({
   scrollEase = 0.05,
 }: CircularGalleryProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const appRef = useRef<any>(null); // نخزن الـ App هنا
+  const appRef = useRef<any>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
+
     const app = new App(containerRef.current, {
       items,
       bend,
@@ -677,6 +669,7 @@ export default function CircularGallery({
       scrollSpeed,
       scrollEase,
     });
+
     appRef.current = app;
     setReady(true);
 
@@ -694,13 +687,12 @@ export default function CircularGallery({
         className="w-full h-full cursor-grab active:cursor-grabbing"
       />
 
-      {/* أسهم التنقل */}
       {ready && (
         <>
           <button
             onClick={() => {
               if (appRef.current) {
-                appRef.current.scroll.target -= 40; // المسافة لليسار
+                appRef.current.scroll.target -= 40;
               }
             }}
             className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
@@ -711,7 +703,7 @@ export default function CircularGallery({
           <button
             onClick={() => {
               if (appRef.current) {
-                appRef.current.scroll.target += 40; // المسافة لليمين
+                appRef.current.scroll.target += 40;
               }
             }}
             className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"

@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Server, Zap, Layers } from "lucide-react";
 import CountUp from "react-countup";
+import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
+import { localize } from "../utils/localize";
 
 /* ===== ICON MAP ===== */
 const ICONS: Record<string, JSX.Element> = {
@@ -14,6 +16,8 @@ const ICONS: Record<string, JSX.Element> = {
 const DataCenter: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const [data, setData] = useState<any>(null);
+  const { i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   /* ===== FETCH FROM SANITY ===== */
   useEffect(() => {
@@ -64,7 +68,7 @@ const DataCenter: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-5xl md:text-6xl font-normal mb-6 text-[#851A18]"
         >
-          {data.title}
+          {localize(data.title, lang)}
         </motion.h1>
 
         <motion.p
@@ -73,13 +77,13 @@ const DataCenter: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="max-w-3xl text-lg md:text-xl leading-relaxed text-[#444]"
         >
-          {data.description}
+          {localize(data.description, lang)}
         </motion.p>
 
         {data.heroImage?.asset?.url && (
           <motion.img
             src={data.heroImage.asset.url}
-            alt={data.title}
+            alt={localize(data.title, lang)}
             loading="lazy"
             initial={shouldReduceMotion ? {} : { scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -98,7 +102,7 @@ const DataCenter: React.FC = () => {
         className="max-w-6xl mx-auto px-6 py-16 text-center"
       >
         <p className="text-lg md:text-xl leading-relaxed text-[#3F3F3F]">
-          {data.introText}
+          {localize(data.introText, lang)}
         </p>
       </motion.section>
 
@@ -122,17 +126,17 @@ const DataCenter: React.FC = () => {
             </div>
 
             <h2 className="text-xl md:text-2xl font-normal mb-4 text-[#851A18]">
-              {f.title}
+              {localize(f.title, lang)}
             </h2>
 
             <p className="text-[#4A4A4A] flex-1 leading-relaxed">
-              {f.description}
+              {localize(f.description, lang)}
             </p>
 
             {f.image?.asset?.url && (
               <img
                 src={f.image.asset.url}
-                alt={f.alt}
+                alt={localize(f.alt, lang)}
                 loading="lazy"
                 className="mt-6 w-full h-48 object-contain"
               />
@@ -155,7 +159,7 @@ const DataCenter: React.FC = () => {
               <h3 className="text-4xl font-normal text-[#851A18] mb-2">
                 <CountUp end={s.value} duration={2} />+
               </h3>
-              <p className="text-base text-[#444]">{s.label}</p>
+              <p className="text-base text-[#444]">{localize(s.label, lang)}</p>
             </motion.div>
           ))}
         </div>
@@ -170,17 +174,17 @@ const DataCenter: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-4xl md:text-5xl font-normal text-white mb-6"
         >
-          {data.ctaTitle}
+          {localize(data.ctaTitle, lang)}
         </motion.h2>
 
         <motion.a
           href={data.ctaLink}
-          aria-label={data.ctaButtonText}
+          aria-label={localize(data.ctaButtonText, lang)}
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.96 }}
           className="inline-block bg-white text-[#851A18] font-normal py-3 px-8 rounded-full text-lg"
         >
-          {data.ctaButtonText}
+          {localize(data.ctaButtonText, lang)}
         </motion.a>
       </section>
     </section>

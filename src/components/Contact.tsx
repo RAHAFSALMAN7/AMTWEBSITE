@@ -3,11 +3,13 @@ import ElectricBorder from "./ElectricBorder";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
+import { localize } from "../utils/localize";
 
 const Contact: React.FC = () => {
   const [data, setData] = useState<any>(null);
   const [showSuccess, setShowSuccess] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   const [formData, setFormData] = useState({
     company: "",
@@ -20,7 +22,17 @@ const Contact: React.FC = () => {
   /* ===== FETCH FROM SANITY ===== */
   useEffect(() => {
     sanity
-      .fetch(`*[_type == "contactPage" && enabled == true][0]`)
+      .fetch(`
+        *[_type == "contactPage" && enabled == true][0]{
+          companyName,
+          groupLine,
+          slogan,
+          titleSuffix,
+          description,
+          formTitle,
+          mapEmbedUrl
+        }
+      `)
       .then(setData)
       .catch(console.error);
   }, []);
@@ -58,13 +70,11 @@ const Contact: React.FC = () => {
       className="relative overflow-hidden"
       style={sectionStyle}
     >
-      {/* ===== OVERLAY (سكّني شفاف) ===== */}
       <div
         className="absolute inset-0 backdrop-blur-[2px]"
         style={{ backgroundColor: "rgba(199,196,192,0.85)" }}
       />
 
-      {/* ===== CONTENT ===== */}
       <div className="relative z-10 py-28 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -72,7 +82,7 @@ const Contact: React.FC = () => {
           <ElectricBorder color="#CFCFCF" speed={1.5} chaos={0.6} thickness={2}>
             <div className="bg-white rounded-xl shadow-xl p-10">
               <h3 className="text-2xl font-semibold mb-6 text-[#1F2937]">
-                {data.formTitle}
+                {localize(data.formTitle, lang)}
               </h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -121,42 +131,40 @@ const Contact: React.FC = () => {
 
           {/* ===== TEXT CONTENT ===== */}
           <div className="text-white">
-            {/* COMPANY NAME */}
+
             <motion.h2
               className="text-4xl font-extrabold mb-2"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              {data.companyName}
+              {localize(data.companyName, lang)}
             </motion.h2>
 
-            {/* GROUP LINE */}
             {data.groupLine && (
               <motion.p
                 className="text-xs tracking-widest text-white/80 mb-4"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                {data.groupLine}
+                {localize(data.groupLine, lang)}
               </motion.p>
             )}
 
-            {/* SLOGAN */}
             <motion.h3
               className="text-[#B3261E] font-bold text-xl mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              {data.slogan}
+              {localize(data.slogan, lang)}
             </motion.h3>
 
-            {/* DESCRIPTION */}
             {data.description && (
               <p className="text-white/90 max-w-lg">
-                {data.description}
+                {localize(data.description, lang)}
               </p>
             )}
+
           </div>
         </div>
       </div>

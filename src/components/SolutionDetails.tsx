@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   Server,
   Router,
@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { sanity } from "../sanityClient";
+import { useTranslation } from "react-i18next";
+import { localize } from "../utils/localize";
+import { AppLocale, DEFAULT_LOCALE, isSupportedLocale, withLocale } from "../utils/localeRouting";
 
 /* ===== ICON MAP ===== */
 const iconMap: Record<string, any> = {
@@ -25,32 +28,43 @@ const iconMap: Record<string, any> = {
 const SolutionDetails: React.FC = () => {
   const [active, setActive] = useState<number | null>(null);
   const [data, setData] = useState<any>(null);
+  const { i18n } = useTranslation();
+  const { locale } = useParams();
+  const activeLocale: AppLocale = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
+
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   /* ===== FETCH FROM SANITY ===== */
   useEffect(() => {
     sanity
       .fetch(`
         *[_type == "solutionsDetailsPage" && enabled == true][0]{
-          title,
-          description,
+          "title": title[$locale],
+          "description": description[$locale],
           solutions[]{
-            title,
+            "title": title[$locale],
             icon,
             options[]{
-              name,
+              "name": name[$locale],
               path
             }
           }
         }
-      `)
+      `, { locale: activeLocale })
       .then(setData)
       .catch(console.error);
-  }, []);
+  }, [activeLocale]);
 
   if (!data) return null;
 
+  const pageTitle = localize(data.title, lang);
+  const pageDescription = localize(data.description, lang);
+
   return (
-    <section className="relative min-h-screen bg-[#F5F6F8] px-6 md:px-20 py-24 text-[#292929] overflow-hidden">
+    <section
+      dir={lang === "ar" ? "rtl" : "ltr"}
+      className="relative min-h-screen bg-[#F5F6F8] px-6 md:px-20 py-24 text-[#292929] overflow-hidden"
+    >
       {/* ===== ANIMATED BACKGROUND ===== */}
       <motion.div
         className="absolute -top-40 -left-40 w-[420px] h-[420px] bg-[#851A18]/20 rounded-full blur-[120px]"
@@ -68,10 +82,10 @@ const SolutionDetails: React.FC = () => {
         {/* HEADER */}
         <div className="max-w-4xl mx-auto mb-20">
           <h1 className="text-4xl md:text-5xl font-extrabold">
-            {data.title}
+            {pageTitle}
           </h1>
           <p className="mt-6 text-gray-600 text-lg">
-            {data.description}
+            {pageDescription}
           </p>
         </div>
 
@@ -80,6 +94,8 @@ const SolutionDetails: React.FC = () => {
           {data.solutions.map((item: any, index: number) => {
             const Icon = iconMap[item.icon];
             const isActive = active === index;
+
+            const solutionTitle = localize(item.title, lang);
 
             return (
               <motion.div
@@ -108,20 +124,22 @@ const SolutionDetails: React.FC = () => {
                   >
                     {Icon && (
                       <Icon
-                        className={`w-7 h-7 ${isActive ? "text-[#851A18]" : "text-gray-400"
+                        className={`w-7 h-7 ${isActive
+                            ? "text-[#851A18]"
+                            : "text-gray-400"
                           }`}
                       />
                     )}
                   </div>
 
                   <h3 className="text-lg font-semibold flex-1">
-                    {item.title}
+                    {solutionTitle}
                   </h3>
 
                   <ChevronDown
                     className={`w-5 h-5 transition-transform ${isActive
-                      ? "rotate-180 text-[#851A18]"
-                      : "text-gray-400"
+                        ? "rotate-180 text-[#851A18]"
+                        : "text-gray-400"
                       }`}
                   />
                 </div>
@@ -137,18 +155,22 @@ const SolutionDetails: React.FC = () => {
                       className="px-8 pb-8"
                     >
                       <ul className="space-y-3 pt-2 border-t border-gray-100">
-                        {item.options?.map((opt: any, i: number) => (
-                          <li key={i} className="flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-[#851A18]" />
-                            <Link
-                              to={opt.path}
-                              onClick={(e) => e.stopPropagation()}
-                              className="text-sm text-gray-600 hover:text-[#851A18]"
-                            >
-                              {opt.name}
-                            </Link>
-                          </li>
-                        ))}
+                        {item.options?.map((opt: any, i: number) => {
+                          const optionName = localize(opt.name, lang);
+
+                          return (
+                            <li key={i} className="flex items-center gap-2">
+                              <span className="w-2 h-2 rounded-full bg-[#851A18]" />
+                              <Link
+                                to={withLocale(opt.path, activeLocale)}
+                                onClick={(e) => e.stopPropagation()}
+                                className="text-sm text-gray-600 hover:text-[#851A18]"
+                              >
+                                {optionName}
+                              </Link>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </motion.div>
                   )}

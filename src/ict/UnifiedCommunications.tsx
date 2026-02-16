@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { sanity, urlFor } from "../sanityClient";
+import { localize } from "../utils/localize";
 
 const UnifiedCommunications: React.FC = () => {
   const [data, setData] = useState<any>(null);
+  const { i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   useEffect(() => {
     sanity
@@ -32,7 +36,7 @@ const UnifiedCommunications: React.FC = () => {
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        {data.pageTitle}
+        {localize(data.pageTitle, lang)}
       </motion.h1>
 
       <div className="max-w-6xl mx-auto space-y-16">
@@ -45,11 +49,11 @@ const UnifiedCommunications: React.FC = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl md:text-3xl font-bold text-[#851A18]">
-              {section.title}
+              {localize(section.title, lang)}
             </h2>
 
             <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-line">
-              {section.text}
+              {localize(section.text, lang)}
             </p>
 
             {section.images?.length > 0 && (
@@ -64,7 +68,7 @@ const UnifiedCommunications: React.FC = () => {
                   >
                     <img
                       src={urlFor(img).width(1200).url()}
-                      alt={section.title}
+                      alt={localize(section.title, lang)}
                       className="w-full h-64 md:h-80 object-cover"
                     />
                   </motion.div>

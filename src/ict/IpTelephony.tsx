@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { sanity, urlFor } from "../sanityClient";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { localize } from "../utils/localize";
+import { AppLocale, DEFAULT_LOCALE, isSupportedLocale, withLocale } from "../utils/localeRouting";
 
 const IpTelephony: React.FC = () => {
   const [data, setData] = useState<any>(null);
   const navigate = useNavigate();
+  const { i18n } = useTranslation();
+  const { locale } = useParams();
+  const activeLocale: AppLocale = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   useEffect(() => {
     sanity
       .fetch(`
         *[_type == "ipTelephonyPage" && enabled == true][0]{
-          title,
+          "title": title[$locale],
           heroImage,
-          introHighlight,
-          introText,
+          "introHighlight": introHighlight[$locale],
+          "introText": introText[$locale],
           features,
-          ctaTitle,
-          ctaButtonText
+          "ctaTitle": ctaTitle[$locale],
+          "ctaButtonText": ctaButtonText[$locale]
         }
-      `)
+      `, { locale: activeLocale })
       .then(setData)
       .catch(console.error);
-  }, []);
+  }, [activeLocale]);
 
   if (!data) return null;
 
@@ -46,7 +53,7 @@ const IpTelephony: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-6xl font-extrabold text-white text-center px-6"
           >
-            {data.title}
+            {localize(data.title, lang)}
           </motion.h1>
         </div>
       </div>
@@ -58,7 +65,7 @@ const IpTelephony: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          {data.introHighlight}
+          {localize(data.introHighlight, lang)}
         </motion.p>
 
         <motion.p
@@ -66,7 +73,7 @@ const IpTelephony: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          {data.introText}
+          {localize(data.introText, lang)}
         </motion.p>
       </div>
 
@@ -80,10 +87,10 @@ const IpTelephony: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
           >
             <h3 className="text-2xl font-bold mb-4 text-[#851A18]">
-              {f.title}
+              {localize(f.title, lang)}
             </h3>
             <p className="text-gray-800 leading-relaxed">
-              {f.description}
+              {localize(f.description, lang)}
             </p>
           </motion.div>
         ))}
@@ -96,15 +103,15 @@ const IpTelephony: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          {data.ctaTitle}
+          {localize(data.ctaTitle, lang)}
         </motion.h2>
 
         <motion.button
           whileHover={{ scale: 1.05 }}
           className="bg-[#851A18] text-white font-bold py-4 px-10 rounded-full"
-          onClick={() => navigate("/contact")}
+          onClick={() => navigate(withLocale("/contact", activeLocale))}
         >
-          {data.ctaButtonText}
+          {localize(data.ctaButtonText, lang)}
         </motion.button>
       </div>
     </section>

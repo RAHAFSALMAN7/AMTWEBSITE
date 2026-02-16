@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { sanity, urlFor } from "../sanityClient";
+import { localize } from "../utils/localize";
 
 interface Section {
   title: string;
@@ -19,7 +20,8 @@ interface DataNetworkData {
 
 const DataNetwork: React.FC = () => {
   const [data, setData] = useState<DataNetworkData | null>(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   /* ===== FETCH FROM SANITY ===== */
   useEffect(() => {
@@ -59,7 +61,7 @@ const DataNetwork: React.FC = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        {data.title}
+        {localize(data.title, lang)}
       </motion.h1>
 
       {/* ===== HERO IMAGE ===== */}
@@ -72,7 +74,7 @@ const DataNetwork: React.FC = () => {
         >
           <img
             src={urlFor(data.heroImage).width(1200).url()}
-            alt={data.title}
+            alt={localize(data.title, lang)}
             className="w-full h-auto object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#851A18]/60 to-transparent"></div>
@@ -87,7 +89,7 @@ const DataNetwork: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 1 }}
       >
-        {data.description}
+        {localize(data.description, lang)}
       </motion.p>
 
       {/* ===== SECTIONS ===== */}
@@ -105,7 +107,7 @@ const DataNetwork: React.FC = () => {
               <div className="relative w-32 h-32 mb-6">
                 <img
                   src={urlFor(section.image).width(300).height(300).url()}
-                  alt={section.title}
+                  alt={localize(section.title, lang)}
                   className="w-full h-full object-contain"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#851A18]/40 to-transparent rounded-2xl"></div>
@@ -113,16 +115,16 @@ const DataNetwork: React.FC = () => {
             )}
 
             <h2 className="text-xl font-bold mb-4 text-[#851A18]">
-              {section.title}
+              {localize(section.title, lang)}
             </h2>
 
             <p className="text-gray-700 mb-3">
-              {section.desc1}
+              {localize(section.desc1, lang)}
             </p>
 
             {section.desc2 && (
               <p className="text-gray-600">
-                {section.desc2}
+                {localize(section.desc2, lang)}
               </p>
             )}
           </motion.div>

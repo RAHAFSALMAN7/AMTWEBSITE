@@ -1,13 +1,16 @@
 // src/OSP_Solutions/OSP_Solutions.tsx
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { AppLocale, DEFAULT_LOCALE, isSupportedLocale, withLocale } from "../utils/localeRouting";
 
 const OSP_Solutions: React.FC = () => {
   const reduceMotion = useReducedMotion();
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { locale } = useParams();
+  const activeLocale: AppLocale = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
 
   return (
     <main className="bg-[#FDFDFB] text-[#2B2B2B] overflow-hidden">
@@ -83,7 +86,7 @@ const OSP_Solutions: React.FC = () => {
           </p>
 
           <button
-            onClick={() => navigate("/contact")}
+            onClick={() => navigate(withLocale("/contact", activeLocale))}
             className="text-[#851A18] text-base md:text-lg underline underline-offset-8"
             aria-label="Contact AMT for OSP solutions"
           >

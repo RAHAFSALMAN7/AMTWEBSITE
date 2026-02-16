@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Linkedin, Twitter, Github } from "lucide-react";
+import { Linkedin, Instagram, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
+import { localize } from "../utils/localize";
 
-const iconMap: any = {
+// 🔹 خريطة الأيقونات
+const iconMap: Record<string, any> = {
   linkedin: Linkedin,
-  twitter: Twitter,
-  github: Github,
+  instagram: Instagram,
+  x: X,
 };
 
 const Footer = () => {
   const [data, setData] = useState<any>(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   useEffect(() => {
     sanity
@@ -20,7 +23,6 @@ const Footer = () => {
           phone,
           email,
           officeHours,
-          socials,
           mapUrl,
           bottomLinks,
           copyright
@@ -32,6 +34,16 @@ const Footer = () => {
 
   if (!data) return null;
 
+  const officeHours = localize(data.officeHours, lang) || [];
+  const bottomLinks = localize(data.bottomLinks, lang) || [];
+
+  // 🔹 روابط التواصل الثابتة
+  const socialLinks: Record<string, string> = {
+    linkedin: "https://www.linkedin.com/company/amt-example", // عدّل حسب حسابك
+    instagram: "https://www.instagram.com/amt_arabia/",
+    x: "https://x.com/amt_arabia2009",
+  };
+
   return (
     <footer
       className="relative text-white"
@@ -41,7 +53,6 @@ const Footer = () => {
 
         {/* BRAND */}
         <div>
-          {/* اللوجو من public */}
           <img src="/amt1.png" alt="AMT Logo" className="w-56" />
         </div>
 
@@ -57,6 +68,7 @@ const Footer = () => {
               {data.phone}
             </a>
           </p>
+
           <p>
             {t("common.email")}{" "}
             <a href={`mailto:${data.email}`} className="text-white">
@@ -68,20 +80,23 @@ const Footer = () => {
             <h4 className="font-semibold mb-2 text-white">
               {t("common.officeHours")}
             </h4>
-            {data.officeHours.map((h: string, i: number) => (
+
+            {officeHours?.map((h: string, i: number) => (
               <p key={i} className="text-white/80">
                 {h}
               </p>
             ))}
           </div>
 
+          {/* SOCIAL ICONS */}
           <div className="flex gap-4 mt-6">
-            {data.socials.map((s: any, i: number) => {
-              const Icon = iconMap[s.icon];
+            {Object.entries(socialLinks).map(([key, url]) => {
+              const Icon = iconMap[key.toLowerCase()];
+              if (!Icon || typeof url !== "string") return null;
               return (
                 <a
-                  key={i}
-                  href={s.url}
+                  key={key}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-white/80 transition"
@@ -108,9 +123,10 @@ const Footer = () => {
 
       {/* BOTTOM */}
       <div className="border-t border-white/20 px-6 py-6 flex flex-col lg:flex-row justify-between text-sm text-white/80">
-        <span>{data.copyright}</span>
+        <span>{localize(data.copyright, lang)}</span>
+
         <div className="flex gap-6">
-          {data.bottomLinks.map((b: string, i: number) => (
+          {bottomLinks?.map((b: string, i: number) => (
             <span key={i}>{b}</span>
           ))}
         </div>

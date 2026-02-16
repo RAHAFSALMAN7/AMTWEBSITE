@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { sanity } from "../sanityClient";
+import { useTranslation } from "react-i18next";
+import { localize } from "../utils/localize";
 
 const ClientsSection: React.FC = () => {
   const [data, setData] = useState<any>(null);
+  const { i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   /* ================= FETCH ================= */
   useEffect(() => {
@@ -41,31 +45,14 @@ const ClientsSection: React.FC = () => {
 
   const prevClients = () =>
     setCurrentIndex((prev) =>
-      prev === 0 ? Math.max(clients.length - itemsPerPage, 0) : prev - itemsPerPage
+      prev === 0
+        ? Math.max(clients.length - itemsPerPage, 0)
+        : prev - itemsPerPage
     );
 
   useEffect(() => {
     if (!clients.length) return;
     const interval = setInterval(nextClients, 3000);
-    return () => clearInterval(interval);
-  }, [clients.length]);
-
-  /* ================= TESTIMONIAL SLIDER ================= */
-  const [testimonialIndex, setTestimonialIndex] = useState(0);
-
-  const nextTestimonial = () =>
-    setTestimonialIndex((prev) =>
-      prev === clients.length - 1 ? 0 : prev + 1
-    );
-
-  const prevTestimonial = () =>
-    setTestimonialIndex((prev) =>
-      prev === 0 ? clients.length - 1 : prev - 1
-    );
-
-  useEffect(() => {
-    if (!clients.length) return;
-    const interval = setInterval(nextTestimonial, 4000);
     return () => clearInterval(interval);
   }, [clients.length]);
 
@@ -75,12 +62,15 @@ const ClientsSection: React.FC = () => {
   /* ================= RENDER ================= */
   return (
     <section className="flex flex-col items-center my-20 px-6 bg-white">
-      {/* ===== CLIENTS ===== */}
+
+      {/* ===== TITLE ===== */}
       <h2 className="text-3xl md:text-4xl font-bold mb-12 text-[#851A1A]">
-        {data.title}
+        {localize(data.title, lang)}
       </h2>
 
+      {/* ===== CLIENT LOGOS ===== */}
       <div className="w-full max-w-5xl flex justify-center relative overflow-hidden">
+
         <button
           onClick={prevClients}
           className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow"
@@ -106,7 +96,7 @@ const ClientsSection: React.FC = () => {
                 >
                   <img
                     src={client.logo?.asset?.url}
-                    alt={client.name}
+                    alt={localize(client.name, lang)}
                     className="w-32 h-32 object-contain"
                   />
                 </div>
@@ -122,7 +112,7 @@ const ClientsSection: React.FC = () => {
         </button>
       </div>
 
-      {/* Pagination */}
+      {/* ===== PAGINATION DOTS ===== */}
       <div className="flex mt-6 gap-2">
         {Array.from({ length: totalPages }).map((_, idx) => (
           <span
@@ -132,7 +122,6 @@ const ClientsSection: React.FC = () => {
           />
         ))}
       </div>
-
 
     </section>
   );

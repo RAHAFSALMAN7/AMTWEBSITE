@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import CircularGallery from "./CircularGallery";
 import ElectricBorder from "./ElectricBorder";
 import { sanity } from "../sanityClient";
+import { localize } from "../utils/localize";
 
 /* ===== DARK THEME COLORS ===== */
 const COLORS = {
@@ -15,6 +17,8 @@ const COLORS = {
 const Solutions: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
   const [data, setData] = useState<any>(null);
+  const { i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   useEffect(() => {
     sanity
@@ -49,7 +53,7 @@ const Solutions: React.FC = () => {
   const galleryItems =
     data.coreItems?.map((item: any) => ({
       image: item.image?.asset?.url,
-      text: item.label,
+      text: localize(item.label, lang),
     })) || [];
 
   const sectionStyle = {
@@ -81,12 +85,12 @@ const Solutions: React.FC = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
               >
-                {data.badge}
+                {localize(data.badge, lang)}
               </motion.span>
             )}
 
             <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
-              {data.title}
+              {localize(data.title, lang)}
             </h2>
 
             <motion.p
@@ -98,7 +102,7 @@ const Solutions: React.FC = () => {
               }
               transition={{ delay: 0.4 }}
             >
-              {data.description}
+              {localize(data.description, lang)}
             </motion.p>
           </header>
 
@@ -126,7 +130,7 @@ const Solutions: React.FC = () => {
                   >
                     <img
                       src={box.image?.asset?.url}
-                      alt={box.alt}
+                      alt={localize(box.alt, lang)}
                       className="w-full h-3/4 object-cover"
                     />
 
@@ -134,7 +138,7 @@ const Solutions: React.FC = () => {
 
                     <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 px-4">
                       <h3 className="text-white text-base font-bold text-center">
-                        {box.title}
+                        {localize(box.title, lang)}
                       </h3>
                     </div>
                   </div>
@@ -159,13 +163,13 @@ const Solutions: React.FC = () => {
         <div className="relative z-10">
           <header className="text-center mb-14">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              {data.coreTitle}
+              {localize(data.coreTitle, lang)}
             </h3>
             <p
               className="mt-4 text-sm sm:text-base"
               style={{ color: COLORS.textMuted }}
             >
-              {data.coreDescription}
+              {localize(data.coreDescription, lang)}
             </p>
           </header>
 

@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { sanity, urlFor } from "../sanityClient";
+import { localize } from "../utils/localize";
 
 const Wireless: React.FC = () => {
   const [data, setData] = useState<any>(null);
+  const { i18n } = useTranslation();
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   useEffect(() => {
     sanity
@@ -35,14 +39,14 @@ const Wireless: React.FC = () => {
 
       {/* PAGE TITLE */}
       <h1 className="text-4xl font-bold mb-6 text-center text-[#851A18]">
-        {data.pageTitle}
+        {localize(data.pageTitle, lang)}
       </h1>
 
       {/* HERO IMAGE */}
       <div className="relative flex justify-center mb-8 w-full max-w-4xl mx-auto">
         <img
           src={urlFor(data.heroImage).width(1200).url()}
-          alt={data.pageTitle}
+          alt={localize(data.pageTitle, lang)}
           className="w-full rounded-lg"
         />
         <div className="absolute inset-0 bg-[#851A18]/30 rounded-lg" />
@@ -50,20 +54,20 @@ const Wireless: React.FC = () => {
 
       {/* INTRO */}
       <h2 className="text-2xl font-semibold mb-4 text-center text-[#851A18]">
-        {data.sectionTitle}
+        {localize(data.sectionTitle, lang)}
       </h2>
 
       <p className="text-center text-[#292929] mb-4 text-xl">
-        {data.introLine1}
+        {localize(data.introLine1, lang)}
       </p>
 
       <p className="text-center text-[#292929] mb-8 text-xl">
-        {data.introLine2}
+        {localize(data.introLine2, lang)}
       </p>
 
       {/* BENEFITS */}
       <h3 className="text-xl font-semibold mb-6 text-center text-[#851A18]">
-        {data.benefitsTitle}
+        {localize(data.benefitsTitle, lang)}
       </h3>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -80,10 +84,10 @@ const Wireless: React.FC = () => {
             <div className="flex items-center mb-3">
               <CheckCircle className="w-6 h-6 text-green-500 mr-2" />
               <h4 className="text-lg font-semibold text-[#851A18]">
-                {b.title}
+                {localize(b.title, lang)}
               </h4>
             </div>
-            <p className="text-[#292929]">{b.description}</p>
+            <p className="text-[#292929]">{localize(b.description, lang)}</p>
           </motion.div>
         ))}
       </div>
