@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -67,7 +67,12 @@ const Hero = () => {
   const titleSuffix = localize(hero.titleSuffix, lang);
   const description = localize(hero.description, lang);
   const ctaText = localize(hero.ctaText, lang);
-  const rotatingWords = localize(hero.rotatingWords, lang) || [];
+  const rotatingWordsRaw = localize(hero.rotatingWords, lang);
+  const rotatingWords = Array.isArray(rotatingWordsRaw)
+    ? rotatingWordsRaw
+        .map((word) => localize(word, lang))
+        .filter((word) => typeof word === "string" && word.trim().length > 0)
+    : [];
 
   return (
     <header role="banner">

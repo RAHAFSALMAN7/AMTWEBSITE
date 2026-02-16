@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Linkedin, Instagram, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
@@ -34,8 +34,15 @@ const Footer = () => {
 
   if (!data) return null;
 
-  const officeHours = localize(data.officeHours, lang) || [];
-  const bottomLinks = localize(data.bottomLinks, lang) || [];
+  const officeHoursRaw = localize(data.officeHours, lang);
+  const officeHours = Array.isArray(officeHoursRaw)
+    ? officeHoursRaw.map((item) => localize(item, lang)).filter(Boolean)
+    : [];
+
+  const bottomLinksRaw = localize(data.bottomLinks, lang);
+  const bottomLinks = Array.isArray(bottomLinksRaw)
+    ? bottomLinksRaw.map((item) => localize(item, lang)).filter(Boolean)
+    : [];
 
   // 🔹 روابط التواصل الثابتة
   const socialLinks: Record<string, string> = {
