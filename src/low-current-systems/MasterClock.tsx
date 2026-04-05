@@ -13,9 +13,9 @@ const MasterClock: React.FC = () => {
       </div>
 
       {/* العنوان الرئيسي */}
-      <h2 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: "#851A18" }}>
+      <h1 className="text-4xl md:text-5xl font-extrabold mb-6" style={{ color: "#851A18" }}>
         {t("lowCurrent.masterClock.title")}
-      </h2>
+      </h1>
 
       {/* وصف مختصر */}
       <p className="text-gray-800 text-lg md:text-xl leading-relaxed mb-8">

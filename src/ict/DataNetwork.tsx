@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { sanity, urlFor } from "../sanityClient";
 import { localize } from "../utils/localize";
+import OptimizedImage from "../components/OptimizedImage";
 
 interface Section {
   title: string;
@@ -72,10 +73,13 @@ const DataNetwork: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <img
+          <OptimizedImage
             src={urlFor(data.heroImage).width(1200).url()}
-            alt={localize(data.title, lang)}
+            alt={`${localize(data.title, lang)} — enterprise data network hero visual`}
             className="w-full h-auto object-cover"
+            width={1200}
+            height={675}
+            priority
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#851A18]/60 to-transparent"></div>
         </motion.div>
@@ -105,10 +109,13 @@ const DataNetwork: React.FC = () => {
           >
             {section.image && (
               <div className="relative w-32 h-32 mb-6">
-                <img
+                <OptimizedImage
                   src={urlFor(section.image).width(300).height(300).url()}
                   alt={localize(section.title, lang)}
                   className="w-full h-full object-contain"
+                  width={128}
+                  height={128}
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#851A18]/40 to-transparent rounded-2xl"></div>
               </div>

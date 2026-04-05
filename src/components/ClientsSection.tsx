@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { sanity } from "../sanityClient";
 import { useTranslation } from "react-i18next";
 import { localize } from "../utils/localize";
+import OptimizedImage from "./OptimizedImage";
 
 const ClientsSection: React.FC = () => {
   const [data, setData] = useState<any>(null);
@@ -94,10 +95,13 @@ const ClientsSection: React.FC = () => {
                   key={idx}
                   className="w-44 h-44 rounded-full bg-white shadow flex items-center justify-center"
                 >
-                  <img
+                  <OptimizedImage
                     src={client.logo?.asset?.url}
-                    alt={localize(client.name, lang)}
+                    alt={`${localize(client.name, lang)} — client organization logo`}
                     className="w-32 h-32 object-contain"
+                    width={128}
+                    height={128}
+                    loading="lazy"
                   />
                 </div>
               ))}

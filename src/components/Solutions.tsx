@@ -5,6 +5,7 @@ import CircularGallery from "./CircularGallery";
 import ElectricBorder from "./ElectricBorder";
 import { sanity } from "../sanityClient";
 import { localize } from "../utils/localize";
+import OptimizedImage from "./OptimizedImage";
 
 /* ===== DARK THEME COLORS ===== */
 const COLORS = {
@@ -14,7 +15,9 @@ const COLORS = {
   textMuted: "rgba(255,255,255,0.7)",
 };
 
-const Solutions: React.FC = () => {
+type SolutionsProps = { standalone?: boolean };
+
+const Solutions: React.FC<SolutionsProps> = ({ standalone = false }) => {
   const shouldReduceMotion = useReducedMotion();
   const [data, setData] = useState<any>(null);
   const { i18n } = useTranslation();
@@ -89,9 +92,15 @@ const Solutions: React.FC = () => {
               </motion.span>
             )}
 
-            <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
-              {localize(data.title, lang)}
-            </h2>
+            {standalone ? (
+              <h1 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+                {localize(data.title, lang)}
+              </h1>
+            ) : (
+              <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+                {localize(data.title, lang)}
+              </h2>
+            )}
 
             <motion.p
               className="mt-6 text-sm sm:text-base md:text-lg"
@@ -128,10 +137,12 @@ const Solutions: React.FC = () => {
                     className="relative overflow-hidden rounded-xl w-64 h-80"
                     style={{ backgroundColor: COLORS.surface }}
                   >
-                    <img
+                    <OptimizedImage
                       src={box.image?.asset?.url}
                       alt={localize(box.alt, lang)}
                       className="w-full h-3/4 object-cover"
+                      width={256}
+                      height={320}
                     />
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
@@ -162,9 +173,15 @@ const Solutions: React.FC = () => {
 
         <div className="relative z-10">
           <header className="text-center mb-14">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
-              {localize(data.coreTitle, lang)}
-            </h3>
+            {standalone ? (
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                {localize(data.coreTitle, lang)}
+              </h2>
+            ) : (
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">
+                {localize(data.coreTitle, lang)}
+              </h3>
+            )}
             <p
               className="mt-4 text-sm sm:text-base"
               style={{ color: COLORS.textMuted }}

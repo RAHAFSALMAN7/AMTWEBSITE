@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { sanity, urlFor } from "../sanityClient";
 import { localize } from "../utils/localize";
+import OptimizedImage from "./OptimizedImage";
 
 export default function AboutUsPage() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -81,10 +82,13 @@ export default function AboutUsPage() {
         {/* HEADER */}
         <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
           {data.heroImage && (
-            <img
+            <OptimizedImage
               src={urlFor(data.heroImage).url()}
-              alt="About Us Banner"
+              alt={`${localize(data.heroTitle, lang)} — about AMT banner background photography`}
               className="absolute inset-0 w-full h-full object-cover opacity-10"
+              width={1920}
+              height={400}
+              loading="lazy"
             />
           )}
 
@@ -158,9 +162,13 @@ export default function AboutUsPage() {
                   className="p-8 bg-white rounded-2xl shadow-xl text-center text-[#1F2937]"
                 >
                   {value.icon && (
-                    <img
+                    <OptimizedImage
                       src={urlFor(value.icon).url()}
+                      alt={`${localize(value.title, lang)} — company value icon`}
                       className="w-10 h-10 mx-auto mb-4 opacity-80"
+                      width={40}
+                      height={40}
+                      loading="lazy"
                     />
                   )}
 

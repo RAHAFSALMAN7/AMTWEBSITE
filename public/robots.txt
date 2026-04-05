@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Single-page app: prerender or edge rendering may still be required for some bots.
+Disallow: /api/
+Disallow: /admin/
+
+Sitemap: https://amt-arabia.net/sitemap.xml

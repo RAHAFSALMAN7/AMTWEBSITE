@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import OptimizedImage from "../components/OptimizedImage";
 import { sanity, urlFor } from "../sanityClient";
 import { localize } from "../utils/localize";
 
@@ -44,10 +45,13 @@ const Wireless: React.FC = () => {
 
       {/* HERO IMAGE */}
       <div className="relative flex justify-center mb-8 w-full max-w-4xl mx-auto">
-        <img
+        <OptimizedImage
           src={urlFor(data.heroImage).width(1200).url()}
-          alt={localize(data.pageTitle, lang)}
+          alt={`${localize(data.pageTitle, lang)} — enterprise wireless LAN coverage`}
           className="w-full rounded-lg"
+          width={1200}
+          height={675}
+          priority
         />
         <div className="absolute inset-0 bg-[#851A18]/30 rounded-lg" />
       </div>

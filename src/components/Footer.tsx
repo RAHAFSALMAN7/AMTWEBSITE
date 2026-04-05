@@ -3,6 +3,8 @@ import { Linkedin, Instagram, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
 import { localize } from "../utils/localize";
+import OptimizedImage from "./OptimizedImage";
+import { SOCIAL_LINKS } from "../seo/siteConfig";
 
 // 🔹 خريطة الأيقونات
 const iconMap: Record<string, any> = {
@@ -44,12 +46,7 @@ const Footer = () => {
     ? bottomLinksRaw.map((item) => localize(item, lang)).filter(Boolean)
     : [];
 
-  // 🔹 روابط التواصل الثابتة
-  const socialLinks: Record<string, string> = {
-    linkedin: "https://www.linkedin.com/company/amt-example", // عدّل حسب حسابك
-    instagram: "https://www.instagram.com/amt_arabia/",
-    x: "https://x.com/amt_arabia2009",
-  };
+  const socialLinks = SOCIAL_LINKS;
 
   return (
     <footer
@@ -60,7 +57,14 @@ const Footer = () => {
 
         {/* BRAND */}
         <div>
-          <img src="/amt1.png" alt="AMT Logo" className="w-56" />
+          <OptimizedImage
+            src="/amt1.png"
+            alt="AMT Advanced Micro Technologies wordmark logo on dark footer background"
+            className="w-56 h-auto"
+            width={224}
+            height={80}
+            loading="lazy"
+          />
         </div>
 
         {/* CONTACT */}

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { sanity, urlFor } from "../sanityClient";
 import { localize } from "../utils/localize";
+import OptimizedImage from "../components/OptimizedImage";
 
 const UnifiedCommunications: React.FC = () => {
   const [data, setData] = useState<any>(null);
@@ -66,10 +67,13 @@ const UnifiedCommunications: React.FC = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                   >
-                    <img
+                    <OptimizedImage
                       src={urlFor(img).width(1200).url()}
-                      alt={localize(section.title, lang)}
+                      alt={`${localize(section.title, lang)} — unified communications integration photo`}
                       className="w-full h-64 md:h-80 object-cover"
+                      width={1200}
+                      height={640}
+                      loading="lazy"
                     />
                   </motion.div>
                 ))}

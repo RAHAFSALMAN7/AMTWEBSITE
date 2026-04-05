@@ -54,9 +54,16 @@ const Hero = () => {
 
   if (!hero) {
     return (
-      <div style={{ color: "red", padding: 40 }}>
-        {t("common.heroNotLoaded")}
-      </div>
+      <header role="banner" aria-busy="true">
+        <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden px-6 md:px-20 bg-[#3a3a3c]">
+          <div className="animate-pulse max-w-xl w-full space-y-6">
+            <div className="h-4 bg-white/20 rounded w-2/3 mx-auto" />
+            <div className="h-14 bg-white/15 rounded w-full" />
+            <div className="h-4 bg-white/10 rounded w-1/2 mx-auto" />
+          </div>
+          <span className="sr-only">{t("common.loading")}</span>
+        </section>
+      </header>
     );
   }
 
@@ -86,6 +93,7 @@ const Hero = () => {
             muted
             loop
             playsInline
+            preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
             aria-hidden="true"
           />

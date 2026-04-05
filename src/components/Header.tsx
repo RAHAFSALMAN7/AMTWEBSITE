@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Logo from "../assets/LOGOAMT.png";
+import OptimizedImage from "./OptimizedImage";
 import {
   AppLocale,
   DEFAULT_LOCALE,
@@ -47,10 +48,13 @@ const Header = () => {
         {/* ===== LOGO ===== */}
         <div className="flex-shrink-0">
           <Link to={localizedPath("/")}>
-            <img
+            <OptimizedImage
               src={Logo}
-              alt="AMT Logo"
-              className="h-12 sm:h-16 object-contain"
+              alt="AMT — Advanced Micro Technologies corporate logo"
+              className="h-12 sm:h-16 w-auto object-contain"
+              width={180}
+              height={64}
+              priority
             />
           </Link>
         </div>

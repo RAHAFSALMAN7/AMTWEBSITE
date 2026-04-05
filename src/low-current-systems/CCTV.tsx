@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import OptimizedImage from "../components/OptimizedImage";
 
 const CCTV: React.FC = () => {
   const { t } = useTranslation();
@@ -31,21 +32,24 @@ const CCTV: React.FC = () => {
         className="flex justify-center mb-8"
         variants={itemVariants}
       >
-        <img
+        <OptimizedImage
           src="/images/CCTV_solutions.png"
-          alt="CCTV Solutions"
+          alt="CCTV and enterprise video surveillance solutions — AMT security integration"
           className="w-full max-w-4xl object-contain rounded-lg shadow-md"
+          width={896}
+          height={504}
+          loading="lazy"
         />
       </motion.div>
 
       {/* العنوان الرئيسي */}
-      <motion.h2
+      <motion.h1
         className="text-4xl md:text-5xl font-extrabold mb-6 text-center"
         style={{ color: "#851A18" }}
         variants={itemVariants}
       >
         {t("lowCurrent.cctv.title")}
-      </motion.h2>
+      </motion.h1>
 
       {/* وصف مختصر */}
       <motion.p

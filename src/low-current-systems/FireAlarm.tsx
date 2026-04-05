@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import OptimizedImage from "../components/OptimizedImage";
 
 const FireAlarm: React.FC = () => {
   const { t } = useTranslation();
@@ -16,23 +17,26 @@ const FireAlarm: React.FC = () => {
           transition={{ duration: 0.8 }}
         >
           <div className="bg-[#EBEBDF] p-6 rounded-full shadow-2xl w-80 h-80 flex items-center justify-center overflow-hidden">
-            <img
+            <OptimizedImage
               src="/images/num22.png"
-              alt="Fire Alarm"
+              alt="Fire alarm system diagram and detection hardware — AMT low-current solutions"
               className="w-full h-full object-contain"
+              width={320}
+              height={320}
+              loading="lazy"
             />
           </div>
         </motion.div>
 
         {/* Title */}
-        <motion.h2
+        <motion.h1
           className="text-4xl md:text-5xl font-extrabold mb-10 text-center text-[#EBEBDF]"
           initial={{ y: -30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
           {t("lowCurrent.fireAlarm.title")}
-        </motion.h2>
+        </motion.h1>
 
         {/* Description */}
         <motion.p

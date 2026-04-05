@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import OptimizedImage from "../components/OptimizedImage";
 
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 50 },
@@ -37,10 +38,13 @@ const AccessControl: React.FC = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <img
+          <OptimizedImage
             src="/images/num55.png"
-            alt="Access Control Systems"
+            alt="Physical access control and badge reader systems — AMT Lenel integration"
             className="w-full h-96 md:h-[500px] object-cover"
+            width={1200}
+            height={500}
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/10 flex items-center justify-center">
             <h1 className="text-4xl md:text-5xl font-extrabold text-[#EBEBDF] text-center px-6">

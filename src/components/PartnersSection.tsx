@@ -3,6 +3,7 @@ import { sanity } from "../sanityClient";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { localize } from "../utils/localize";
+import OptimizedImage from "./OptimizedImage";
 
 const PartnersSection: React.FC = () => {
   const [data, setData] = useState<any>(null);
@@ -69,10 +70,13 @@ const PartnersSection: React.FC = () => {
                 transition={{ delay: idx * 0.03 }}
                 className="flex items-center justify-center transition"
               >
-                <img
+                <OptimizedImage
                   src={partner.logo?.asset?.url}
-                  alt={partnerName}
-                  className="max-h-20 object-contain"
+                  alt={`${partnerName} — technology partner logo`}
+                  className="max-h-20 object-contain w-auto"
+                  width={160}
+                  height={80}
+                  loading="lazy"
                 />
               </motion.div>
             );

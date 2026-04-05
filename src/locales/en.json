@@ -295,5 +295,44 @@
     "block3": "Every cable, splice, and termination is installed using disciplined engineering practices to ensure compliance, performance, and long-term reliability.",
     "block4": "AMT delivers full turnkey OSP services including fiber and copper deployment, splicing, testing, documentation, and coordinated project execution.",
     "cta": "Discuss your OSP network requirements with AMT."
+  },
+  "seo": {
+    "topics": {
+      "title": "Enterprise connectivity, security, and smart collaboration",
+      "intro": "Advanced Micro Technologies (AMT) engineers ICT, low-current, audio-visual, and outside plant programs for organizations that need dependable digital infrastructure—from campus networks to unified communications and modern physical security.",
+      "h2_ict": "ICT foundations: data networks, UC, and hardened security",
+      "p_ict": "Strong routing, switching, wireless, voice, and security layers keep your teams online and your data protected. Explore how AMT designs, integrates, and supports these systems from design through operations.",
+      "link_data_network": "Data network solutions for resilient campus and WAN connectivity",
+      "link_uc": "Unified communications and collaboration integration",
+      "link_security": "Network security services including access control to apps and endpoints",
+      "h2_low_current": "Low-current systems: CCTV, access control, and life safety",
+      "p_low_current": "Physical security and life-safety platforms work best when video, access, and alerting share a coherent architecture. AMT delivers standards-aware integration so monitoring centers and field teams stay aligned.",
+      "link_cctv": "CCTV and smart video solutions with analytics-ready platforms",
+      "link_access": "Access control systems with open integration pathways",
+      "link_fire": "Fire alarm and detection for safer facilities",
+      "h2_digital": "Digital workspaces and smart contact paths for stakeholders",
+      "p_digital": "Modern enterprises need frictionless ways to reach specialists—whether scheduling a consultation, sharing project documents, or aligning scopes across sites. AMT focuses on practical handoffs between your business teams and our integration engineers.",
+      "link_contact": "Contact AMT to scope your next network, security, or AV rollout",
+      "h2_guides": "In-depth service guides (amt-arabia.net)",
+      "p_guides": "Short technical explainers map how we phrase delivery for CCTV, access, network infrastructure, and smart buildings—then connect to the same portfolios you will see on detailed solution pages.",
+      "link_svc_cctv": "Enterprise CCTV systems and IP video",
+      "link_svc_ac": "Access control and identity management",
+      "link_svc_net": "Network infrastructure and structured cabling",
+      "link_svc_smart": "Smart building solutions and OT/IT integration",
+      "link_svc_av": "Audio visual systems Saudi Arabia — corporate sound & collaboration"
+    },
+    "faq": {
+      "heading": "Frequently asked questions",
+      "q1": "What types of ICT projects does AMT deliver?",
+      "a1": "AMT designs and integrates data networks, wireless, unified communications, IP telephony, security-centric networking, and data center–related infrastructure for enterprises and campuses—aligned to your standards, vendors, and timelines.",
+      "q2": "Do you provide low-current and physical security solutions?",
+      "a2": "Yes. AMT implements CCTV and VMS ecosystems, access control platforms, fire alarm and detection, and synchronized timing systems, with an emphasis on maintainable architectures and vendor-neutral integration where appropriate.",
+      "q3": "Can AMT support audio-visual and meeting-room deployments?",
+      "a3": "AMT delivers meeting-room AV, auditoriums and theaters, IPTV and digital signage, interactive displays, and structured video-wall mounting—typically integrated with collaboration platforms such as Microsoft Teams in hybrid environments.",
+      "q4": "Which regions does AMT serve?",
+      "a4": "AMT supports customers across the Kingdom of Saudi Arabia and the broader region, with remote coordination available for multinational programs that require consistent engineering documentation and delivery discipline.",
+      "q5": "How do I request a consultation or proposal?",
+      "a5": "Use the contact page to share your goals, facility locations, timelines, and any RFP materials. The AMT team responds with next steps, clarification questions, and practical scoping guidance for your ICT, security, AV, or OSP initiative."
+    }
   }
 }

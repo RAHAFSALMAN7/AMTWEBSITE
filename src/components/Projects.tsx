@@ -111,17 +111,20 @@ const Projects = () => {
           <span className="text-[#EB2427] font-semibold">
             {t("projects.signatureProjects")}
           </span>
-          <h2 className="text-5xl text-[#941B20] font-bold mt-4">
+          <h1 className="text-5xl text-[#941B20] font-bold mt-4">
             {t("projects.transformativeTitle")}
-          </h2>
+          </h1>
         </div>
 
         <div className="bg-white rounded-3xl overflow-hidden border border-[#941B20]">
           <div className="relative h-96 overflow-hidden">
-            <img
+            <OptimizedImage
               src={projects[activeProject].image}
-              alt={projects[activeProject].title}
+              alt={`${projects[activeProject].title} — featured project photography for AMT portfolio`}
               className="w-full h-full object-cover"
+              width={1200}
+              height={600}
+              priority
             />
 
             <div className="absolute bottom-6 left-6 text-white">

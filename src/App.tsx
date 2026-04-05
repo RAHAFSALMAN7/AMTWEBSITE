@@ -1,61 +1,65 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import React, { lazy, Suspense, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate, useParams, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
-import Header from './components/Header';
-import PartnersSection from './components/PartnersSection';
-import Hero from './components/Hero';
-import About from './components/About';
-import Solutions from './components/Solutions';
-import SolutionDetails from './components/SolutionDetails';
-import WhyChooseUs from './components/WhyChooseUs';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import ClientsSection from './components/ClientsSection';
-import LatestNews from './components/LatestNews';
-import NewsDetails from './pages/NewsDetails';
-import WhatsAppFloating from './components/WhatsAppFloating';
-
-// ICT
-import DataNetwork from './ict/DataNetwork';
-import UnifiedCommunications from './ict/UnifiedCommunications';
-import Wireless from './ict/Wireless';
-import DataCenter from './ict/DataCenter';
-import NetworkSecurity from './ict/NetworkSecurity';
-import IpTelephony from './ict/IpTelephony';
-
-// Low Current
-import FireAlarm from './low-current-systems/FireAlarm';
-import CCTV from './low-current-systems/CCTV';
-import AccessControl from './low-current-systems/AccessControl';
-import MasterClock from './low-current-systems/MasterClock';
-
-// AV
-import MeetingConferenceRoomsAV from './Audio_Visual_Systems/MeetingConferenceRoomsAV';
-import AuditoriumsTheaters from './Audio_Visual_Systems/AuditoriumsTheaters';
-import IPTVDigitalSignage from './Audio_Visual_Systems/IPTVDigitalSignage';
-import VideoWallMounting from './Audio_Visual_Systems/VideoWallMounting';
-import InteractiveScreens from './Audio_Visual_Systems/InteractiveScreens';
-
-// OSP
-import OSP_Solutions from './OSP_Solutions/OSP_Solutions';
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import WhatsAppFloating from "./components/WhatsAppFloating";
+import RouteSeo from "./seo/RouteSeo";
+import Analytics from "./components/Analytics";
 import {
   DEFAULT_LOCALE,
   getLocaleDirection,
   isSupportedLocale,
   withLocale,
-} from './utils/localeRouting';
+} from "./utils/localeRouting";
 
-const HomePage: React.FC = () => (
-  <>
-    <Hero />
-    <Solutions />
-    <WhyChooseUs />
-    <PartnersSection />
-    <ClientsSection />
-    <LatestNews />
-  </>
+const HomePage = lazy(() => import("./pages/HomePage"));
+const About = lazy(() => import("./components/About"));
+const Solutions = lazy(() => import("./components/Solutions"));
+const SolutionDetails = lazy(() => import("./components/SolutionDetails"));
+const WhyChooseUs = lazy(() => import("./components/WhyChooseUs"));
+const PartnersSection = lazy(() => import("./components/PartnersSection"));
+const ClientsSection = lazy(() => import("./components/ClientsSection"));
+const LatestNews = lazy(() => import("./components/LatestNews"));
+const Projects = lazy(() => import("./components/Projects"));
+const Contact = lazy(() => import("./components/Contact"));
+const NewsDetails = lazy(() => import("./pages/NewsDetails"));
+
+const DataNetwork = lazy(() => import("./ict/DataNetwork"));
+const UnifiedCommunications = lazy(() => import("./ict/UnifiedCommunications"));
+const Wireless = lazy(() => import("./ict/Wireless"));
+const DataCenter = lazy(() => import("./ict/DataCenter"));
+const NetworkSecurity = lazy(() => import("./ict/NetworkSecurity"));
+const IpTelephony = lazy(() => import("./ict/IpTelephony"));
+
+const FireAlarm = lazy(() => import("./low-current-systems/FireAlarm"));
+const CCTV = lazy(() => import("./low-current-systems/CCTV"));
+const AccessControl = lazy(() => import("./low-current-systems/AccessControl"));
+const MasterClock = lazy(() => import("./low-current-systems/MasterClock"));
+
+const MeetingConferenceRoomsAV = lazy(() => import("./Audio_Visual_Systems/MeetingConferenceRoomsAV"));
+const AuditoriumsTheaters = lazy(() => import("./Audio_Visual_Systems/AuditoriumsTheaters"));
+const IPTVDigitalSignage = lazy(() => import("./Audio_Visual_Systems/IPTVDigitalSignage"));
+const VideoWallMounting = lazy(() => import("./Audio_Visual_Systems/VideoWallMounting"));
+const InteractiveScreens = lazy(() => import("./Audio_Visual_Systems/InteractiveScreens"));
+
+const OSP_Solutions = lazy(() => import("./OSP_Solutions/OSP_Solutions"));
+
+const CctvSystemsPage = lazy(() => import("./pages/services/CctvSystemsPage"));
+const AccessControlServicePage = lazy(() => import("./pages/services/AccessControlServicePage"));
+const NetworkInfrastructurePage = lazy(() => import("./pages/services/NetworkInfrastructurePage"));
+const SmartBuildingSolutionsPage = lazy(() => import("./pages/services/SmartBuildingSolutionsPage"));
+const AudioVisualSystemsPage = lazy(() => import("./pages/services/AudioVisualSystemsPage"));
+
+const RouteFallback = () => (
+  <div
+    className="min-h-[50vh] w-full flex items-center justify-center text-gray-400 text-sm"
+    role="status"
+    aria-live="polite"
+  >
+    Loading…
+  </div>
 );
 
 const LocaleLayout: React.FC = () => {
@@ -79,42 +83,51 @@ const LocaleLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white text-dark-blue overflow-x-hidden font-body">
+      <RouteSeo />
+      <Analytics />
+
       <Header />
 
-      <Routes>
-        <Route index element={<HomePage />} />
+      <Suspense fallback={<RouteFallback />}>
+        <Routes>
+          <Route index element={<HomePage />} />
 
-        <Route path="about" element={<About />} />
-        <Route path="services" element={<Solutions />} />
-        <Route path="solution-details" element={<SolutionDetails />} />
-        <Route path="projects" element={<Projects />} />
-        <Route path="contact" element={<Contact />} />
+          <Route path="about" element={<About />} />
+          <Route path="services/cctv-systems" element={<CctvSystemsPage />} />
+          <Route path="services/access-control" element={<AccessControlServicePage />} />
+          <Route path="services/network-infrastructure" element={<NetworkInfrastructurePage />} />
+          <Route path="services/smart-building-solutions" element={<SmartBuildingSolutionsPage />} />
+          <Route path="services/audio-visual-systems" element={<AudioVisualSystemsPage />} />
+          <Route path="services" element={<Solutions standalone />} />
+          <Route path="solution-details" element={<SolutionDetails />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="contact" element={<Contact />} />
 
-        <Route path="news/:slug" element={<NewsDetails />} />
+          <Route path="news/:slug" element={<NewsDetails />} />
 
-        <Route path="ict/data-network" element={<DataNetwork />} />
-        <Route path="ict/unified-communications" element={<UnifiedCommunications />} />
-        <Route path="ict/wireless" element={<Wireless />} />
-        <Route path="ict/data-center" element={<DataCenter />} />
-        <Route path="ict/network-security" element={<NetworkSecurity />} />
-        <Route path="ict/ip-telephony" element={<IpTelephony />} />
+          <Route path="ict/data-network" element={<DataNetwork />} />
+          <Route path="ict/unified-communications" element={<UnifiedCommunications />} />
+          <Route path="ict/wireless" element={<Wireless />} />
+          <Route path="ict/data-center" element={<DataCenter />} />
+          <Route path="ict/network-security" element={<NetworkSecurity />} />
+          <Route path="ict/ip-telephony" element={<IpTelephony />} />
 
-        <Route path="low-current/fire-alarm" element={<FireAlarm />} />
-        <Route path="low-current/cctv" element={<CCTV />} />
-        <Route path="low-current/access-control" element={<AccessControl />} />
-        <Route path="low-current/master-clock" element={<MasterClock />} />
+          <Route path="low-current/fire-alarm" element={<FireAlarm />} />
+          <Route path="low-current/cctv" element={<CCTV />} />
+          <Route path="low-current/access-control" element={<AccessControl />} />
+          <Route path="low-current/master-clock" element={<MasterClock />} />
 
-        <Route path="av/meeting-rooms" element={<MeetingConferenceRoomsAV />} />
-        <Route path="av/auditoriums" element={<AuditoriumsTheaters />} />
-        <Route path="av/iptv" element={<IPTVDigitalSignage />} />
-        <Route path="av/video-wall" element={<VideoWallMounting />} />
-        <Route path="av/interactive-screens" element={<InteractiveScreens />} />
+          <Route path="av/meeting-rooms" element={<MeetingConferenceRoomsAV />} />
+          <Route path="av/auditoriums" element={<AuditoriumsTheaters />} />
+          <Route path="av/iptv" element={<IPTVDigitalSignage />} />
+          <Route path="av/video-wall" element={<VideoWallMounting />} />
+          <Route path="av/interactive-screens" element={<InteractiveScreens />} />
 
-        <Route path="osp-solutions" element={<OSP_Solutions />} />
-        <Route path="*" element={<Navigate to={withLocale("/", activeLocale)} replace />} />
-      </Routes>
+          <Route path="osp-solutions" element={<OSP_Solutions />} />
+          <Route path="*" element={<Navigate to={withLocale("/", activeLocale)} replace />} />
+        </Routes>
+      </Suspense>
 
-      {/* زر واتساب ثابت بكل الصفحات */}
       <WhatsAppFloating />
 
       <Footer />

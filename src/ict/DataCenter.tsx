@@ -5,6 +5,7 @@ import CountUp from "react-countup";
 import { useTranslation } from "react-i18next";
 import { sanity } from "../sanityClient";
 import { localize } from "../utils/localize";
+import OptimizedImage from "../components/OptimizedImage";
 
 /* ===== ICON MAP ===== */
 const ICONS: Record<string, JSX.Element> = {
@@ -81,15 +82,21 @@ const DataCenter: React.FC = () => {
         </motion.p>
 
         {data.heroImage?.asset?.url && (
-          <motion.img
-            src={data.heroImage.asset.url}
-            alt={localize(data.title, lang)}
-            loading="lazy"
+          <motion.div
             initial={shouldReduceMotion ? {} : { scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="mt-10 rounded-lg w-full max-w-2xl object-cover"
-          />
+            className="mt-10 rounded-lg w-full max-w-2xl"
+          >
+            <OptimizedImage
+              src={data.heroImage.asset.url}
+              alt={`${localize(data.title, lang)} — data center infrastructure photography`}
+              className="w-full max-w-2xl object-cover rounded-lg"
+              width={1024}
+              height={576}
+              priority
+            />
+          </motion.div>
         )}
       </header>
 
@@ -134,11 +141,13 @@ const DataCenter: React.FC = () => {
             </p>
 
             {f.image?.asset?.url && (
-              <img
+              <OptimizedImage
                 src={f.image.asset.url}
                 alt={localize(f.alt, lang)}
                 loading="lazy"
                 className="mt-6 w-full h-48 object-contain"
+                width={400}
+                height={192}
               />
             )}
           </motion.article>

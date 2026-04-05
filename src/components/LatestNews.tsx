@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { sanity, urlFor } from '../sanityClient';
 import { localize } from '../utils/localize';
 import { AppLocale, DEFAULT_LOCALE, isSupportedLocale, withLocale } from '../utils/localeRouting';
+import OptimizedImage from './OptimizedImage';
 
 interface NewsItem {
   title: any;
@@ -111,13 +112,16 @@ const LatestNews: React.FC = () => {
               >
                 {/* Image */}
                 <div className="relative w-full md:w-1/2 group">
-                  <img
+                  <OptimizedImage
                     src={urlFor(newsData[currentIndex].image)
                       .width(900)
                       .height(600)
                       .url()}
-                    alt={localize(newsData[currentIndex].title, activeLocale)}
+                    alt={`${localize(newsData[currentIndex].title, activeLocale)} — AMT latest news cover image`}
                     className="w-full h-64 md:h-full object-cover"
+                    width={900}
+                    height={600}
+                    priority
                   />
                   <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition">
                     <div className="flex items-center justify-center h-full">

@@ -132,13 +132,13 @@ const Contact: React.FC = () => {
           {/* ===== TEXT CONTENT ===== */}
           <div className="text-white">
 
-            <motion.h2
+            <motion.h1
               className="text-4xl font-extrabold mb-2"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
             >
               {localize(data.companyName, lang)}
-            </motion.h2>
+            </motion.h1>
 
             {data.groupLine && (
               <motion.p
@@ -150,14 +150,14 @@ const Contact: React.FC = () => {
               </motion.p>
             )}
 
-            <motion.h3
+            <motion.h2
               className="text-[#B3261E] font-bold text-xl mb-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
               {localize(data.slogan, lang)}
-            </motion.h3>
+            </motion.h2>
 
             {data.description && (
               <p className="text-white/90 max-w-lg">
