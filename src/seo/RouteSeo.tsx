@@ -12,7 +12,6 @@ import { getDefaultOgImagePath, getPageMeta } from "./routeMeta";
 import { absoluteUrl, getSiteUrl, ORG_NAME, SITE_LOGO_PATH } from "./siteConfig";
 import {
   buildBreadcrumbJsonLd,
-  faqJsonLd,
   organizationJsonLd,
   serializeJsonLd,
   serviceJsonLd,
@@ -31,14 +30,6 @@ function hrefForLocale(pathWithoutLocale: string, locale: AppLocale): string {
   return `${base}/${locale}${suffix}`;
 }
 
-const FAQ_KEYS = [
-  { q: "seo.faq.q1", a: "seo.faq.a1" },
-  { q: "seo.faq.q2", a: "seo.faq.a2" },
-  { q: "seo.faq.q3", a: "seo.faq.a3" },
-  { q: "seo.faq.q4", a: "seo.faq.a4" },
-  { q: "seo.faq.q5", a: "seo.faq.a5" },
-] as const;
-
 const RouteSeo: FC = () => {
   const location = useLocation();
   const { t } = useTranslation();
@@ -55,12 +46,6 @@ const RouteSeo: FC = () => {
   const ogImage = absoluteUrl(getDefaultOgImagePath());
   const logoAbs = absoluteUrl(SITE_LOGO_PATH);
 
-  const isHome = normalizedPath === "/";
-  const faqItems = isHome
-    ? FAQ_KEYS.map(({ q, a }) => ({ question: t(q), answer: t(a) }))
-    : [];
-  const faqLd = isHome ? faqJsonLd(faqItems) : null;
-
   const orgLd = organizationJsonLd();
   const siteLd = websiteJsonLd(locale);
   const breadLd =
@@ -73,7 +58,7 @@ const RouteSeo: FC = () => {
 
   const gsc = import.meta.env.VITE_GSC_VERIFICATION?.trim();
 
-  const ldBlocks = [orgLd, siteLd, breadLd, svcLd, faqLd].filter(Boolean) as JsonValue[];
+  const ldBlocks = [orgLd, siteLd, breadLd, svcLd].filter(Boolean) as JsonValue[];
 
   return (
     <Helmet>

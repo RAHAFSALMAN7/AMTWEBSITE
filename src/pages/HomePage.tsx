@@ -4,8 +4,6 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import PartnersSection from "../components/PartnersSection";
 import ClientsSection from "../components/ClientsSection";
 import LatestNews from "../components/LatestNews";
-import SeoTopicsSection from "../components/SeoTopicsSection";
-import HomeFaqSection from "../components/HomeFaqSection";
 
 /**
  * Home route bundles all primary sections for lazy-loading with the page.
@@ -18,8 +16,6 @@ const HomePage = () => (
     <PartnersSection />
     <ClientsSection />
     <LatestNews />
-    <SeoTopicsSection />
-    <HomeFaqSection />
   </>
 );
 
