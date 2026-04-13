@@ -5,6 +5,7 @@ import { sanity } from "../sanityClient";
 import { localize } from "../utils/localize";
 import OptimizedImage from "./OptimizedImage";
 import { SOCIAL_LINKS } from "../seo/siteConfig";
+import Logo from "../assets/LOGOAMT.png";
 
 // 🔹 خريطة الأيقونات
 const iconMap: Record<string, any> = {
@@ -58,7 +59,7 @@ const Footer = () => {
         {/* BRAND */}
         <div>
           <OptimizedImage
-            src="/amt1.png"
+            src={Logo}
             alt="AMT Advanced Micro Technologies wordmark logo on dark footer background"
             className="w-56 h-auto"
             width={224}
@@ -111,6 +112,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-white hover:text-white/80 transition"
+                  aria-label={`AMT ${key}`}
                 >
                   <Icon className="w-5 h-5" />
                 </a>
@@ -123,6 +125,7 @@ const Footer = () => {
         <div>
           <iframe
             src={data.mapUrl}
+            title="AMT office location map"
             width="100%"
             height="300"
             style={{ border: 0, borderRadius: 12 }}

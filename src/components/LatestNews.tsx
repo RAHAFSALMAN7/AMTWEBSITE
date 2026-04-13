@@ -92,6 +92,8 @@ const LatestNews: React.FC = () => {
           {/* Left Arrow */}
           <button
             onClick={prevNews}
+            type="button"
+            aria-label="Previous news slide"
             className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 hover:bg-white shadow left-0 sm:-left-4 md:-left-12 lg:-left-16"
           >
             <ChevronLeft size={28} className="text-black" />
@@ -146,6 +148,8 @@ const LatestNews: React.FC = () => {
           {/* Right Arrow */}
           <button
             onClick={nextNews}
+            type="button"
+            aria-label="Next news slide"
             className="absolute top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 hover:bg-white shadow right-0 sm:-right-4 md:-right-12 lg:-right-16"
           >
             <ChevronRight size={28} className="text-black" />
@@ -155,9 +159,11 @@ const LatestNews: React.FC = () => {
         {/* Dots */}
         <div className="flex justify-center mt-8 space-x-2">
           {newsData.map((_, index) => (
-            <span
+            <button
+              type="button"
               key={index}
               onClick={() => setCurrentIndex(index)}
+              aria-label={`Go to news slide ${index + 1}`}
               className={`w-3 h-3 rounded-full cursor-pointer transition ${index === currentIndex
                   ? 'bg-white'
                   : 'bg-white/40'

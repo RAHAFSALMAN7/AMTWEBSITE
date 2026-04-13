@@ -93,7 +93,8 @@ const Hero = () => {
             muted
             loop
             playsInline
-            preload="auto"
+            preload="metadata"
+            poster="/og-image.jpg"
             className="absolute inset-0 w-full h-full object-cover"
             aria-hidden="true"
           />

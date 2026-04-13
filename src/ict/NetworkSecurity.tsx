@@ -1,9 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link, useParams } from "react-router-dom";
+import OptimizedImage from "../components/OptimizedImage";
+import { AppLocale, DEFAULT_LOCALE, isSupportedLocale, withLocale } from "../utils/localeRouting";
 
 const SecurityPage: React.FC = () => {
   const { t } = useTranslation();
+  const { locale } = useParams();
+  const activeLocale: AppLocale = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
 
   const features = [
     {
@@ -52,13 +57,13 @@ const SecurityPage: React.FC = () => {
         >
           {t("ict.security.description")}
         </motion.p>
-        <motion.img
+        <OptimizedImage
           src="/images/security.png"
-          alt="Security"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          alt="Enterprise network security architecture diagram with layered controls"
           className="mt-12 w-full max-w-md object-contain rounded-xl shadow-lg"
+          width={640}
+          height={420}
+          loading="lazy"
         />
       </div>
 
@@ -90,14 +95,33 @@ const SecurityPage: React.FC = () => {
         >
           {t("ict.security.cta.title")}
         </motion.h2>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-white text-[#851A18] font-bold py-3 px-8 rounded-full text-lg"
-        >
-          {t("ict.security.cta.button")}
-        </motion.button>
+        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+          <Link
+            to={withLocale("/contact", activeLocale)}
+            className="inline-block bg-white text-[#851A18] font-bold py-3 px-8 rounded-full text-lg"
+            aria-label="Contact AMT for network security services"
+          >
+            {t("ict.security.cta.button")}
+          </Link>
+        </motion.div>
       </div>
+
+      <section className="py-14 px-6 text-center bg-white border-t border-gray-100" aria-label="Related security links">
+        <h3 className="text-2xl font-bold text-[#851A18] mb-5">
+          {activeLocale === "ar" ? "روابط ذات صلة" : "Related links"}
+        </h3>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/low-current/access-control", activeLocale)}>
+            {activeLocale === "ar" ? "التحكم بالدخول" : "Access Control"}
+          </Link>
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/ict/data-network", activeLocale)}>
+            {activeLocale === "ar" ? "شبكات البيانات" : "Data Network"}
+          </Link>
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/services/access-control", activeLocale)}>
+            {activeLocale === "ar" ? "خدمة التحكم بالدخول" : "Access Control Service"}
+          </Link>
+        </div>
+      </section>
     </section>
   );
 };

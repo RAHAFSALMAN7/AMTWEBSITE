@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link, useParams } from "react-router-dom";
 import { sanity, urlFor } from "../sanityClient";
 import { localize } from "../utils/localize";
 import OptimizedImage from "../components/OptimizedImage";
+import { AppLocale, DEFAULT_LOCALE, isSupportedLocale, withLocale } from "../utils/localeRouting";
 
 interface Section {
   title: string;
@@ -22,6 +24,8 @@ interface DataNetworkData {
 const DataNetwork: React.FC = () => {
   const [data, setData] = useState<DataNetworkData | null>(null);
   const { t, i18n } = useTranslation();
+  const { locale } = useParams();
+  const activeLocale: AppLocale = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
   const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   /* ===== FETCH FROM SANITY ===== */
@@ -137,6 +141,23 @@ const DataNetwork: React.FC = () => {
           </motion.div>
         ))}
       </div>
+
+      <section className="mt-20 text-center border-t border-gray-200 pt-10" aria-label="Related data network links">
+        <h2 className="text-2xl font-bold text-[#851A18] mb-4">
+          {activeLocale === "ar" ? "روابط ذات صلة" : "Related links"}
+        </h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/ict/network-security", activeLocale)}>
+            {activeLocale === "ar" ? "أمن الشبكات" : "Network Security"}
+          </Link>
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/ict/wireless", activeLocale)}>
+            {activeLocale === "ar" ? "الشبكات اللاسلكية" : "Wireless"}
+          </Link>
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/services/network-infrastructure", activeLocale)}>
+            {activeLocale === "ar" ? "خدمة البنية التحتية للشبكات" : "Network Infrastructure Service"}
+          </Link>
+        </div>
+      </section>
     </section>
   );
 };

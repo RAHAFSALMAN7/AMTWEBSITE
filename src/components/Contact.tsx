@@ -89,6 +89,7 @@ const Contact: React.FC = () => {
                 <input
                   name="company"
                   placeholder={t("contact.companyName")}
+                  aria-label={t("contact.companyName")}
                   value={formData.company}
                   onChange={handleChange}
                   className="w-full p-4 border rounded"
@@ -96,6 +97,7 @@ const Contact: React.FC = () => {
                 <input
                   name="email"
                   placeholder={t("contact.email")}
+                  aria-label={t("contact.email")}
                   value={formData.email}
                   onChange={handleChange}
                   className="w-full p-4 border rounded"
@@ -103,6 +105,7 @@ const Contact: React.FC = () => {
                 <input
                   name="subject"
                   placeholder={t("contact.subject")}
+                  aria-label={t("contact.subject")}
                   value={formData.subject}
                   onChange={handleChange}
                   className="w-full p-4 border rounded"
@@ -110,6 +113,7 @@ const Contact: React.FC = () => {
                 <input
                   name="budget"
                   placeholder={t("contact.budget")}
+                  aria-label={t("contact.budget")}
                   value={formData.budget}
                   onChange={handleChange}
                   className="w-full p-4 border rounded"
@@ -117,12 +121,13 @@ const Contact: React.FC = () => {
                 <textarea
                   name="message"
                   placeholder={t("contact.message")}
+                  aria-label={t("contact.message")}
                   value={formData.message}
                   onChange={handleChange}
                   className="w-full p-4 border rounded h-36"
                 />
 
-                <button className="bg-[#B3261E] hover:bg-[#8f1f19] text-white px-8 py-3 rounded font-semibold transition">
+                <button type="submit" className="bg-[#B3261E] hover:bg-[#8f1f19] text-white px-8 py-3 rounded font-semibold transition">
                   {t("common.sendMessage")}
                 </button>
               </form>
@@ -173,6 +178,7 @@ const Contact: React.FC = () => {
       {data.mapEmbedUrl && (
         <iframe
           src={data.mapEmbedUrl}
+          title="AMT contact location map"
           className="w-full h-[500px] border-0 relative z-10"
           loading="lazy"
         />

@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { Link, useParams } from "react-router-dom";
 import { sanity, urlFor } from "../sanityClient";
 import { localize } from "../utils/localize";
 import OptimizedImage from "../components/OptimizedImage";
+import { AppLocale, DEFAULT_LOCALE, isSupportedLocale, withLocale } from "../utils/localeRouting";
 
 const UnifiedCommunications: React.FC = () => {
   const [data, setData] = useState<any>(null);
   const { i18n } = useTranslation();
+  const { locale } = useParams();
+  const activeLocale: AppLocale = isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
   const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   useEffect(() => {
@@ -82,6 +86,23 @@ const UnifiedCommunications: React.FC = () => {
           </motion.div>
         ))}
       </div>
+
+      <section className="max-w-6xl mx-auto pt-4 border-t border-gray-200" aria-label="Related unified communications links">
+        <h2 className="text-2xl font-bold text-[#851A18] mb-4 text-center">
+          {activeLocale === "ar" ? "روابط ذات صلة" : "Related links"}
+        </h2>
+        <div className="flex flex-wrap justify-center gap-4">
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/av/meeting-rooms", activeLocale)}>
+            {activeLocale === "ar" ? "غرف الاجتماعات" : "Meeting Rooms AV"}
+          </Link>
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/ict/ip-telephony", activeLocale)}>
+            {activeLocale === "ar" ? "هاتفية IP" : "IP Telephony"}
+          </Link>
+          <Link className="text-[#851A18] hover:underline" to={withLocale("/contact", activeLocale)}>
+            {activeLocale === "ar" ? "اطلب استشارة" : "Request a consultation"}
+          </Link>
+        </div>
+      </section>
     </section>
   );
 };

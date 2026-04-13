@@ -172,9 +172,9 @@ export default function AboutUsPage() {
                     />
                   )}
 
-                  <h4 className="text-lg font-bold mb-3 text-[#6B2C32]">
+                  <h3 className="text-lg font-bold mb-3 text-[#6B2C32]">
                     {localize(value.title, lang)}
-                  </h4>
+                  </h3>
 
                   <p className="text-sm leading-relaxed">
                     {localize(value.text, lang)}

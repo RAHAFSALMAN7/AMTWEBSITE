@@ -64,12 +64,12 @@ const CCTV: React.FC = () => {
         className="bg-white p-6 rounded-lg shadow-md mb-8"
         variants={itemVariants}
       >
-        <h3
+        <h2
           className="text-2xl font-semibold mb-4 text-center"
           style={{ color: "#851A18" }}
         >
           {t("lowCurrent.cctv.deployment")}
-        </h3>
+        </h2>
         <ul className="list-disc list-inside text-gray-700 text-lg space-y-3">
           <li>{t("lowCurrent.cctv.deploymentPoints.point1")}</li>
           <li>{t("lowCurrent.cctv.deploymentPoints.point2")}</li>
@@ -83,12 +83,12 @@ const CCTV: React.FC = () => {
         className="bg-white p-6 rounded-lg shadow-md mb-8"
         variants={itemVariants}
       >
-        <h3
+        <h2
           className="text-2xl font-semibold mb-4 text-center"
           style={{ color: "#851A18" }}
         >
           {t("lowCurrent.cctv.cloudTitle")}
-        </h3>
+        </h2>
         <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
           {t("lowCurrent.cctv.cloudDesc")}
         </p>
@@ -99,12 +99,12 @@ const CCTV: React.FC = () => {
         className="bg-white p-6 rounded-lg shadow-md"
         variants={itemVariants}
       >
-        <h3
+        <h2
           className="text-2xl font-bold mb-6 text-center"
           style={{ color: "#851A18" }}
         >
           {t("lowCurrent.cctv.vmsTitle")}
-        </h3>
+        </h2>
         <p className="text-gray-700 text-lg md:text-xl leading-relaxed space-y-4">
           {t("lowCurrent.cctv.vmsDesc")}
         </p>

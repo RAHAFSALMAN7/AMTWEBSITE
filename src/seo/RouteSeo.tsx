@@ -9,7 +9,7 @@ import {
   stripLocalePrefix,
 } from "../utils/localeRouting";
 import { getDefaultOgImagePath, getPageMeta } from "./routeMeta";
-import { absoluteUrl, getSiteUrl, ORG_NAME, SITE_LOGO_PATH } from "./siteConfig";
+import { absoluteUrl, getSiteUrl, ORG_NAME } from "./siteConfig";
 import {
   buildBreadcrumbJsonLd,
   organizationJsonLd,
@@ -44,7 +44,6 @@ const RouteSeo: FC = () => {
   const meta = getPageMeta(normalizedPath, locale);
   const canonical = absoluteUrl(location.pathname);
   const ogImage = absoluteUrl(getDefaultOgImagePath());
-  const logoAbs = absoluteUrl(SITE_LOGO_PATH);
 
   const orgLd = organizationJsonLd();
   const siteLd = websiteJsonLd(locale);
@@ -86,8 +85,6 @@ const RouteSeo: FC = () => {
       <link rel="alternate" hrefLang="en" href={enUrl} />
       <link rel="alternate" hrefLang="ar" href={arUrl} />
       <link rel="alternate" hrefLang="x-default" href={xDefault} />
-
-      <link rel="preload" as="image" href={logoAbs} />
 
       {gsc ? <meta name="google-site-verification" content={gsc} /> : null}
 

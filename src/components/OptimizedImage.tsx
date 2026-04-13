@@ -8,6 +8,17 @@ export type OptimizedImageProps = Omit<
   priority?: boolean;
 };
 
+function isSanityCdnUrl(src: string): boolean {
+  return src.includes("cdn.sanity.io/images/");
+}
+
+function withQualityParams(src: string): string {
+  if (!isSanityCdnUrl(src)) return src;
+  const hasQuery = src.includes("?");
+  const joiner = hasQuery ? "&" : "?";
+  return `${src}${joiner}auto=format&q=75`;
+}
+
 /**
  * Image helper for CLS + LCP: explicit dimensions when possible, lazy by default.
  * (Vite/React SPA — use this instead of raw &lt;img&gt; where practical.)
@@ -17,14 +28,17 @@ export function OptimizedImage({
   decoding = "async",
   loading,
   alt,
+  src,
   ...rest
 }: OptimizedImageProps) {
+  const normalizedSrc = typeof src === "string" ? withQualityParams(src) : src;
   return (
     <img
       alt={alt ?? ""}
       loading={priority ? "eager" : loading ?? "lazy"}
       decoding={decoding}
       fetchPriority={priority ? "high" : undefined}
+      src={normalizedSrc}
       {...rest}
     />
   );

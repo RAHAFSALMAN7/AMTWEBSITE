@@ -6,7 +6,8 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { preview } from "vite";
+import { spawn } from "child_process";
+import http from "http";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -60,7 +61,12 @@ function pathsToRender() {
 }
 
 async function main() {
+  const isProductionBuild =
+    process.env.NODE_ENV === "production" || process.env.CI === "true";
   if (process.env.SKIP_PRERENDER === "1") {
+    if (isProductionBuild) {
+      throw new Error("SKIP_PRERENDER=1 is not allowed in production/CI builds.");
+    }
     console.log("[prerender] SKIP_PRERENDER=1 — not running");
     return;
   }
@@ -69,27 +75,25 @@ async function main() {
   try {
     ({ chromium } = await import("playwright"));
   } catch {
-    console.warn(
-      "[prerender] Skipped (optional): npm i && npx playwright install chromium"
+    throw new Error(
+      "Playwright not installed. Install with: npm i -D playwright && npx playwright install chromium"
     );
-    return;
   }
 
   if (!fs.existsSync(dist)) {
     throw new Error("dist/ missing — run vite build first");
   }
 
-  const server = await preview({
-    root,
-    preview: {
-      port: 4173,
-      strictPort: true,
-    },
+  const host = "localhost";
+  const port = 4173;
+  const base = `http://${host}:${port}`;
+  const viteCli = path.join(root, "node_modules", "vite", "bin", "vite.js");
+  const previewProc = spawn(process.execPath, [viteCli, "preview", "--port", String(port), "--strictPort"], {
+    cwd: root,
+    stdio: "ignore",
   });
-  await server.listen();
 
-  const host = "127.0.0.1";
-  const base = `http://${host}:4173`;
+  await waitForServer(base, 60_000);
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage();
 
@@ -97,7 +101,7 @@ async function main() {
     for (const route of pathsToRender()) {
       const url = `${base}${route}`;
       await page.goto(url, { waitUntil: "networkidle", timeout: 180_000 });
-      await page.waitForSelector("#root", { timeout: 60_000 });
+      await page.waitForTimeout(800);
       const html = await page.content();
       const rel = route.replace(/^\//, "");
       const outFile = path.join(dist, rel, "index.html");
@@ -107,11 +111,31 @@ async function main() {
     }
   } finally {
     await browser.close();
-    await server.close();
+    previewProc.kill();
   }
 }
 
+function waitForServer(baseUrl, timeoutMs) {
+  const start = Date.now();
+  return new Promise((resolve, reject) => {
+    const tick = () => {
+      const req = http.get(baseUrl, (res) => {
+        res.resume();
+        resolve();
+      });
+      req.on("error", () => {
+        if (Date.now() - start > timeoutMs) {
+          reject(new Error(`Timed out waiting for preview server at ${baseUrl}`));
+          return;
+        }
+        setTimeout(tick, 400);
+      });
+    };
+    tick();
+  });
+}
+
 main().catch((err) => {
-  console.warn("[prerender] skipped (build still succeeded):", err?.message || err);
-  process.exit(0);
+  console.error("[prerender] failed:", err?.message || err);
+  process.exit(1);
 });

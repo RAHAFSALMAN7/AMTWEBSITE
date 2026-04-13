@@ -1,386 +1,542 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://amt-arabia.net/en</loc>
-    <lastmod>2026-04-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://amt-arabia.net/en/about</loc>
-    <lastmod>2026-04-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/about" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amt-arabia.net/en/services</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/services/cctv-systems</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/services/access-control</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/services/network-infrastructure</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/services/smart-building-solutions</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/services/audio-visual-systems</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/solution-details</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/projects</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/contact</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/osp-solutions</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/ict/data-network</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/ict/unified-communications</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/ict/wireless</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/ict/data-center</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/ict/network-security</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/ict/ip-telephony</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/low-current/fire-alarm</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/low-current/cctv</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/low-current/access-control</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/low-current/master-clock</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/av/meeting-rooms</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://amt-arabia.net/ar/about</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/about" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/about" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/about" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amt-arabia.net/en/av/auditoriums</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/av/iptv</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/av/video-wall</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/av/interactive-screens</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/news/cctv-systems-saudi-arabia-high-intent-guide</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/news/access-control-systems-saudi-enterprises-checklist</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/news/smart-building-solutions-ksa-pilot-to-scale</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/news/corporate-audio-systems-ksa-pa-av-integration</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/en/news/campus-network-readiness-ksa-before-cctv-ucs</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/about</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/services</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/services/cctv-systems</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/services/access-control</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/services/network-infrastructure</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/services/smart-building-solutions</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/services/audio-visual-systems</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/solution-details</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/projects</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/contact</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/osp-solutions</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/ict/data-network</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/ict/unified-communications</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/ict/wireless</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/ict/data-center</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/ict/network-security</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/ict/ip-telephony</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/low-current/fire-alarm</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/low-current/cctv</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/low-current/access-control</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/low-current/master-clock</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/av/meeting-rooms</loc>
-    <lastmod>2026-04-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/auditoriums" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/auditoriums" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/auditoriums" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amt-arabia.net/ar/av/auditoriums</loc>
-    <lastmod>2026-04-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/auditoriums" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/auditoriums" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/auditoriums" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amt-arabia.net/ar/av/iptv</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://amt-arabia.net/ar/av/video-wall</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://amt-arabia.net/en/av/interactive-screens</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/interactive-screens" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/interactive-screens" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/interactive-screens" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://amt-arabia.net/ar/av/interactive-screens</loc>
-    <lastmod>2026-04-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/interactive-screens" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/interactive-screens" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/interactive-screens" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amt-arabia.net/ar/news/cctv-systems-saudi-arabia-high-intent-guide</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://amt-arabia.net/en/av/iptv</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/iptv" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/iptv" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/iptv" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amt-arabia.net/ar/news/access-control-systems-saudi-enterprises-checklist</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://amt-arabia.net/ar/av/iptv</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/iptv" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/iptv" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/iptv" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amt-arabia.net/ar/news/smart-building-solutions-ksa-pilot-to-scale</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://amt-arabia.net/en/av/meeting-rooms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/meeting-rooms" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/meeting-rooms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/meeting-rooms" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amt-arabia.net/ar/news/corporate-audio-systems-ksa-pa-av-integration</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://amt-arabia.net/ar/av/meeting-rooms</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/meeting-rooms" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/meeting-rooms" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/meeting-rooms" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://amt-arabia.net/ar/news/campus-network-readiness-ksa-before-cctv-ucs</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://amt-arabia.net/en/av/video-wall</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/video-wall" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/video-wall" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/video-wall" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/av/video-wall</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/av/video-wall" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/av/video-wall" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/av/video-wall" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/contact" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/contact" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/contact" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/contact" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/ict/data-center</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/data-center" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/data-center" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/data-center" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/ict/data-center</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/data-center" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/data-center" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/data-center" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/ict/data-network</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/data-network" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/data-network" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/data-network" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/ict/data-network</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/data-network" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/data-network" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/data-network" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/ict/ip-telephony</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/ip-telephony" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/ip-telephony" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/ip-telephony" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/ict/ip-telephony</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/ip-telephony" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/ip-telephony" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/ip-telephony" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/ict/network-security</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/network-security" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/network-security" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/network-security" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/ict/network-security</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/network-security" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/network-security" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/network-security" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/ict/unified-communications</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/unified-communications" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/unified-communications" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/unified-communications" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/ict/unified-communications</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/unified-communications" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/unified-communications" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/unified-communications" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/ict/wireless</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/wireless" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/wireless" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/wireless" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/ict/wireless</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/ict/wireless" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/ict/wireless" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/ict/wireless" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/low-current/access-control</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/low-current/access-control" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/low-current/access-control" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/low-current/access-control" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/low-current/access-control</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/low-current/access-control" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/low-current/access-control" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/low-current/access-control" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/low-current/cctv</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/low-current/cctv" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/low-current/cctv" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/low-current/cctv" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/low-current/cctv</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/low-current/cctv" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/low-current/cctv" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/low-current/cctv" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/low-current/fire-alarm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/low-current/fire-alarm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/low-current/fire-alarm" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/low-current/fire-alarm" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/low-current/fire-alarm</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/low-current/fire-alarm" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/low-current/fire-alarm" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/low-current/fire-alarm" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/low-current/master-clock</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/low-current/master-clock" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/low-current/master-clock" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/low-current/master-clock" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/low-current/master-clock</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/low-current/master-clock" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/low-current/master-clock" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/low-current/master-clock" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/news/5</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/news/5" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/news/5" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/news/5" />
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/news/5</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/news/5" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/news/5" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/news/5" />
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/news/award-recognition</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/news/award-recognition" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/news/award-recognition" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/news/award-recognition" />
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/news/award-recognition</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/news/award-recognition" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/news/award-recognition" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/news/award-recognition" />
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/news/new-project-launch</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/news/new-project-launch" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/news/new-project-launch" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/news/new-project-launch" />
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/news/new-project-launch</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/news/new-project-launch" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/news/new-project-launch" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/news/new-project-launch" />
+    <lastmod>2026-02-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/osp-solutions</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/osp-solutions" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/osp-solutions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/osp-solutions" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/osp-solutions</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/osp-solutions" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/osp-solutions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/osp-solutions" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/projects" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/projects" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/projects" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/projects</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/projects" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/projects" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/projects" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/services</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/services/access-control</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/access-control" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/access-control" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/access-control" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/services/access-control</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/access-control" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/access-control" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/access-control" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/services/audio-visual-systems</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/audio-visual-systems" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/audio-visual-systems" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/audio-visual-systems" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/services/audio-visual-systems</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/audio-visual-systems" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/audio-visual-systems" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/audio-visual-systems" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/services/cctv-systems</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/cctv-systems" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/cctv-systems" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/cctv-systems" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/services/cctv-systems</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/cctv-systems" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/cctv-systems" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/cctv-systems" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/services/network-infrastructure</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/network-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/network-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/network-infrastructure" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/services/network-infrastructure</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/network-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/network-infrastructure" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/network-infrastructure" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/services/smart-building-solutions</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/smart-building-solutions" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/smart-building-solutions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/smart-building-solutions" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/services/smart-building-solutions</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/services/smart-building-solutions" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/services/smart-building-solutions" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/services/smart-building-solutions" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/en/solution-details</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/solution-details" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/solution-details" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/solution-details" />
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amt-arabia.net/ar/solution-details</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amt-arabia.net/en/solution-details" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://amt-arabia.net/ar/solution-details" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amt-arabia.net/en/solution-details" />
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

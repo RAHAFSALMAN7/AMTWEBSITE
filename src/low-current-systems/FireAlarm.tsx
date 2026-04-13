@@ -55,9 +55,9 @@ const FireAlarm: React.FC = () => {
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}
         >
-          <h3 className="text-2xl font-semibold mb-6 text-center text-[#851A18]">
+          <h2 className="text-2xl font-semibold mb-6 text-center text-[#851A18]">
             {t("lowCurrent.fireAlarm.keyFunctions")}
-          </h3>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-gray-800 text-lg">
             <div className="p-4 bg-white rounded-lg shadow hover:scale-105 transition-transform">
               {t("lowCurrent.fireAlarm.function1")}
@@ -88,9 +88,9 @@ const FireAlarm: React.FC = () => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.9 }}
         >
-          <h3 className="text-3xl font-bold mb-8 text-center text-[#851A18]">
+          <h2 className="text-3xl font-bold mb-8 text-center text-[#851A18]">
             {t("lowCurrent.fireAlarm.safetyTips")}
-          </h3>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-800 text-lg">
             <div className="p-6 bg-white rounded-lg shadow hover:scale-105 transition-transform">
               <strong>{t("lowCurrent.fireAlarm.tip1Title")}</strong> {t("lowCurrent.fireAlarm.tip1Desc")}
