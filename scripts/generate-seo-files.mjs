@@ -202,8 +202,46 @@ ${u.alternates
 </urlset>
 `;
 
+  const buildLocaleSitemap = (targetLocale) => {
+    const localeUrls = allRoutes.map((routeObj) => {
+      const route = routeObj.route;
+      return {
+        loc: urlFor(targetLocale, route),
+        lastmod: routeObj.lastmod || defaultLastmod,
+        changefreq: route === "/" ? "weekly" : "monthly",
+        priority: route === "/" ? "1.0" : "0.8",
+      };
+    });
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${localeUrls
+  .map(
+    (u) => `  <url>
+    <loc>${xmlEscape(u.loc)}</loc>
+    <lastmod>${u.lastmod}</lastmod>
+    <changefreq>${u.changefreq}</changefreq>
+    <priority>${u.priority}</priority>
+  </url>`
+  )
+  .join("\n")}
+</urlset>
+`;
+  };
+
   fs.writeFileSync(path.join(publicDir, "sitemap.xml"), sitemap, "utf8");
   fs.writeFileSync(path.join(publicDir, "robots.txt"), robots, "utf8");
+  fs.mkdirSync(path.join(publicDir, "en"), { recursive: true });
+  fs.mkdirSync(path.join(publicDir, "ar"), { recursive: true });
+  fs.writeFileSync(
+    path.join(publicDir, "en", "sitemap.xml"),
+    buildLocaleSitemap("en"),
+    "utf8"
+  );
+  fs.writeFileSync(
+    path.join(publicDir, "ar", "sitemap.xml"),
+    buildLocaleSitemap("ar"),
+    "utf8"
+  );
 
   console.log(`[seo] files written for base: ${baseRaw}`);
   console.log(`[seo] routes: static=${STATIC_ROUTES.length}, news=${sanityNewsRoutes.length}`);
