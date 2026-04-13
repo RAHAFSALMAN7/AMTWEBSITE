@@ -12,6 +12,7 @@ import { getDefaultOgImagePath, getPageMeta } from "./routeMeta";
 import { absoluteUrl, getSiteUrl, ORG_NAME } from "./siteConfig";
 import {
   buildBreadcrumbJsonLd,
+  localBusinessJsonLd,
   organizationJsonLd,
   serializeJsonLd,
   serviceJsonLd,
@@ -32,7 +33,7 @@ function hrefForLocale(pathWithoutLocale: string, locale: AppLocale): string {
 
 const RouteSeo: FC = () => {
   const location = useLocation();
-  const { t } = useTranslation();
+  useTranslation();
 
   const pathLocale = location.pathname.split("/").filter(Boolean)[0];
   const locale: AppLocale = isSupportedLocale(pathLocale) ? pathLocale : DEFAULT_LOCALE;
@@ -46,6 +47,7 @@ const RouteSeo: FC = () => {
   const ogImage = absoluteUrl(getDefaultOgImagePath());
 
   const orgLd = organizationJsonLd();
+  const localBizLd = localBusinessJsonLd();
   const siteLd = websiteJsonLd(locale);
   const breadLd =
     normalizedPath === "/" ? null : buildBreadcrumbJsonLd(normalizedPath, locale);
@@ -57,7 +59,7 @@ const RouteSeo: FC = () => {
 
   const gsc = import.meta.env.VITE_GSC_VERIFICATION?.trim();
 
-  const ldBlocks = [orgLd, siteLd, breadLd, svcLd].filter(Boolean) as JsonValue[];
+  const ldBlocks = [orgLd, localBizLd, siteLd, breadLd, svcLd].filter(Boolean) as JsonValue[];
 
   return (
     <Helmet>

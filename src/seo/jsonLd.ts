@@ -1,8 +1,14 @@
 import type { AppLocale } from "../utils/localeRouting";
 import {
+  ORG_COUNTRY,
   ORG_DESCRIPTION,
   ORG_LEGAL_NAME,
   ORG_NAME,
+  ORG_LOCALITY,
+  ORG_PHONE,
+  ORG_POSTAL_CODE,
+  ORG_REGION,
+  ORG_STREET,
   SITE_LOGO_PATH,
   SOCIAL_PROFILES,
   absoluteUrl,
@@ -132,6 +138,45 @@ export function organizationJsonLd(): JsonValue {
     url: getSiteUrl(),
     logo: absoluteUrl(SITE_LOGO_PATH),
     sameAs: SOCIAL_PROFILES,
+  };
+}
+
+export function localBusinessJsonLd(): JsonValue {
+  const address: Record<string, unknown> = {
+    "@type": "PostalAddress",
+    addressCountry: ORG_COUNTRY,
+  };
+  if (ORG_LOCALITY) address.addressLocality = ORG_LOCALITY;
+  if (ORG_REGION) address.addressRegion = ORG_REGION;
+  if (ORG_STREET) address.streetAddress = ORG_STREET;
+  if (ORG_POSTAL_CODE) address.postalCode = ORG_POSTAL_CODE;
+
+  const sameAs = SOCIAL_PROFILES.filter(Boolean);
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: ORG_NAME,
+    legalName: ORG_LEGAL_NAME,
+    description: ORG_DESCRIPTION,
+    url: getSiteUrl(),
+    logo: absoluteUrl(SITE_LOGO_PATH),
+    image: absoluteUrl(SITE_LOGO_PATH),
+    areaServed: {
+      "@type": "Country",
+      name: ORG_COUNTRY,
+    },
+    address,
+    ...(ORG_PHONE ? { telephone: ORG_PHONE } : {}),
+    ...(sameAs.length ? { sameAs } : {}),
+    knowsAbout: [
+      "ICT integration",
+      "Network security services",
+      "CCTV systems",
+      "Access control systems",
+      "Fire alarm systems",
+      "Unified communications",
+      "Data network solutions",
+    ],
   };
 }
 

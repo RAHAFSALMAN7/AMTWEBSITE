@@ -15,6 +15,17 @@ export const ORG_NAME = "Advanced Micro Technologies";
 export const ORG_LEGAL_NAME = "Advanced Micro Technologies (AMT)";
 export const ORG_DESCRIPTION =
   "ICT integration, low-current systems, audio-visual solutions, and outside plant networks for enterprises in Saudi Arabia and the broader region.";
+export const ORG_COUNTRY = "Saudi Arabia";
+
+/**
+ * Optional local-business fields (set in env when available).
+ * Keeping these configurable avoids hardcoding inaccurate location data.
+ */
+export const ORG_PHONE = import.meta.env.VITE_BUSINESS_PHONE?.trim() || "";
+export const ORG_LOCALITY = import.meta.env.VITE_BUSINESS_LOCALITY?.trim() || "";
+export const ORG_REGION = import.meta.env.VITE_BUSINESS_REGION?.trim() || "";
+export const ORG_STREET = import.meta.env.VITE_BUSINESS_STREET?.trim() || "";
+export const ORG_POSTAL_CODE = import.meta.env.VITE_BUSINESS_POSTAL_CODE?.trim() || "";
 
 /** Logo path under /public — used in JSON-LD and OG fallbacks */
 export const SITE_LOGO_PATH = "/amt1.png";
