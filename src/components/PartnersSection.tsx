@@ -9,7 +9,7 @@ const PartnersSection: React.FC = () => {
   const [data, setData] = useState<any>(null);
   const { i18n } = useTranslation();
 
-  const lang = i18n.language === "ar" ? "ar" : "en";
+  const lang = i18n.language.startsWith("ar") ? "ar" : "en";
 
   useEffect(() => {
     sanity

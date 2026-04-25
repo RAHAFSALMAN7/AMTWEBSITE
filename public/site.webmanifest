@@ -1,0 +1,24 @@
+{
+  "name": "AMT",
+  "short_name": "AMT",
+  "description": "Advanced Micro Technologies (AMT) — enterprise ICT, low-current systems, audio-visual integration, and outside plant networks in Saudi Arabia.",
+  "start_url": "/en",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#851A18",
+  "icons": [
+    {
+      "src": "/amt1.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/amt1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
+
