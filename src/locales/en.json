@@ -19,6 +19,7 @@
     "home": "Home",
     "aboutUs": "About Us",
     "solutions": "Solutions",
+    "careers": "Careers",
     "contactUs": "Contact Us"
   },
   "about": {
@@ -27,6 +28,89 @@
     "whatDrivesAmt": "What Drives AMT",
     "ourTeam": "Our Team",
     "teamDescription": "A collective of specialists focused on delivering reliable, scalable, and future-ready solutions."
+  },
+  "careers": {
+    "heroTitle": "Careers at AMT",
+    "heroSubtitle": "Help us build the ICT, security, and audio-visual infrastructure that keeps Saudi Arabia's enterprises connected, protected, and running.",
+    "introTitle": "Why Work With AMT",
+    "introText": "At Advanced Micro Technologies, our people turn network diagrams, security designs, and AV concepts into infrastructure that organizations rely on every day. We look for engineers, technicians, and project professionals who take ownership of their work and care about doing it right.",
+    "values": [
+      {
+        "title": "Real Projects, Real Impact",
+        "text": "Work on enterprise ICT, security, and AV deployments across the Kingdom — not just theory."
+      },
+      {
+        "title": "Growth & Certification",
+        "text": "We support hands-on learning and vendor certifications as you take on more complex systems."
+      },
+      {
+        "title": "Collaborative Teams",
+        "text": "Cross-functional teams of engineers, technicians, and project managers who back each other up on-site and in the office."
+      },
+      {
+        "title": "Stability & Trust",
+        "text": "A track record of long-term client relationships means steady, well-scoped work."
+      }
+    ],
+    "benefitsTitle": "What You Can Expect",
+    "benefits": [
+      "Competitive compensation",
+      "On-the-job training & certifications",
+      "Health coverage",
+      "Clear project ownership",
+      "Modern tools & equipment",
+      "A team that has your back on-site"
+    ],
+    "areasTitle": "Where You Could Work",
+    "areas": [
+      "ICT & Networking",
+      "Low-Current & Security Systems",
+      "Audio-Visual Integration",
+      "Outside Plant (OSP) & Fiber",
+      "Project Management",
+      "Field Engineering & Technical Support"
+    ],
+    "applyTitle": "Apply to Join AMT",
+    "applyIntro": "We don't post every vacancy individually — tell us about yourself and where you'd fit, and our team will reach out if a role matches your background.",
+    "howToApplyTitle": "How to Apply",
+    "steps": [
+      {
+        "title": "Submit your application",
+        "text": "Fill out the form with your details and attach your CV."
+      },
+      {
+        "title": "Initial conversation",
+        "text": "Our team reviews your background and schedules a call to learn more about your experience."
+      },
+      {
+        "title": "Meet the team",
+        "text": "Shortlisted candidates meet with the relevant technical team to discuss fit and next steps."
+      }
+    ],
+    "form": {
+      "firstName": "First Name",
+      "firstNamePlaceholder": "e.g. Sarah",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "e.g. Al-Otaibi",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "phone": "Phone Number",
+      "phonePlaceholder": "+966 5X XXX XXXX",
+      "areaOfInterest": "Area of Interest",
+      "areaOfInterestPlaceholder": "Select an area",
+      "areaOfInterestOther": "Other",
+      "linkedin": "LinkedIn / Portfolio URL (optional)",
+      "linkedinPlaceholder": "https://linkedin.com/in/...",
+      "message": "Cover Note (optional)",
+      "messagePlaceholder": "Anything you'd like us to know",
+      "cvLabel": "CV / Resume",
+      "cvButton": "Choose File",
+      "cvNoFile": "No file chosen",
+      "cvHint": "PDF or Word, up to 5MB",
+      "consent": "I agree to AMT storing my information for recruitment purposes.",
+      "submitButton": "Submit Application",
+      "successMessage": "✅ Application submitted successfully"
+    }
   },
   "whyChooseUs": {
     "whyAmt": "Why AMT?"

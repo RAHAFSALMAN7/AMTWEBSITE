@@ -40,6 +40,20 @@ const META: Record<string, Record<AppLocale, PageMeta>> = {
       keywords: "من نحن AMT، تكامل تقني، شريك تقنية مؤسسات",
     },
   },
+  "/careers": {
+    en: {
+      title: "Careers at AMT | Join Our ICT & Infrastructure Team",
+      description:
+        "Explore careers at AMT — build enterprise ICT, security, AV, and outside plant infrastructure with a team focused on real projects and long-term growth across Saudi Arabia.",
+      keywords: "AMT careers, jobs Saudi Arabia, ICT jobs, network engineer jobs, security systems careers, AV technician jobs",
+    },
+    ar: {
+      title: "الوظائف في AMT | انضم إلى فريق الاتصالات والبنية التحتية",
+      description:
+        "اكتشف الفرص الوظيفية في AMT وابنِ بنية تحتية للاتصالات والأمن والصوتيات وشبكات OSP مع فريق يركز على مشاريع حقيقية ونمو طويل الأمد في السعودية.",
+      keywords: "وظائف AMT، وظائف تقنية المعلومات، وظائف مهندس شبكات، وظائف أنظمة أمنية، وظائف فني صوتيات",
+    },
+  },
   "/services": {
     en: {
       title: "Technology Solutions | AMT ICT & Infrastructure Services",

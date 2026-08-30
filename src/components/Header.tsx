@@ -35,6 +35,7 @@ const Header = () => {
     { label: t("nav.home"), path: localizedPath("/") },
     { label: t("nav.aboutUs"), path: localizedPath("/about") },
     { label: t("nav.solutions"), path: localizedPath("/solution-details") },
+    { label: t("nav.careers"), path: localizedPath("/careers") },
     { label: t("nav.contactUs"), path: localizedPath("/contact") },
   ];
 

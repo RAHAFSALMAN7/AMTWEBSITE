@@ -39,6 +39,7 @@ const baseRaw = (process.env.VITE_SITE_URL || "https://www.example.com").replace
 const STATIC_ROUTES = [
   "/",
   "/about",
+  "/careers",
   "/services",
   "/services/cctv-systems",
   "/services/access-control",

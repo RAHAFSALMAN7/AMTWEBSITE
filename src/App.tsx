@@ -25,6 +25,7 @@ const LatestNews = lazy(() => import("./components/LatestNews"));
 const Projects = lazy(() => import("./components/Projects"));
 const Contact = lazy(() => import("./components/Contact"));
 const NewsDetails = lazy(() => import("./pages/NewsDetails"));
+const CareersPage = lazy(() => import("./pages/CareersPage"));
 
 const DataNetwork = lazy(() => import("./ict/DataNetwork"));
 const UnifiedCommunications = lazy(() => import("./ict/UnifiedCommunications"));
@@ -101,6 +102,7 @@ const LocaleLayout: React.FC = () => {
           <Route path="services" element={<Solutions standalone />} />
           <Route path="solution-details" element={<SolutionDetails />} />
           <Route path="projects" element={<Projects />} />
+          <Route path="careers" element={<CareersPage />} />
           <Route path="contact" element={<Contact />} />
 
           <Route path="news/:slug" element={<NewsDetails />} />

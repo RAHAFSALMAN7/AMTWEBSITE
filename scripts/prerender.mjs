@@ -21,6 +21,7 @@ const dist = path.join(root, "dist");
 const BASE_ROUTES = [
   "/",
   "/about",
+  "/careers",
   "/services",
   "/services/cctv-systems",
   "/services/access-control",
